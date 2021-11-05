@@ -1,2 +1,0 @@
-# istock
-warehouse manager app

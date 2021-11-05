@@ -1,0 +1,10 @@
+.eslintrc
+public
+node_modules
+build
+prettierrc
+prettierignore
+.gitignore
+package.json
+yarn.lock
+client
