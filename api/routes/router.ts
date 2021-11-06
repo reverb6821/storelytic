@@ -7,8 +7,8 @@ export const router = Router(); // ? declare express as router
 
 //! api endpoint
 //* user
-router.get('/auth', auth);
-router.get('/user', user);
+router.use('/auth', auth);
+router.use('/user', user);
 
 //* home
 router.get('/', async (req: Request, res: Response): Promise<any> => {

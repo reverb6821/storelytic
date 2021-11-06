@@ -1,9 +1,9 @@
 {
-  "name": "istock",
+  "name": "storelytic",
   "version": "2.0.1",
-  "description": "iStock is a warehouse management PWA builded with React.JS on a top of a server builded with Express.js",
+  "description": "Storelytic is a warehouse management PWA builded with React.JS on a top of a server builded with Express.js",
   "main": "./dist/server.js",
-  "repository": "https://github.com/reverb6821/istock.git",
+  "repository": "https://github.com/reverb6821/storelytic.git",
   "author": "Giuseppe Gigliotti <giuseppegigliottidev@gmail.com>",
   "license": "MIT",
   "private": false,

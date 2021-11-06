@@ -1,13 +1,24 @@
 {
     "type": "mysql",
+    "database": "storelytic",
+    "synchronize": true,
     "host": "localhost",
     "port": 3306,
     "username": "storelytic",
-    "password": "AIHKcwmOinlLrOAH",
-    "database": "storelytic",
-    "synchronize": true,
+    "password": "aluRsB9q7Lhtk9EE",
     "logging": false,
-    "entities": ["api/entity/**/*.ts"],
-    "migrations": ["api/migration/**/*.ts"],
-    "subscribers": ["api/subscriber/**/*.ts"]
-}
+    "entities": [
+       "api/entity/**/*.ts"
+    ],
+    "migrations": [
+       "api/migration/**/*.ts"
+    ],
+    "subscribers": [
+       "api/subscriber/**/*.ts"
+    ],
+    "cli": {
+       "entitiesDir": "api/entity",
+       "migrationsDir": "api/migration",
+       "subscribersDir": "api/subscriber"
+    }
+ }
