@@ -1,19 +1,21 @@
 {
   "name": "storelytic",
-  "version": "2.0.1",
-  "description": "Storelytic is a warehouse management PWA builded with React.JS on a top of a server builded with Express.js",
-  "main": "./dist/server.js",
+  "version": "1.0.0",
+  "description": "warehouse management app",
+  "main": "./api/server.js",
   "repository": "https://github.com/reverb6821/storelytic.git",
   "author": "Giuseppe Gigliotti <giuseppegigliottidev@gmail.com>",
   "license": "MIT",
-  "private": false,
   "scripts": {
-    "serve": "ts-node-dev --respawn --pretty --transpile-only api/server.ts",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
     "lint:eslint": "eslint . --ext .ts,.js,.tsx,.jsx",
     "lint:eslint:fix": "eslint . --ext .ts,.js,.tsx,.jsx --fix",
     "prettify": "prettier --write **/*.{ts,tsx,js,jsx,json}",
     "lint-staged": "lint-staged",
-    "migration:run": "ts-node ./node_modules/typeorm/cli.js migration:run"
+    "serve": "nodemon ./api/server.js"
   },
   "husky": {
     "hooks": {
@@ -48,38 +50,30 @@
     }
   },
   "devDependencies": {
-    "@types/cors": "^2.8.12",
-    "@types/dotenv": "^8.2.0",
-    "@types/express": "^4.17.13",
-    "@types/helmet": "^4.0.0",
-    "@types/morgan": "^1.9.3",
-    "@types/node": "^16.10.0",
-    "@typescript-eslint/eslint-plugin": "^5.3.0",
-    "@typescript-eslint/parser": "^5.3.0",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-config-airbnb-typescript": "^14.0.2",
     "eslint-config-prettier": "^8.3.0",
+    "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^5.1.1",
     "http-status": "^1.5.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^11.2.6",
     "morgan": "^1.10.0",
     "prettier": "^2.4.1",
-    "ts-node-dev": "^1.1.8",
-    "typescript": "^4.4.3",
     "winston": "^3.3.3"
   },
   "dependencies": {
-    "@types/bcryptjs": "^2.4.2",
-    "@types/jsonwebtoken": "^8.5.5",
     "bcryptjs": "^2.4.3",
-    "class-validator": "^0.13.1",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "helmet": "^4.6.0",
     "jsonwebtoken": "^8.5.1",
-    "mysql": "^2.18.1",
-    "typeorm": "^0.2.38"
+    "mysql2": "^2.3.3-rc.0",
+    "nodemon": "^2.0.14",
+    "sequelize": "^6.9.0"
   }
 }

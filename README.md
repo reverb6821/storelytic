@@ -1,2 +1,4 @@
-TypeOrm migration
-"migration:run": "ts-node ./node_modules/typeorm/cli.js migration:run" 
+TODO
+- add log system
+- add Frontend login react
+- better route
