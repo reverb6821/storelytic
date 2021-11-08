@@ -47,3 +47,17 @@
 ├── reportWebVitals.js                    # Where endpoints are stored
 └── redux.js                              # Redux configuration
 ```
+
+### Endpoint:
+## Users authorization Endpoints
+```
+GET /api/test/all       # Public access
+GET /api/test/user      # Loggedin users (role: user/moderator/admin)
+GET /api/test/mod       # Users having moderator role
+GET /api/test/admin     # Users having admin role
+```
+## Authentication Endpoints
+```
+POST /api/auth/signup       # Registration request (soon removed)
+POST /api/auth/signin       # Login request
+```
