@@ -21,7 +21,7 @@ const PORT = parseInt(process.env.PORT)
 app.use(cors(corsOptions))
 app.use(express.json()) //? parse requests of content-type - application/json
 app.use(express.urlencoded({ extended: true })) //? parse requests of content-type - application/x-www-form-urlencoded
-app.use(express.static(path.resolve(__dirname, './view')));
+app.use(express.static(path.resolve(__dirname, './view'))); //? express client directory
 db.sequelize.sync()
 
 //? routes
