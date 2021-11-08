@@ -61,23 +61,23 @@ GET /api/test/admin     # Users having admin role
 POST /api/auth/signup       # Registration request (soon removed)
 POST /api/auth/signin       # Login request
 ```
-### How it work
-## Authentication
+## How it work
+### Authentication
 
 The app use a token based authentication with the JSON Web Token (JWT). The server is giving the token, and it will be intercepted on client side with an http request and stored on local storage (for browser), keychan (iOS) and SharedPreferences (Android).
 
-Via Express routes, HTTP request that matches a route will be checked by CORS Middleware before coming to Security layer.
+The app is giving a token via Express Endpoints, then if HTTP request is matching it will be checked by CORS Middleware before coming to Security layer.
 
-Security layer includes:
+The Security layer is composed by:
 
-- JWT Authentication Middleware: verify SignUp, verify token
-- Authorization Middleware: check User’s roles with record in database
+- JWT Authentication Middleware: verify SignUp, verify token;
+- Authorization Middleware: check User’s roles with record in database;
  
 If these middlewares throw any error, a message will be sent as HTTP response.
 
-Controllers interact with MySQL Database via Sequelize and send HTTP response (token, user information, data based on roles…) to client.
+### CRUD Operation
 
-#### Task List
+## Task List
 - [x] Add React
 - [x] Add Tailwind
 - [x] Complete Signin cycle on React
