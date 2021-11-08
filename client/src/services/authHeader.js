@@ -1,3 +1,4 @@
+//! fetch jwt token in the header and store it in localstorage
 export default function authHeader() {
     const user = JSON.parse(localStorage.getItem("user"));
   

@@ -1,5 +1,5 @@
 const db = require('../models/sequelize')
-const config = require('../config/auth')
+const config = require('../config/authConfig')
 const User = db.user
 const Role = db.role
 

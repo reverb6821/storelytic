@@ -1,3 +1,4 @@
+//! define sequelize model for roles
 module.exports = (sequelize, Sequelize) => {
   const Role = sequelize.define('roles', {
     id: {

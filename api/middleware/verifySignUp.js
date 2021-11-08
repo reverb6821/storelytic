@@ -2,6 +2,7 @@ const db = require('../models/sequelize')
 const ROLES = db.ROLES
 const User = db.user
 
+//* check if data for signup was yet taken
 checkDuplicateUsernameOrEmail = (req, res, next) => {
   // Username
   User.findOne({
@@ -34,6 +35,7 @@ checkDuplicateUsernameOrEmail = (req, res, next) => {
   })
 }
 
+//* check for role is valid
 checkRolesExisted = (req, res, next) => {
   if (req.body.roles) {
     for (let i = 0; i < req.body.roles.length; i++) {
@@ -49,6 +51,7 @@ checkRolesExisted = (req, res, next) => {
   next()
 }
 
+//* export signup validation
 const verifySignUp = {
   checkDuplicateUsernameOrEmail: checkDuplicateUsernameOrEmail,
   checkRolesExisted: checkRolesExisted

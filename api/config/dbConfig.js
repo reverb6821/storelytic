@@ -1,3 +1,4 @@
+//? db connection setup
 const dotenv = require('dotenv')
 dotenv.config()
 

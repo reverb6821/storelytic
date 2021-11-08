@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API_URL = "http://localhost:5000/api/auth/";
-
+//! login/logout fetch
 const login = (username, password) => {
   return axios
     .post(API_URL + "signin", {

@@ -1,17 +1,20 @@
 const jwt = require('jsonwebtoken')
-const config = require('../config/auth')
+const config = require('../config/authConfig')
 const db = require('../models/sequelize')
 const User = db.user
 
+//* check token
 verifyToken = (req, res, next) => {
   const token = req.headers['x-access-token']
 
+  //* if no token was provided
   if (!token) {
     return res.status(403).send({
       message: 'No token provided!'
     })
   }
 
+  //* if the token is invalid
   jwt.verify(token, config.secret, (err, decoded) => {
     if (err) {
       return res.status(401).send({
@@ -23,6 +26,7 @@ verifyToken = (req, res, next) => {
   })
 }
 
+//* check if it is admin
 isAdmin = (req, res, next) => {
   User.findByPk(req.userId).then((user) => {
     user.getRoles().then((roles) => {
@@ -40,6 +44,7 @@ isAdmin = (req, res, next) => {
   })
 }
 
+//* check if it is mod
 isModerator = (req, res, next) => {
   User.findByPk(req.userId).then((user) => {
     user.getRoles().then((roles) => {
@@ -57,6 +62,7 @@ isModerator = (req, res, next) => {
   })
 }
 
+//* check if it is admin or mod
 isModeratorOrAdmin = (req, res, next) => {
   User.findByPk(req.userId).then((user) => {
     user.getRoles().then((roles) => {
@@ -79,6 +85,7 @@ isModeratorOrAdmin = (req, res, next) => {
   })
 }
 
+//* export auth token
 const authJwt = {
   verifyToken: verifyToken,
   isAdmin: isAdmin,

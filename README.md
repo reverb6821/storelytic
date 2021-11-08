@@ -70,8 +70,8 @@ The app is giving a token via Express Endpoints, then if HTTP request is matchin
 
 The Security layer is composed by:
 
-- JWT Authentication Middleware: verify SignUp, verify token;
-- Authorization Middleware: check User’s roles with record in database;
+- JWT Authentication Middlewar;
+- Authorization Middleware, check User’s roles with record in database;
  
 If these middlewares throw any error, a message will be sent as HTTP response.
 
