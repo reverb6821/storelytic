@@ -1,9 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { BrowserRouter as Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 import { logout } from '../../slices/auth';
-
 import EventBus from '../../common/eventBus';
 
 const Header = () => {
@@ -37,35 +36,48 @@ const Header = () => {
 
   return (
     <div>
-      <ul class="flex">
-        <li class="flex-1 mr-2">
-          <Link class="text-center block border border-blue-500 rounded py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white" to={"/publicboard"} >Storelytic</Link>
+      <ul className="flex">
+        <li className="flex-1 mr-2">
+          <Link to={"/publicboard"}>
+            <a className="text-center block border border-blue-500 rounded py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white"  >Storelytic</a>
+          </Link>
         </li>
         {showModeratorBoard && (
-        <li class="flex-1 mr-2">
-          <Link class="text-center block border border-white rounded hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4" to={"/moderatorboard"}>Moderator</Link>
-        </li>
+          <li className="flex-1 mr-2">
+            <Link to={"/moderatorboard"}>
+              <a className="text-center block border border-white rounded hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4" >Moderator</a>
+            </Link>
+          </li>
         )}
         {showAdminBoard && (
-        <li class="flex-1 mr-2">
-          <Link class="text-center block border border-white rounded hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4" to={"/adminboard"}>Admin</Link>
-        </li>
+          <li className="flex-1 mr-2">
+            <Link to={"/adminboard"}>
+              <a className="text-center block border border-white rounded hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4" >Admin</a>
+            </Link>
+          </li>
         )}
         {currentUser && (
-        <li class="text-center flex-1">
-          <a class="block py-2 px-4 text-gray-400 cursor-not-allowed" to={"/publicboard"}>Public Board</a>
-        </li>
+          <li className="text-center flex-1">
+            <Link to={"/publicboard"}>
+              <a className="text-center block border border-white rounded hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4" >Public Board</a>
+            </Link>
+          </li>
         )}
-        {currentUser && (
-          <div>
-            <li class="text-center flex-1">
-              <Link class="block py-2 px-4 text-gray-400 cursor-not-allowed" to={"/profile"}>{currentUser.username} - Profile</Link>
-            </li>
-            <li class="text-center flex-1">
-              <Link class="block py-2 px-4 text-gray-400 cursor-not-allowed" to={"/"} onClick={logOut}>Logout</Link>
-            </li>
-          </div>
-        )}
+     
+      {currentUser && (
+        <div className="flex">
+          <li className="text-center flex-1">
+            <Link to={"/profile"}>
+              <a className="text-center block border border-white rounded hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4" >{currentUser.username}</a>
+            </Link>
+          </li>
+          <li className="text-center flex-1">
+            <Link to={"/"}>
+              <a className="text-center block border border-white rounded hover:border-gray-200 text-red-500 hover:bg-gray-200 py-2 px-4" onClick={logOut}>Logout</a>
+            </Link>
+          </li>
+        </div>
+      )}
       </ul>
     </div>
   );

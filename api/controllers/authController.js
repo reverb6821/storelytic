@@ -1,7 +1,9 @@
 const db = require('../models/sequelize');
 const config = require('../config/authConfig');
-const User = db.user;
-const Role = db.role;
+// const User = db.user;
+// const Role = db.role;
+
+const { user: User, role: Role, refreshToken: RefreshToken } = db;
 
 const Op = db.Sequelize.Op;
 

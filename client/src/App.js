@@ -1,10 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-//? import services
-import AuthVerify from './common/AuthVerify';
-import EventBus from "./common/EventBus";
-
 //? page import
 import Login from './Pages/Login/Login';
 import Profile from './Pages/Profile/Profile';
@@ -22,7 +18,6 @@ const App = () => {
         <Route exact path="/moderatorboard" component={ModeratorBoard} />
         <Route exact path="/publicboard" component={PublicBoard} />
       </Switch>
-      <AuthVerify logOut={logOut}/>
     </Router>
   );
 };
