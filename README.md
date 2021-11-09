@@ -48,6 +48,24 @@
 └── redux.js                              # Redux configuration
 ```
 
+## Built With
+### Back End:
+* [express.js](https://expressjs.com/it/) - Used to create handle routing and process requests from the client.
+* [cors](https://github.com/expressjs/cors) - CORS is a node.js package for providing a Connect/Express middleware that can be used to enable CORS with various options.
+* [http-status](https://github.com/adaltas/node-http-status) - Utility to interact with HTTP status code in Node.js.
+* [helmet](https://github.com/helmetjs/helmet) - Help secure Express apps with various HTTP headers.
+* [morgan](https://github.com/expressjs/morgan) - HTTP request logger middleware for node.js.
+* [winston](https://github.com/winstonjs/winston) - A logger for just about everything.
+* [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken) - JsonWebToken implementation for node.js.
+* [sequelize](https://sequelize.org/master/) - Sequelize is a promise-based Node.js ORM tool.
+* [bcryptjs](https://www.npmjs.com/package/bcryptjs) - Optimized bcrypt in JavaScript with zero dependencies.
+### Front End
+* [React.js](https://reactjs.org/) - A JavaScript library for building user interfaces.
+* [tailwindcss](https://tailwindcss.com/docs) - A utility-first CSS framework packed with classes🏾.
+* [formik](https://formik.org/docs/overview) - Formik is the world's most popular open source form library for React and React Native.
+* [yup](https://www.npmjs.com/package/yup) - JavaScript schema builder for value parsing and validation.
+* [axios](https://github.com/axios/axios) - Promise based HTTP client for the browser and node.js.
+
 ## Endpoint:
 ### Users authorization Endpoints
 ```
