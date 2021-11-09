@@ -1,6 +1,6 @@
-const config = require('../config/dbConfig')
+const config = require('../config/dbConfig');
 
-const Sequelize = require('sequelize')
+const Sequelize = require('sequelize');
 const sequelize = new Sequelize(config.DB, config.USER, config.PASSWORD, {
   host: config.HOST,
   dialect: config.dialect,
@@ -10,29 +10,38 @@ const sequelize = new Sequelize(config.DB, config.USER, config.PASSWORD, {
     max: config.pool.max,
     min: config.pool.min,
     acquire: config.pool.acquire,
-    idle: config.pool.idle
-  }
-})
+    idle: config.pool.idle,
+  },
+});
 
-const db = {}
+const db = {};
 
-db.Sequelize = Sequelize
-db.sequelize = sequelize
+db.Sequelize = Sequelize;
+db.sequelize = sequelize;
 
-db.user = require('./userModel.js')(sequelize, Sequelize)
-db.role = require('./roleModel.js')(sequelize, Sequelize)
+db.user = require('./userModel.js')(sequelize, Sequelize);
+db.role = require('./roleModel.js')(sequelize, Sequelize);
+db.refreshToken = require('./refreshTokenModel')(sequelize, Sequelize);
 
 db.role.belongsToMany(db.user, {
   through: 'user_roles',
   foreignKey: 'roleId',
-  otherKey: 'userId'
-})
+  otherKey: 'userId',
+});
+
 db.user.belongsToMany(db.role, {
   through: 'user_roles',
   foreignKey: 'userId',
-  otherKey: 'roleId'
-})
+  otherKey: 'roleId',
+});
 
-db.ROLES = ['user', 'admin', 'moderator']
+db.refreshToken.belongsTo(db.user, {
+  foreignKey: 'userId', targetKey: 'id'
+});
+db.user.hasOne(db.refreshToken, {
+  foreignKey: 'userId', targetKey: 'id'
+});
 
-module.exports = db
+db.ROLES = ['user', 'admin', 'moderator'];
+
+module.exports = db;

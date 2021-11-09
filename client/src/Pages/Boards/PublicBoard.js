@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
-import UserService from "../services/userService";
-import EventBus from "../common/eventBus";
+import userService from '../../services/userService';
+import eventBus from '../../common/eventBus';
 
-const BoardUser = () => {
-  const [content, setContent] = useState("");
+const PublicBoard = () => {
+  const [content, setContent] = useState('');
 
   useEffect(() => {
-    UserService.getUserBoard().then(
+    userService.getUserBoard().then(
       (response) => {
         setContent(response.data);
       },
@@ -22,19 +22,17 @@ const BoardUser = () => {
         setContent(_content);
 
         if (error.response && error.response.status === 401) {
-          EventBus.dispatch("logout");
+          eventBus.dispatch('logout');
         }
-      }
+      },
     );
   }, []);
 
   return (
-    <div className="container">
-      <header className="jumbotron">
-        <h3>{content}</h3>
-      </header>
+    <div>
+      <h3>{content}</h3>
     </div>
   );
 };
 
-export default BoardUser;
+export default PublicBoard;

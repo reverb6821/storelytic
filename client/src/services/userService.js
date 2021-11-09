@@ -1,22 +1,22 @@
-import axios from "axios";
-import authHeader from "./authHeader";
+import axios from 'axios';
+import authHeader from './authHeader';
 
-const API_URL = "http://localhost:5000/api/test/";
+const API_URL = 'http://localhost:5000/api/test/';
 //! user fetch endpoint
 const getPublicContent = () => {
-  return axios.get(API_URL + "all");
+  return axios.get(API_URL + 'all');
 };
 
 const getUserBoard = () => {
-  return axios.get(API_URL + "user", { headers: authHeader() });
+  return axios.get(API_URL + 'user', { headers: authHeader() });
 };
 
 const getModeratorBoard = () => {
-  return axios.get(API_URL + "mod", { headers: authHeader() });
+  return axios.get(API_URL + 'mod', { headers: authHeader() });
 };
 
 const getAdminBoard = () => {
-  return axios.get(API_URL + "admin", { headers: authHeader() });
+  return axios.get(API_URL + 'admin', { headers: authHeader() });
 };
 
 const userService = {
@@ -26,4 +26,4 @@ const userService = {
   getAdminBoard,
 };
 
-export default userService
+export default userService;
