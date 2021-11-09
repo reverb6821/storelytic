@@ -65,6 +65,7 @@
 * [formik](https://formik.org/docs/overview) - Formik is the world's most popular open source form library for React and React Native.
 * [yup](https://www.npmjs.com/package/yup) - JavaScript schema builder for value parsing and validation.
 * [axios](https://github.com/axios/axios) - Promise based HTTP client for the browser and node.js.
+* [redux/toolkit](https://redux-toolkit.js.org/) - The official, opinionated, batteries-included toolset for efficient Redux development.
 
 ## Endpoint:
 ### Users authorization Endpoints
@@ -99,9 +100,9 @@ If these middlewares throw any error, a message will be sent as HTTP response.
 - [x] Add React
 - [x] Add Tailwind
 - [x] Complete Signin cycle on React
-- [ ] Token Expires on server
-- [ ] React token refresh
-- [ ] Set pages divided as roles
+- [x] Token Expires on server
+- [x] React token refresh
+- [x] Set pages divided as roles
 - [ ] Add Item
 - [ ] Add CRUD operation on Item and give it to roles 
 - [ ] Restyle App
