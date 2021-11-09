@@ -106,3 +106,4 @@ If these middlewares throw any error, a message will be sent as HTTP response.
 - [ ] Add Item
 - [ ] Add CRUD operation on Item and give it to roles 
 - [ ] Restyle App
+- [ ] Add PWA support
