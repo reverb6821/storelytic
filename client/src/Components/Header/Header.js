@@ -1,11 +1,14 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Link } from 'react-router-dom';
 
 import { logout } from '../../slices/auth';
 import EventBus from '../../common/eventBus';
+import { useToggle } from './provider/Context';
 
 const Header = () => {
+
+  const { toggle } = useToggle();
   const [showModeratorBoard, setShowModeratorBoard] = useState(false);
   const [showAdminBoard, setShowAdminBoard] = useState(false);
 
@@ -35,51 +38,100 @@ const Header = () => {
   }, [currentUser, logOut]);
 
   return (
-    <div>
-      <ul className="flex">
-        <li className="flex-1 mr-2">
-          <Link to={"/publicboard"}>
-            <a className="text-center block border border-blue-500 rounded py-2 px-4 bg-blue-500 hover:bg-blue-700 text-white"  >Storelytic</a>
-          </Link>
-        </li>
-        {showModeratorBoard && (
-          <li className="flex-1 mr-2">
-            <Link to={"/moderatorboard"}>
-              <a className="text-center block border border-white rounded hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4" >Moderator</a>
-            </Link>
-          </li>
-        )}
-        {showAdminBoard && (
-          <li className="flex-1 mr-2">
-            <Link to={"/adminboard"}>
-              <a className="text-center block border border-white rounded hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4" >Admin</a>
-            </Link>
-          </li>
-        )}
-        {currentUser && (
-          <li className="text-center flex-1">
-            <Link to={"/publicboard"}>
-              <a className="text-center block border border-white rounded hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4" >Public Board</a>
-            </Link>
-          </li>
-        )}
-     
-      {currentUser && (
-        <div className="flex">
-          <li className="text-center flex-1">
-            <Link to={"/profile"}>
-              <a className="text-center block border border-white rounded hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4" >{currentUser.username}</a>
-            </Link>
-          </li>
-          <li className="text-center flex-1">
-            <Link to={"/"}>
-              <a className="text-center block border border-white rounded hover:border-gray-200 text-red-500 hover:bg-gray-200 py-2 px-4" onClick={logOut}>Logout</a>
-            </Link>
-          </li>
+    <header className="h-20 items-center relative z-10 ">
+    <div className="flex flex-center flex-col h-full justify-center mx-auto relative px-3 text-white z-10">
+      <div className="flex items-center pl-1 relative w-full sm:ml-0 sm:pr-2 lg:max-w-68">
+        <div className="flex group h-full items-center relative w-12">
+          <button
+            type="button"
+            aria-expanded="false"
+            aria-label="Toggle sidenav"
+            onClick={toggle}
+            className="text-4xl text-grey focus:outline-none"
+          >
+            &#8801;
+          </button>
         </div>
-      )}
-      </ul>
+        <div className="container flex left-0 relative w-3/4">
+          <div className="group hidden items-center ml-8 relative w-full md:flex lg:w-72">
+            <div className="absolute block cursor-pointer flex items-center justify-center h-10 p-3 pr-2 text-gray-500 text-sm uppercase w-auto sm:hidden">
+              <svg
+                fill="none"
+                className="h-5 relative w-5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <svg
+              className="absolute fill-current h-4 hidden left-0 ml-4 pointer-events-none text-gray-500 w-4 group-hover:text-gray-400 sm:block"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+            >
+              <path d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z" />
+            </svg>
+            <input
+              type="text"
+              className="bg-white block leading-normal pl-10 py-1.5 pr-4 ring-opacity-90 rounded-2xl text-gray-400 w-full focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500"
+              placeholder="Search"
+            />
+          </div>
+        </div>
+        <div className="flex items-center justify-end ml-5 p-1 relative w-full sm:mr-0 sm:right-auto">
+          <a href="#" className="block pr-5">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"
+              />
+            </svg>
+          </a>
+          <a href="#" className="block pr-5">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+              />
+            </svg>
+          </a>
+          {currentUser && (
+          <div>
+             <Link to={"/profile"}>
+            <a href="#" className="block pr-5 relative">
+              {currentUser.username}
+            </a>
+            </Link>
+            <Link to={"/"}>
+            <a href="#" className="block relative text-red-500" onClick={logOut}>
+              Logout
+            </a>
+            </Link>
+          </div>
+          )}
+        </div>
+      </div>
     </div>
+  </header>
   );
 };
 

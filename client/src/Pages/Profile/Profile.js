@@ -13,8 +13,6 @@ const Profile = () => {
 
   return (
     <div>
-      {' '}
-      <Header></Header>
       <div class="bg-white block py-10">
         <div class="max-w-2xl mx-auto">
           <div class="w-full">

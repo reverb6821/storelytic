@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
+import Main from './layout/main';
 //? page import
 import Login from './Pages/Login/Login';
 import Profile from './Pages/Profile/Profile';
@@ -11,6 +12,7 @@ import PublicBoard from './Pages/Boards/PublicBoard';
 const App = () => {
   return (
     <Router>
+      <Main>
       <Switch>
         <Route exact path="/" component={Login} />
         <Route exact path="/profile" component={Profile} />
@@ -18,6 +20,7 @@ const App = () => {
         <Route exact path="/moderatorboard" component={ModeratorBoard} />
         <Route exact path="/publicboard" component={PublicBoard} />
       </Switch>
+      </Main>
     </Router>
   );
 };
