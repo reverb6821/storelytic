@@ -12,15 +12,15 @@ import PublicBoard from './Pages/Boards/PublicBoard';
 const App = () => {
   return (
     <Router>
-      <Main>
       <Switch>
         <Route exact path="/" component={Login} />
-        <Route exact path="/profile" component={Profile} />
-        <Route exact path="/adminboard" component={AdminBoard} />
-        <Route exact path="/moderatorboard" component={ModeratorBoard} />
-        <Route exact path="/publicboard" component={PublicBoard} />
+        <Main>
+              <Route exact path="/profile" component={Profile} />
+              <Route exact path="/adminboard" component={AdminBoard} />
+              <Route exact path="/moderatorboard" component={ModeratorBoard} />
+              <Route exact path="/publicboard" component={PublicBoard} />
+        </Main>
       </Switch>
-      </Main>
     </Router>
   );
 };

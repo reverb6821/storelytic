@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { CloseOutline } from '@styled-icons/evaicons-outline';
 import { login } from '../../slices/auth';
 import { clearMessage } from '../../slices/message';
 
@@ -127,7 +125,6 @@ const Login = (props) => {
                 </button>
                 )}
                 <span className="absolute left-0 inset-y-0 flex items-center pl-3">
-                  <CloseOutline className="h-5 w-5 text-blue-500 group-hover:text-blue-400" aria-hidden="true" />
                 </span>
                 Sign in
               </button>
