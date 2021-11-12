@@ -36,6 +36,7 @@
 ├── src                                   # React root folder
 │   ├── assets                            # Custom style & fonts
 │   ├── common                            # Common files
+│   ├── context                           # Context Provider setup folder
 │   ├── components                        # Component's creation
 │   ├── pages                             # All pages are mounted here
 │   ├── services                          # Services for the app
