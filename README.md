@@ -104,7 +104,14 @@ If these middlewares throw any error, a message will be sent as HTTP response.
 - [x] Token Expires on server
 - [x] React token refresh
 - [x] Set pages divided as roles
-- [ ] Add Item
-- [ ] Add CRUD operation on Item and give it to roles 
+- [ ] User tables for admin
+- [ ] User Page
+- [ ] Add Product CRUD
+- [ ] Add Warehouse CRUD 
 - [ ] Restyle App
 - [ ] Add PWA support
+- [ ] Add Billings
+- [ ] Add Tracking
+- [ ] Add QR
+- [ ] Scan QR code
+- [ ] Print QR
