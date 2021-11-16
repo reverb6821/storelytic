@@ -7,10 +7,8 @@ const ContextProvider = ({ children }) => {
     const ref = React.useRef(null);
     const history = useHistory();
 
-
-
     return (
-        <Context.Provider>
+        <Context.Provider value={ref, history}>
             {children}
         </Context.Provider>
     );

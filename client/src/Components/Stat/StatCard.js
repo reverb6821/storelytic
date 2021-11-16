@@ -30,24 +30,29 @@ const options ={
         },
     },
     scales:{
-        scales: {
             xAxes: {
-                gridLines: false,
-                scaleLabel: false,
+                display: false,
+                grid: {
+                    display: false,
+                    scaleLabel: false,
+                }, 
                 ticks: {
                     display: false
                 }
             },
             yAxes: {
-                gridLines: false,
-                scaleLabel: false,
+                display: false,
+                grid: {
+                    display:false,
+                    scaleLabel: false,
+                },     
                 ticks: {
                     display: false,
                     suggestedMin: 0,
                     suggestedMax: 10
                 }
+                
             }
-        }
     }
 };
 
