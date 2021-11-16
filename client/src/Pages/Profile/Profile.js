@@ -11,8 +11,8 @@ const Profile = () => {
 
   return (
     <div>
-        <div className="bg-indigo-800 text-white font-bold rounded-lg border shadow-lg p-10">
-        <div>
+      
+        <div className=" font-bold rounded-lg border shadow-lg p-10" >
             <h2 class="text-gray-800 text-3xl font-semibold">{currentUser.username}</h2>
             <p class="mt-2 text-gray-600">{currentUser.email}</p>
             <p class="mt-2 text-gray-600"> {currentUser.roles &&
@@ -27,7 +27,6 @@ const Profile = () => {
                   )}
             </p>
           </div>
-        </div>
       </div>
 
   );

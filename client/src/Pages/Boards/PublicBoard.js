@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+
+import ChartCard from '../../Components/Stat/StatCard';
 
 import userService from '../../services/userService';
 import eventBus from '../../common/eventBus';
 
-const PublicBoard = () => {
+const PublicBoard = ({}) => {
   const [content, setContent] = useState('');
+  const { user: currentUser } = useSelector((state) => state.auth);
+
+
 
   useEffect(() => {
     userService.getUserBoard().then(
@@ -30,9 +36,7 @@ const PublicBoard = () => {
 
   return (
     
-    <div className="bg-indigo-800 text-white font-bold rounded-lg border shadow-lg p-10">
-     {content}
-    </div>
+<ChartCard></ChartCard>
     
 
   );

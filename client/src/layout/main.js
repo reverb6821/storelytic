@@ -1,13 +1,13 @@
 import Header from '../Components/Header/Header';
 import ContextProvider from '../context/context';
 
-const Main =({ children })=>{
+const Main = ({ children }) => {
     return (
-      <ContextProvider>
-      <div className="bg-gray-200 pb-10">
+        <ContextProvider>
+            <div className="bg-gray-200 pb-10">
 
                 <Header />
-                <main className="bg-gray-800 pt-10 pb-16 relative z-10">
+                <main className="gradient-bg-blue pt-10 pb-16 relative z-10">
                     <div className="container px-6 mx-auto flex flex-col lg:flex-row items-start lg:items-center justify-between">
                         <div className="flex-col flex lg:flex-row items-start lg:items-center">
                             <div className="flex items-center">
@@ -28,19 +28,19 @@ const Main =({ children })=>{
                                 </p>
                             </div>
                         </div>
-                        
+
                     </div>
                 </main>
                 {/* Page title ends */}
                 <div className="container px-6 mx-auto">
                     {/* Remove class [ h-64 ] when adding a card block */}
-                    <div className="rounded shadow relative bg-white z-10 -mt-8 mb-8 w-full h-64">
-                      {children}
+                    <div className="rounded shadow relative bg-white z-10 -mt-8 mb-8 w-full h-full">
+                        {children}
                     </div>
                 </div>
-      </div>
-      </ContextProvider>
-      );
+            </div>
+        </ContextProvider>
+    );
 }
 
 export default Main;

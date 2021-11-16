@@ -29,7 +29,7 @@ const AdminBoard = () => {
   }, []);
 
   return (
-    <div className="bg-indigo-800 text-white font-bold rounded-lg border shadow-lg p-10">
+    <div className="font-bold rounded-lg border shadow-lg p-10">
       {content}
     </div>
   );

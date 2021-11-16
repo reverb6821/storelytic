@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { BrowserRouter as Link } from 'react-router-dom';
+import { BrowserRouter as NavLink } from 'react-router-dom';
 
 import { logout } from '../../slices/auth';
 import EventBus from '../../common/eventBus';
@@ -56,7 +56,7 @@ const Header = () => {
                       />
                     </g>
                   </svg>
-                  <p className="text-bold md:text2xl text-base pl-3 text-gray-800">The North</p>
+                  <p className="text-bold md:text2xl text-base pl-3 text-gray-800">Storelytic</p>
                 </div>
                 <div id="cross" className=" text-gray-800" onClick={() => setShow(!show)}>
                   <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-x" width={24} height={24} viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
@@ -78,9 +78,9 @@ const Header = () => {
                           <path d="M16.1667 3H12.8333C12.3731 3 12 3.3731 12 3.83333V7.16667C12 7.6269 12.3731 8 12.8333 8H16.1667C16.6269 8 17 7.6269 17 7.16667V3.83333C17 3.3731 16.6269 3 16.1667 3Z" stroke="#667EEA" strokeWidth={1} strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                       </div>
-                      <Link to={"/"} >
+                      <NavLink to={"/"} >
                         <p className="text-indigo-500 ml-3 text-lg" href="#">Home</p>
-                      </Link>
+                      </NavLink>
                     </div>
                   </li>
                 </a>
@@ -142,9 +142,9 @@ const Header = () => {
                           <path d="M10 17.5C14.1421 17.5 17.5 14.1421 17.5 10C17.5 5.85786 14.1421 2.5 10 2.5C5.85786 2.5 2.5 5.85786 2.5 10C2.5 14.1421 5.85786 17.5 10 17.5Z" stroke="currentColor" strokeWidth={1} strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                       </div>
-                      <Link to={"/publicboard"}>
+                      <NavLink to={"/publicboard"}>
                         <p className="text-gray-800 ml-3 text-lg">Dashboard</p>
-                      </Link>
+                      </NavLink>
                     </div>
                   </li>
                 </a>
@@ -211,9 +211,9 @@ const Header = () => {
                   {currentUser && profile && (
                     <div className="flex items-center">
                       <img alt="profile-pic" src="https://tuk-cdn.s3.amazonaws.com/assets/components/boxed_layout/bl_1.png" className="w-8 h-8 rounded-md" />
-                      <Link to={"/profile"}>
+                      <NavLink to={"/profile"}>
                         <p className=" text-gray-800 text-base leading-4 ml-2">{currentUser.username}</p>
-                      </Link>
+                      </NavLink>
                     </div>
                   )}
                   <ul className="flex">
@@ -252,13 +252,13 @@ const Header = () => {
                   />
                 </g>
               </svg>
-              <h3 className="text-base text-gray-800 font-bold tracking-normal leading-tight ml-3 hidden lg:block">The North</h3>
+              <h3 className="text-base text-gray-800 font-bold tracking-normal leading-tight ml-3 hidden lg:block">Storelytic</h3>
             </div>
             <ul className="pr-32 xl:flex hidden items-center h-full">
                 <li className="hover:text-indigo-700 cursor-pointer h-full flex items-center text-sm text-indigo-700 tracking-normal">
-                  <Link to={"/publicboard"}>
-                    Dashboard
-                  </Link>
+                  <NavLink to={"/publicboard"}>
+                  <p className="text-gray-800 ml-3 text-lg">Dashboard</p>
+                  </NavLink>
                 </li>
               <li className="hover:text-indigo-700 cursor-pointer h-full flex items-center text-sm text-gry-800 mx-10 tracking-normal relative">
                 {delivery ? (
@@ -325,9 +325,9 @@ const Header = () => {
                             <circle cx={12} cy={7} r={4} />
                             <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
                           </svg>
-                          <Link to={"/profile"}>
+                          <NavLink to={"/profile"}>
                             <span className="ml-2">My Profile</span>
-                          </Link>
+                          </NavLink>
                         </div>
                       </li>
                       <li className="cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mt-2 py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none flex items-center">
@@ -345,9 +345,9 @@ const Header = () => {
                           <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
                           <circle cx={12} cy={12} r={3} />
                         </svg>
-                        <Link to={"/"}>
+                        <NavLink to={"/"}>
                         <span className="ml-2" onClick={logOut}>Logout</span>
-                        </Link>
+                        </NavLink>
                       </li>
                     </ul>
                   ) : (
