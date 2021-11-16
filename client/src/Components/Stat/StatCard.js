@@ -3,7 +3,6 @@ import { Line } from 'react-chartjs-2';
 
 
 const data = {
-    type: 'line',
     labels: [1, 2, 1, 3, 5, 4, 7],
         datasets: [
             {
