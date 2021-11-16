@@ -36,6 +36,7 @@
 ├── src                                   # React root folder
 │   ├── assets                            # Custom style & fonts
 │   ├── common                            # Common files
+│   ├── context                           # Context Provider setup folder
 │   ├── components                        # Component's creation
 │   ├── pages                             # All pages are mounted here
 │   ├── services                          # Services for the app
@@ -95,15 +96,3 @@ The Security layer is composed by:
 If these middlewares throw any error, a message will be sent as HTTP response.
 
 ### CRUD Operation
-
-## Task List
-- [x] Add React
-- [x] Add Tailwind
-- [x] Complete Signin cycle on React
-- [x] Token Expires on server
-- [x] React token refresh
-- [x] Set pages divided as roles
-- [ ] Add Item
-- [ ] Add CRUD operation on Item and give it to roles 
-- [ ] Restyle App
-- [ ] Add PWA support
