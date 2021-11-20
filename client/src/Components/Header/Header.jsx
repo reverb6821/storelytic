@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { BrowserRouter as NavLink } from 'react-router-dom';
+import { BrowserRouter as NavLink, Link } from 'react-router-dom';
 
 import { logout } from '../../slices/auth';
 import EventBus from '../../common/eventBus';
@@ -41,6 +41,7 @@ const Header = () => {
 
   return (
     <div>
+      {/*! Mobile */}
       <div className={show ? "w-full h-full absolute z-40  transform  translate-x-0 " : "   w-full h-full absolute z-40  transform -translate-x-full"}>
         <div className="bg-gray-800 opacity-50 inset-0 fixed w-full h-full" onClick={() => setShow(!show)} />
         <div className="w-64 z-20 absolute left-0 z-40 top-0 bg-white shadow flex-col justify-between transition duration-150 ease-in-out h-full">
@@ -67,7 +68,7 @@ const Header = () => {
                 </div>
               </div>
               <ul className="f-m-m">
-                <a>
+                <NavLink>
                   <li className="text-white pt-8">
                     <div className="flex items-center">
                       <div className="md:w-6 md:h-6 w-5 h-5">
@@ -78,13 +79,13 @@ const Header = () => {
                           <path d="M16.1667 3H12.8333C12.3731 3 12 3.3731 12 3.83333V7.16667C12 7.6269 12.3731 8 12.8333 8H16.1667C16.6269 8 17 7.6269 17 7.16667V3.83333C17 3.3731 16.6269 3 16.1667 3Z" stroke="#667EEA" strokeWidth={1} strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                       </div>
-                      <NavLink to={"/"} >
+                      <Link to={"/"} >
                         <p className="text-indigo-500 ml-3 text-lg" href="#">Home</p>
-                      </NavLink>
+                      </Link>
                     </div>
                   </li>
-                </a>
-                <a>
+                </NavLink>
+                <NavLink>
                   <li className="text-gray-700 pt-8">
                     <div className="flex items-center">
                       <div className="flex items-center">
@@ -132,8 +133,8 @@ const Header = () => {
                       ""
                     )}
                   </li>
-                </a>
-                <a>
+                </NavLink>
+                <NavLink>
                   <li className="text-gray-800 pt-8">
                     <div className="flex items-center">
                       <div className="md:w-6 md:h-6 w-5 h-5">
@@ -142,13 +143,13 @@ const Header = () => {
                           <path d="M10 17.5C14.1421 17.5 17.5 14.1421 17.5 10C17.5 5.85786 14.1421 2.5 10 2.5C5.85786 2.5 2.5 5.85786 2.5 10C2.5 14.1421 5.85786 17.5 10 17.5Z" stroke="currentColor" strokeWidth={1} strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                       </div>
-                      <NavLink to={"/publicboard"}>
-                        <p className="text-gray-800 ml-3 text-lg">Dashboard</p>
-                      </NavLink>
+                      <Link to={"/publicboard"} className="text-gray-800 ml-3 text-lg" >
+                        Dashboard
+                      </Link>
                     </div>
                   </li>
-                </a>
-                <a>
+                </NavLink>
+                <NavLink>
                   <li className="text-gray-800 pt-8">
                     <div className="flex items-center">
                       <div className="flex items-center">
@@ -190,7 +191,7 @@ const Header = () => {
                       ""
                     )}
                   </li>
-                </a>
+                </NavLink>
               </ul>
             </div>
             <div className="w-full">
@@ -211,9 +212,9 @@ const Header = () => {
                   {currentUser && profile && (
                     <div className="flex items-center">
                       <img alt="profile-pic" src="https://tuk-cdn.s3.amazonaws.com/assets/components/boxed_layout/bl_1.png" className="w-8 h-8 rounded-md" />
-                      <NavLink to={"/profile"}>
-                        <p className=" text-gray-800 text-base leading-4 ml-2">{currentUser.username}</p>
-                      </NavLink>
+                      <Link to={"/profile"} className=" text-gray-800 text-base leading-4 ml-2">
+                        {currentUser.username}
+                      </Link>
                     </div>
                   )}
                   <ul className="flex">
@@ -238,8 +239,8 @@ const Header = () => {
           </div>
         </div>
       </div>
-
-      {/* Mobile */}
+      {/*! END Mobile */}
+      {/* Desktop */}
       <nav className="w-full mx-auto bg-white shadow relative z-20">
         <div className="justify-between container px-6 h-16 flex items-center lg:items-stretch mx-auto">
           <div className="flex items-center">
@@ -256,9 +257,9 @@ const Header = () => {
             </div>
             <ul className="pr-32 xl:flex hidden items-center h-full">
                 <li className="hover:text-indigo-700 cursor-pointer h-full flex items-center text-sm text-indigo-700 tracking-normal">
-                  <NavLink to={"/publicboard"}>
-                  <p className="text-gray-800 ml-3 text-lg">Dashboard</p>
-                  </NavLink>
+                  <Link className="text-gray-800 ml-3 text-lg" to={"/publicboard"}>
+                  Dashboard
+                  </Link>
                 </li>
               <li className="hover:text-indigo-700 cursor-pointer h-full flex items-center text-sm text-gry-800 mx-10 tracking-normal relative">
                 {delivery ? (
@@ -325,9 +326,9 @@ const Header = () => {
                             <circle cx={12} cy={7} r={4} />
                             <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
                           </svg>
-                          <NavLink to={"/profile"}>
-                            <span className="ml-2">My Profile</span>
-                          </NavLink>
+                          <Link to={"/profile"} className="ml-2">
+                            My Profile
+                          </Link>
                         </div>
                       </li>
                       <li className="cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mt-2 py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none flex items-center">
@@ -345,9 +346,9 @@ const Header = () => {
                           <path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
                           <circle cx={12} cy={12} r={3} />
                         </svg>
-                        <NavLink to={"/"}>
-                        <span className="ml-2" onClick={logOut}>Logout</span>
-                        </NavLink>
+                        <Link to={"/"} className="ml-2" onClick={logOut}>
+                          Logout
+                        </Link>
                       </li>
                     </ul>
                   ) : (
@@ -362,6 +363,7 @@ const Header = () => {
               </div>
             </div>
           </div>
+          {/* Hamburger */}
           <div className="visible xl:hidden flex items-center">
             <div>
               <div id="menu" className="text-gray-800" onClick={() => setShow(!show)}>
@@ -374,9 +376,10 @@ const Header = () => {
               </div>
             </div>
           </div>
+          {/* END Hamburger */}
         </div>
       </nav>
-      {/* Navigation ends */}
+      {/* END Desktop */}
     </div>
   );
 };

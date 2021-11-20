@@ -1,13 +1,16 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import Main from './layout/main';
+import Main from './layout/Main';
+
 //? page import
 import Login from './Pages/Login/Login';
 import Profile from './Pages/Profile/Profile';
 import AdminBoard from './Pages/Boards/AdminBoard';
 import ModeratorBoard from './Pages/Boards/ModeratorBoard';
 import PublicBoard from './Pages/Boards/PublicBoard';
+import DailyTable from './Components/Tables/Daily/DailyTable';
+import HistoryTable from './Components/Tables/History/HistoryTable';
 
 const App = () => {
   return (

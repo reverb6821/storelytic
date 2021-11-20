@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
-import ChartCard from '../../Components/Stat/StatCard';
+import StatCard from '../../Components/Stat/StatCard';
+import DailyTable from '../../Components/Tables/Daily/DailyTable';
 
 import userService from '../../services/userService';
 import eventBus from '../../common/eventBus';
@@ -35,10 +36,11 @@ const PublicBoard = ({}) => {
   }, []);
 
   return (
-    
-<ChartCard></ChartCard>
-    
-
+  <div className="p-4 m-2">
+    <StatCard/>
+    <DailyTable/>
+  </div>
+  
   );
 };
 
