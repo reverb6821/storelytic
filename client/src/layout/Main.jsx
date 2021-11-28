@@ -1,45 +1,28 @@
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+
 import Header from '../Components/Header/Header';
-import ContextProvider from '../context/context';
+import Sidebar from '../Components/Sidebar/Sidebar';
+import MainStats from '../Components/Main/MainStats';
+import Profile from '../Pages/Profile/Profile';
 
-const Main = ({ children }) => {
+
+const Main = () => {
     return (
-        <ContextProvider>
-            <div className="bg-gray-200 pb-10">
-
+        <>
+            <Sidebar />
+            <div className="relative md:ml-64 bg-blueGray-100">
                 <Header />
-                <main className="gradient-bg-blue pt-10 pb-16 relative z-10">
-                    <div className="container px-6 mx-auto flex flex-col lg:flex-row items-start lg:items-center justify-between">
-                        <div className="flex-col flex lg:flex-row items-start lg:items-center">
-                            <div className="flex items-center">
-                                <img className="border-2 shadow border-gray-600 rounded-full mr-3" src="https://cdn.tuk.dev/assets/webapp/master_layouts/boxed_layout/boxed_layout2.jpg" alt="logo" />
-                                <div>
-                                    <h5 className="text-sm text-white leading-4 mb-1">Andres Berlin</h5>
-                                    <p className="text-xs text-gray-400 leading-4">VP Operations</p>
-                                </div>
-                            </div>
-                            <div className="ml-0 lg:ml-20 my-6 lg:my-0">
-                                <h4 className="text-2xl font-bold leading-tight text-white mb-2">Dashboard</h4>
-                                <p className="flex items-center text-gray-300 text-xs">
-                                    <span>Portal</span>
-                                    <span className="mx-2">&gt;</span>
-                                    <span>Dashboard</span>
-                                    <span className="mx-2">&gt;</span>
-                                    <span>KPIs</span>
-                                </p>
-                            </div>
-                        </div>
-
-                    </div>
-                </main>
-                {/* Page title ends */}
-                <div className="container px-6 mx-auto">
-                    {/* Remove class [ h-64 ] when adding a card block */}
-                    <div className="rounded shadow relative bg-white z-10 -mt-8 mb-8 w-full h-full">
-                        {children}
-                    </div>
+                <MainStats />
+                <div className="px-4 md:px-10 mx-auto w-full -m-24">
+                    <Router>
+                        <Switch>
+                            <Route exact path="/main/profile" component={Profile} />
+                            <Redirect from="/main" to="/main/dashboard" />
+                        </Switch>
+                    </Router>
                 </div>
             </div>
-        </ContextProvider>
+        </>
     );
 }
 

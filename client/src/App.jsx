@@ -1,30 +1,23 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
+//? fontawesome
+import "@fortawesome/fontawesome-free/css/all.min.css";
+
+//? layout import
+import Auth from './layout/Auth';
 import Main from './layout/Main';
 
-//? page import
-import Login from './Pages/Login/Login';
-import Profile from './Pages/Profile/Profile';
-import AdminBoard from './Pages/Boards/AdminBoard';
-import ModeratorBoard from './Pages/Boards/ModeratorBoard';
-import PublicBoard from './Pages/Boards/PublicBoard';
-import DailyTable from './Components/Tables/Daily/DailyTable';
-import HistoryTable from './Components/Tables/History/HistoryTable';
-
 const App = () => {
+  
   return (
-    <Router>
+    <BrowserRouter>
       <Switch>
-        <Route exact path="/" component={Login} />
-        <Main>
-              <Route exact path="/profile" component={Profile} />
-              <Route exact path="/adminboard" component={AdminBoard} />
-              <Route exact path="/moderatorboard" component={ModeratorBoard} />
-              <Route exact path="/publicboard" component={PublicBoard} />
-        </Main>
+        <Route exact path="/" component={Auth} />
+        <Route exact path="/main" component={Main} />
+        <Redirect from="*" to="/" />
       </Switch>
-    </Router>
+    </BrowserRouter>
   );
 };
 

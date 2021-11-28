@@ -31,9 +31,7 @@ app.use(express.static(path.resolve(__dirname, './view'))); //? express client d
 db.sequelize.sync(); //* sequelize db
 
 //! routes
-app.get('/', (req, res) => {
-  res.json({ message: 'Welcome to Storelytic  - Warehouse Management App.' });
-});
+app.get('/', (req, res) => { res.json({ message: 'Welcome to Storelytic  - Warehouse Management App.' }) });
 require('./routes/authRoute')(app); //* routes for auth
 require('./routes/userRoute')(app); //* routes for user
 

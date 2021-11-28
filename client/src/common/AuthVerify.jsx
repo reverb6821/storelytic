@@ -22,7 +22,11 @@ const AuthVerify = (props) => {
     }
   });
 
-  return <div></div>;
+  return (
+    <a className={
+      "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700"
+    }>Logout</a>
+  );
 };
 
 export default withRouter(AuthVerify);
