@@ -21,12 +21,14 @@
 ## API's Root
 ```
 .
-├── config                               # All Configuration files
-├── controllers                          # Part of the application that handles the user interaction
-├── middleware                           # Hidden translation layer, middleware enables communication and data management
-├── models                               # The model component stores data and its related logic
-├── routes                               # Where endpoints are stored 
-└── server.js                            # Entry file
+├── lib                                  # library file
+├── migration                            # migration file
+├── src                                  # core file
+│   ├── entity                           # all typeorm entities class
+|   ├── controllers                      # Controllers folder
+|   ├── middlewares                      # middlewares folder
+|   └── routes                           # routes file 
+└── server.ts                            # Entry file
 ```
 
 ## Client's Root
@@ -58,7 +60,7 @@
 * [morgan](https://github.com/expressjs/morgan) - HTTP request logger middleware for node.js.
 * [winston](https://github.com/winstonjs/winston) - A logger for just about everything.
 * [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken) - JsonWebToken implementation for node.js.
-* [sequelize](https://sequelize.org/master/) - Sequelize is a promise-based Node.js ORM tool.
+* [typeorm](https://typeorm.io/#/) - TypeORM is an ORM Its goal is to always support the latest JavaScript features and provide additional features that help you to develop any kind of application that uses databases.
 * [bcryptjs](https://www.npmjs.com/package/bcryptjs) - Optimized bcrypt in JavaScript with zero dependencies.
 ### Front End
 * [React.js](https://reactjs.org/) - A JavaScript library for building user interfaces.
