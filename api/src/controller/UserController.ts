@@ -2,6 +2,8 @@ import { Request, Response } from 'express';
 import { getRepository } from 'typeorm';
 import { validate } from 'class-validator';
 
+import Logger from '../../lib/logger';
+
 import { User } from '../entity/User';
 
 class UserController{
@@ -29,7 +31,7 @@ static getOneById = async (req: Request, res: Response) => {
     });
     res.send(user);
   } catch (error) {
-    res.status(404).send('User not found');
+    Logger.error(res.status(404).send('User not found'));
   }
 };
 
@@ -44,7 +46,7 @@ static newUser = async (req: Request, res: Response) => {
   //Validade if the parameters are ok
   const errors = await validate(user);
   if (errors.length > 0) {
-    res.status(400).send(errors);
+    Logger.error(res.status(400).send(errors));
     return;
   }
 
@@ -56,12 +58,12 @@ static newUser = async (req: Request, res: Response) => {
   try {
     await userRepository.save(user);
   } catch (e) {
-    res.status(409).send('username already in use');
+    Logger.warn( res.status(409).send('username already in use'));
     return;
   }
 
   //If all ok, send 201 response
-  res.status(201).send('User created');
+  Logger.info(res.status(201).send('User created'));
 };
 
 static editUser = async (req: Request, res: Response) => {
@@ -78,7 +80,7 @@ static editUser = async (req: Request, res: Response) => {
     user = await userRepository.findOneOrFail(id);
   } catch (error) {
     //If not found, send a 404 response
-    res.status(404).send('User not found');
+    Logger.error(res.status(404).send('User not found'));
     return;
   }
 
@@ -87,7 +89,7 @@ static editUser = async (req: Request, res: Response) => {
   user.role = role;
   const errors = await validate(user);
   if (errors.length > 0) {
-    res.status(400).send(errors);
+    Logger.error( res.status(400).send(errors));
     return;
   }
 
@@ -95,11 +97,11 @@ static editUser = async (req: Request, res: Response) => {
   try {
     await userRepository.save(user);
   } catch (e) {
-    res.status(409).send('username already in use');
+    Logger.warn(res.status(409).send('username already in use'));
     return;
   }
   //After all send a 204 (no content, but accepted) response
-  res.status(204).send();
+  Logger.info(res.status(204).send());
 };
 
 static deleteUser = async (req: Request, res: Response) => {
@@ -111,13 +113,13 @@ static deleteUser = async (req: Request, res: Response) => {
   try {
     user = await userRepository.findOneOrFail(id);
   } catch (error) {
-    res.status(404).send('User not found');
+    Logger.error( res.status(404).send('User not found'));
     return;
   }
   userRepository.delete(id);
 
   //After all send a 204 (no content, but accepted) response
-  res.status(204).send();
+  Logger.info( res.status(204).send());
 };
 };
 
