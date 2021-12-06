@@ -5,23 +5,25 @@ import {
     Unique,
     CreateDateColumn,
     UpdateDateColumn,
-    OneToMany
+    OneToMany,
+    ManyToOne,
+    JoinColumn
 } from 'typeorm';
 
 import { Product } from './Product';
 
 @Entity()
-@Unique(['id'])
+@Unique(['statusId'])
 export class Status {
 
     @PrimaryGeneratedColumn()
-    id!: number;
+    statusId!: number;
 
     @Column()
     name!: string;
 
-    @Column()
-    @OneToMany(type => Product, product => product.id)
+    @ManyToOne(type => Product)
+    @JoinColumn({name: 'product', referencedColumnName:'productId'})
     product!: Product;
 
 }

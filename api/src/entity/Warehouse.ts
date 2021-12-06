@@ -5,7 +5,9 @@ import {
     Unique,
     CreateDateColumn,
     UpdateDateColumn,
-    OneToMany
+    OneToMany,
+    ManyToOne,
+    JoinColumn
 } from 'typeorm';
 
 import { Length } from 'class-validator';
@@ -14,10 +16,10 @@ import { Length } from 'class-validator';
 import { Product } from './Product';
 
 @Entity()
-@Unique(['id'])
+@Unique(['warehouseId'])
 export class Warehouse{
     @PrimaryGeneratedColumn()
-    id!: number;
+    warehouseId!: number;
 
     @Column()
     @Length(4, 20)
@@ -30,8 +32,8 @@ export class Warehouse{
     @Column()
     position!: string;
 
-    @Column()
-    @OneToMany(() => Product, product => product.id)
+    @ManyToOne(type => Product)
+    @JoinColumn({name: 'product', referencedColumnName:'productId'})
     product!: Product;
 
 }

@@ -6,16 +6,18 @@ import {
     Unique,
     CreateDateColumn,
     UpdateDateColumn,
-    OneToMany
+    OneToMany,
+    ManyToOne,
+    JoinColumn
 } from 'typeorm';
 
 import { Product } from './Product';
 
 @Entity()
-@Unique(['id'])
+@Unique(['imageId'])
 export class Image {
     @PrimaryGeneratedColumn()
-    id!: number;
+    imageId!: number;
 
     @Column()
     @Length(4, 20)
@@ -25,8 +27,8 @@ export class Image {
     @Length(4, 20)
     title!: string;
 
-    @Column()
-    @OneToMany(type => Product, product => product.image)
+    @ManyToOne(() => Product)
+    @JoinColumn({name: 'product', referencedColumnName:'productId'})
     product!: Product;
 
     @Column()

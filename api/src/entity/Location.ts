@@ -3,28 +3,28 @@ import {
     PrimaryGeneratedColumn,
     Column,
     Unique,
-    OneToMany
+    OneToMany,
+    ManyToOne,
+    JoinColumn
 } from 'typeorm';
 
 import { Warehouse } from './Warehouse';
 import { Product } from './Product';
 
 @Entity()
-@Unique(['id'])
+@Unique(['locationId'])
 export class Location {
     @PrimaryGeneratedColumn()
-    id!: number;
+    locationId!: number;
 
     @Column()
     description!: string;
 
-    @Column()
-    @OneToMany(type => Warehouse, warehouse => warehouse.id)
+    @ManyToOne(type => Warehouse)
+    @JoinColumn({name: 'warehouse', referencedColumnName:'warehouseId'})
     warehouse!: Warehouse;
 
-    @Column("text", {
-        array: true
-    })
-    @OneToMany(type => Product, product => product.id)
+    @ManyToOne(type => Product)
+    @JoinColumn({name: 'product', referencedColumnName:'productId'})
     product!: Product;
 }

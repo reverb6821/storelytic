@@ -6,7 +6,8 @@ import {
     Unique,
     CreateDateColumn,
     UpdateDateColumn,
-    OneToMany
+    ManyToOne,
+    JoinColumn
 } from 'typeorm';
 
 import { Image } from './Image';
@@ -16,10 +17,10 @@ import { Status } from './Status';
 import { Warehouse } from './Warehouse';
 
 @Entity()
-@Unique(['id'])
+@Unique(['productId'])
 export class Product {
     @PrimaryGeneratedColumn()
-    id!: number;
+    productId!: number;
 
     @Column()
     @CreateDateColumn()
@@ -37,8 +38,8 @@ export class Product {
     @Length(1, 20)
     qty!: number;
 
-    @Column()
-    @OneToMany(type => Image, image => image.product)
+    @ManyToOne(type => Image)
+    @JoinColumn({name: 'image', referencedColumnName:'imageId'})
     image!: Image;
 
     @Column()
@@ -57,19 +58,19 @@ export class Product {
     @UpdateDateColumn()
     updatedAt!: Date;
 
-    @Column()
-    @OneToMany(type => User, user => user.id)
+    @ManyToOne(type => User)
+    @JoinColumn({name: 'user', referencedColumnName:'id'})
     updatedby!: User;
 
-    @Column()
-    @OneToMany(type => Shipment, shipment => shipment.id)
+    @ManyToOne(type => Shipment)
+    @JoinColumn({name: 'shipment', referencedColumnName:'shipmentId'})
     shipment!: Shipment;
 
-    @Column()
-    @OneToMany(type => Status, status => status.id)
+    @ManyToOne(type => Status)
+    @JoinColumn({name: 'status', referencedColumnName:'statusId'})
     status!: Status;
 
-    @Column()
-    @OneToMany(type => Warehouse, warehouse => warehouse.id)
+    @ManyToOne(type => Warehouse)
+    @JoinColumn({name: 'warehouse', referencedColumnName:'warehouseId'})
     warehouse!: Warehouse;
 }

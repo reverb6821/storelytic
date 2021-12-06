@@ -5,19 +5,21 @@ import {
     Unique,
     CreateDateColumn,
     UpdateDateColumn,
-    OneToMany
+    OneToMany,
+    ManyToOne,
+    JoinColumn
 } from 'typeorm';
 
 import { Direction } from './Direction';
 
 @Entity()
-@Unique(['id'])
+@Unique(['shipmentId'])
 export class Shipment {
     @PrimaryGeneratedColumn()
-    id!: number;
+    shipmentId!: number;
 
-    @Column()
-    @OneToMany(type => Direction, direction => direction.id)
+    @ManyToOne(type => Direction)
+    @JoinColumn({name: 'direction', referencedColumnName:'directionId'})
     direction!: Direction;
 
     @Column()

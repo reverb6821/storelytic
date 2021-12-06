@@ -4,16 +4,18 @@ import {
     PrimaryGeneratedColumn,
     Column,
     Unique,
-    OneToMany
+    OneToMany,
+    ManyToOne,
+    JoinColumn
 } from 'typeorm';
 
 import { Product } from './Product';
 
 @Entity()
-@Unique(['id'])
+@Unique(['companyId'])
 export class Company {
     @PrimaryGeneratedColumn()
-    id!: number;
+    companyId!: number;
 
     @Column()
     @Length(4, 20)
@@ -29,7 +31,7 @@ export class Company {
     @Column()
     note!: string;
 
-    @Column()
-    @OneToMany(type => Product, product => product.id)
+    @ManyToOne(type => Product)
+    @JoinColumn({name: 'product', referencedColumnName:'productId'})
     product!: Product;
 }

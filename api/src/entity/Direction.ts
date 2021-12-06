@@ -6,10 +6,10 @@ import {
 } from 'typeorm';
 
 @Entity()
-@Unique(['id'])
+@Unique(['directionId'])
 export class Direction {
     @PrimaryGeneratedColumn()
-    id!: number;
+    directionId!: number;
 
     @Column()
     name!: string;
