@@ -3,7 +3,6 @@ import { getRepository } from 'typeorm';
 import { validate } from 'class-validator';
 
 import Logger from '../../lib/logger';
-
 import { User } from '../entity/User';
 
 class UserController{

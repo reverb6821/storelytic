@@ -11,7 +11,7 @@
        "api/src/entity/**/*.ts"
     ],
     "migrations": [
-       "api/migration/**/*.ts"
+       "./api/migration/*.ts"
     ],
     "subscribers": [
        "api/subscriber/**/*.ts"
