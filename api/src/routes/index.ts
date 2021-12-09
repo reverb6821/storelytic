@@ -1,8 +1,9 @@
 import { Router, Request, Response } from 'express';
 import Logger from '../../lib/logger';
 
-import auth from "./auth";
-import user from "./user";
+import auth from './auth';
+import user from './user';
+import product from './product';
 
 export const router = Router(); //? declare express as router
 
