@@ -3,7 +3,7 @@ import Logger from '../../lib/logger';
 
 import auth from './auth';
 import user from './user';
-import product from './product';
+import prod from './product';
 
 export const router = Router(); //? declare express as router
 
@@ -24,3 +24,6 @@ router.use('/users', user);
 
 //* auth
 router.use('/auth', auth);
+
+//* product
+router.use('/products', prod);
