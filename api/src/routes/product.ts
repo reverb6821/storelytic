@@ -5,7 +5,7 @@ import { checkRole } from '../middlewares/checkRole';
 
   const productRouter = Router();
 
-  productRouter.get('/productlist', [checkJwt, checkRole(['ADMIN'])], ProductController.listAll);
+  productRouter.get('/productslist', [checkJwt, checkRole(['ADMIN'])], ProductController.listAll);
 
   productRouter.get(
     '/product:id([0-9]+)',
