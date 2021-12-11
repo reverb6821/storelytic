@@ -37,18 +37,15 @@
 ├── public                                # Root folder that gets served up as our react app.
 ├── src                                   # React root folder
 │   ├── assets                            # Custom style & fonts
-│   ├── common                            # Common files
-│   ├── context                           # Context Provider setup folder
 │   ├── components                        # Component's creation
 │   ├── pages                             # All pages are mounted here
-│   ├── services                          # Services for the app
-│   └──  slices                           # Redux services, a collection of Redux reducer logic and actions for a single feature.
+│   └── services                          # Services for the app
 ├── App.js                                # Basic React Components 
 ├── index.js                              # This files renders our component and registers service workers
-├── index.scss                            # Contains styles of our react component 
+├── App.scss                              # Contains styles of our react component 
 ├── serviceWorker.js                      # Service worker for pre-caching the scripts files of our react app thereby improving performance. 
-├── reportWebVitals.js                    # Where endpoints are stored
-└── redux.js                              # Redux configuration
+└── reportWebVitals.js                    # Where endpoints are stored
+
 ```
 
 ## Built With
@@ -64,24 +61,31 @@
 * [bcryptjs](https://www.npmjs.com/package/bcryptjs) - Optimized bcrypt in JavaScript with zero dependencies.
 ### Front End
 * [React.js](https://reactjs.org/) - A JavaScript library for building user interfaces.
-* [tailwindcss](https://tailwindcss.com/docs) - A utility-first CSS framework packed with classes🏾.
-* [formik](https://formik.org/docs/overview) - Formik is the world's most popular open source form library for React and React Native.
-* [yup](https://www.npmjs.com/package/yup) - JavaScript schema builder for value parsing and validation.
+* [ant design](https://ant.design/docs/react/introduce) - A React UI Library that follow the Ant Design concept.
+* [styled components](https://styled-components.com/) - Use the best bits of ES6 and CSS to style your apps without stress.
+* [styled icons](https://styled-icons.dev/?s=pack) - Icons from styled components.
 * [axios](https://github.com/axios/axios) - Promise based HTTP client for the browser and node.js.
-* [redux/toolkit](https://redux-toolkit.js.org/) - The official, opinionated, batteries-included toolset for efficient Redux development.
 
 ## Endpoint:
-### Users authorization Endpoints
-```
-GET /api/test/all       # Public access
-GET /api/test/user      # Loggedin users (role: user/moderator/admin)
-GET /api/test/mod       # Users having moderator role
-GET /api/test/admin     # Users having admin role
-```
 ### Authentication Endpoints
 ```
-POST /api/auth/signup       # Registration request (soon removed)
-POST /api/auth/signin       # Login request
+POST /auth/login            # login endpoint
+```
+### Users Endpoints
+```
+GET  /users/userslist             # get all users
+GET  /users/user:id([0-9]+)       # get user by id
+POST /users/newuser               # create new user
+PUT  /users/edituser:id([0-9]+)   # edit user
+DEL  /users/deleteuser:id([0-9]+) # delete user
+```
+### Product Endpoints
+```
+GET  /products/productslist             # get all products
+GET  /products/product:id([0-9]+)       # get product by id
+POST /products/newproduct               # create new product
+PUT  /products/editproduct:id([0-9]+)   # edit product
+DEL  /products/deleteproduct:id([0-9]+) # delete product
 ```
 ## How it work
 ### Authentication
