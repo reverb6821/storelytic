@@ -12,7 +12,7 @@ function Footer() {
             © 2021, made with
             {<HeartFilled />} by
             <a href="#pablo" className="font-weight-bold" target="_blank">
-              Creative Tim
+              reverb6821
             </a>
             for a better web.
           </div>
@@ -26,7 +26,7 @@ function Footer() {
                   className="nav-link text-muted"
                   target="_blank"
                 >
-                  Creative Tim
+                  reverb6821
                 </a>
               </li>
               <li className="nav-item">

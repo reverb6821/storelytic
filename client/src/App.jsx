@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
-import "antd/dist/antd.css";
+import 'antd/dist/antd.css';
 
 import Main from './Components/Main/Main'
 import Home from './view/Home'
