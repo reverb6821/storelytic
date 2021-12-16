@@ -34,7 +34,7 @@ function Sidebar({ color }) {
           </NavLink>
         </Menu.Item>
         <Menu.Item key='2'>
-          <NavLink to='/Product'>
+          <NavLink to='/products-list'>
             <span
               className='icon'
               style={{

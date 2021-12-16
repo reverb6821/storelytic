@@ -4,7 +4,7 @@ import 'antd/dist/antd.css';
 import Main from './Components/Main/Main'
 import Home from './view/Home'
 import Login from './view/Login'
-
+import Products from './view/Product/Products';
 import './App.scss';
 
 function App() {
@@ -15,6 +15,7 @@ function App() {
           <Route exact path='/' component={Login} />
             <Main>
               <Route exact path='/dashboard' component={Home} />
+              <Route exact path='/products-list' component={Products} />
               <Redirect from='*' to='/dashboard' />
             </Main>
         </Switch> 
