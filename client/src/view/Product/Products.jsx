@@ -3,9 +3,10 @@ import {
     Col,
     Table,
     Button,
-
     Typography,
   } from 'antd';
+
+  import { NavLink } from 'react-router-dom';
 
   const { Title } = Typography;
 
@@ -63,11 +64,13 @@ import {
         <>
           <div className='ant-employed'>
           <Title level={5}>5</Title>
+          <NavLink to='/productinfo:id'>
+            <a href="#">INFO</a>
+          </NavLink>
           </div>
         </>
       ),
     },
-  
     {
       key: '2',
       serialnumber: (
@@ -94,11 +97,13 @@ import {
         <>
           <div className='ant-employed'>
           <Title level={5}>M</Title>
+          <NavLink to='/productinfo:id'>
+            <a href="#">INFO</a>
+          </NavLink>
           </div>
         </>
       ),
     },
-  
     {
       key: '3',
       serialnumber: (
@@ -115,7 +120,6 @@ import {
           </div>
         </>
       ),
-  
       status: (
         <>
           <Button type='primary' className='tag-primary'>
@@ -127,6 +131,9 @@ import {
         <>
           <div className='ant-employed'>
           <Title level={5}>C</Title>
+          <NavLink to='/productinfo:id'>
+            <a href="#">INFO</a>
+          </NavLink>
           </div>
         </>
       ),
@@ -147,7 +154,6 @@ import {
           </div>
         </>
       ),
-  
       status: (
         <>
           <Button type='primary' className='tag-primary'>
@@ -159,6 +165,9 @@ import {
         <>
           <div className='ant-employed'>
           <Title level={5}>F</Title>
+          <NavLink to='/productinfo:id'>
+            <a href="#">INFO</a>
+          </NavLink>
           </div>
         </>
       ),
@@ -167,11 +176,9 @@ import {
       key: '5',
       serialnumber: (
         <>
-
             <div className='avatar-info'>
               <Title level={5}>CZC5634564</Title>
-            </div>
-          
+            </div>   
         </>
       ),
       quantity: (
@@ -181,7 +188,6 @@ import {
           </div>
         </>
       ),
-  
       status: (
         <>
           <Button className='tag-badge'>OUTBOUND</Button>
@@ -191,16 +197,17 @@ import {
         <>
           <div className='ant-employed'>
           <Title level={5}>A</Title>
+          <NavLink to='/productinfo:id'>
+            <a href="#">INFO</a>
+          </NavLink>
           </div>
         </>
       ),
     },
-  
     {
       key: '6',
       serialnumber: (
         <>
-
             <div className='avatar-info'>
               <Title level={5}>FG45343456</Title>
             </div>
@@ -213,7 +220,6 @@ import {
           </div>
         </>
       ),
-  
       status: (
         <>
           <Button className='tag-badge'>OUTBOUND</Button>
@@ -223,6 +229,10 @@ import {
         <>
           <div className='ant-employed'>
           <Title level={5}>F</Title>
+          <NavLink to='/productinfo:id'>
+            <a href="#">INFO</a>
+          </NavLink>
+         
           </div>
         </>
       ),
@@ -231,13 +241,11 @@ import {
 
   function Products() {
 
-  
     return (
       <>
         <div className='tabled'>
           <Row gutter={[24, 0]}>
             <Col xs='24' xl={24}>
-
                 <div className='table-responsive'>
                   <Table
                     columns={columns}
@@ -246,7 +254,6 @@ import {
                     className='ant-border-space'
                   />
                 </div>
-
             </Col>
           </Row>
         </div>
