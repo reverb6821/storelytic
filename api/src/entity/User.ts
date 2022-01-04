@@ -10,14 +10,14 @@ import { Length, IsNotEmpty } from 'class-validator';
 import * as bcrypt from 'bcryptjs';
 
 @Entity()
-@Unique(['username'])
+@Unique(['email'])
 export class User {
   @PrimaryGeneratedColumn()
   id!: number;
 
   @Column()
   @Length(4, 20)
-  username!: string;
+  email!: string;
 
   @Column()
   @Length(4, 100)
