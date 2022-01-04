@@ -1,6 +1,6 @@
 {
   "name": "storelytic",
-  "version": "2.0.1",
+  "version": "3.2.1",
   "description": "storelytic is a template to build modern WebApp/PWA with React.JS on a top of a server builded with Express.js",
   "main": "./dist/server.js",
   "repository": "https://github.com/reverb6821/storelytic.git",
@@ -8,35 +8,8 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "serve-back": "ts-node-dev --respawn --pretty --transpile-only api/server.ts",
-    "prod": "tsc && node ./build/app.js",
-    "migration:run": "ts-node ./node_modules/typeorm/cli.js migration:run"
-  },
-  "devDependencies": {
-    "@types/bcryptjs": "^2.4.2",
-    "@types/cors": "^2.8.12",
-    "@types/dotenv": "^8.2.0",
-    "@types/express": "^4.17.13",
-    "@types/helmet": "^4.0.0",
-    "@types/jsonwebtoken": "^8.5.6",
-    "@types/morgan": "^1.9.3",
-    "@types/node": "^16.11.10",
-    "cors": "^2.8.5",
-    "dotenv": "^10.0.0",
-    "express": "^4.17.1",
-    "helmet": "^4.6.0",
-    "http-status": "^1.5.0",
-    "morgan": "^1.10.0",
-    "ts-node-dev": "^1.1.8",
-    "typescript": "^4.4.3",
-    "winston": "^3.3.3"
-  },
-  "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "class-validator": "^0.13.2",
-    "jsonwebtoken": "^8.5.1",
-    "mysql": "^2.18.1",
-    "reflect-metadata": "^0.1.13",
-    "typeorm": "^0.2.41"
+    "webapp::install": "cd ./api && yarn install",
+    "webapp::serve": "cd ./api && yarn run backend::serve",
+    "db::migration": "cd ./api && yarn run migration:run"
   }
 }

@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+     "target": "es5",
+     "module": "commonjs",
+     "declaration": true,
+     "allowSyntheticDefaultImports": true,
+     "esModuleInterop": true,
+     "skipLibCheck": true,
+     "forceConsistentCasingInFileNames": true ,
+     "moduleResolution": "node",
+     "outDir": "./build",
+     "emitDecoratorMetadata": true,
+     "experimentalDecorators": true,
+     "sourceMap": true
+  },
+  "exclude": ["node_modules"]
+}
