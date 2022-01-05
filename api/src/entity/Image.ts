@@ -1,14 +1,14 @@
 import { Length } from 'class-validator';
 import {
-    Entity,
-    PrimaryGeneratedColumn,
-    Column,
-    Unique,
-    CreateDateColumn,
-    UpdateDateColumn,
-    OneToMany,
-    ManyToOne,
-    JoinColumn
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  Unique,
+  CreateDateColumn,
+  UpdateDateColumn,
+  OneToMany,
+  ManyToOne,
+  JoinColumn,
 } from 'typeorm';
 
 import { Product } from './Product';
@@ -17,29 +17,29 @@ import { Product } from './Product';
 @Unique(['imageId'])
 export class Image {
     @PrimaryGeneratedColumn()
-    imageId!: number;
+      imageId!: number;
 
     @Column()
     @Length(4, 20)
-    url!: string;
+      url!: string;
 
     @Column()
     @Length(4, 20)
-    title!: string;
+      title!: string;
 
     @ManyToOne(() => Product)
-    @JoinColumn({name: 'product', referencedColumnName:'productId'})
-    product!: Product;
+    @JoinColumn({ name: 'product', referencedColumnName: 'productId' })
+      product!: Product;
 
     @Column()
     @Length(4, 20)
-    description!: string;
+      description!: string;
 
     @Column()
     @CreateDateColumn()
-    createdAt!: Date;
-  
+      createdAt!: Date;
+
     @Column()
     @UpdateDateColumn()
-    updatedAt!: Date;
+      updatedAt!: Date;
 }

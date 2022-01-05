@@ -1,16 +1,16 @@
 import {
-    Entity,
-    PrimaryGeneratedColumn,
-    Column,
-    Unique,
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  Unique,
 } from 'typeorm';
 
 @Entity()
 @Unique(['directionId'])
 export class Direction {
     @PrimaryGeneratedColumn()
-    directionId!: number;
+      directionId!: number;
 
     @Column()
-    name!: string;
+      name!: string;
 }

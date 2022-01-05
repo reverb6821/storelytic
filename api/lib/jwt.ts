@@ -1,5 +1,7 @@
 import { Secret } from 'jsonwebtoken';
 
-export const jwtConfig  = {
-    jwtSecret: <Secret>'test'
-}
+const jwtConfig = {
+  jwtSecret: <Secret>'test',
+};
+
+export default jwtConfig;

@@ -1,13 +1,13 @@
 import {
-    Entity,
-    PrimaryGeneratedColumn,
-    Column,
-    Unique,
-    CreateDateColumn,
-    UpdateDateColumn,
-    OneToMany,
-    ManyToOne,
-    JoinColumn
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  Unique,
+  CreateDateColumn,
+  UpdateDateColumn,
+  OneToMany,
+  ManyToOne,
+  JoinColumn,
 } from 'typeorm';
 
 import { Direction } from './Direction';
@@ -16,26 +16,26 @@ import { Direction } from './Direction';
 @Unique(['shipmentId'])
 export class Shipment {
     @PrimaryGeneratedColumn()
-    shipmentId!: number;
+      shipmentId!: number;
 
-    @ManyToOne(type => Direction)
-    @JoinColumn({name: 'direction', referencedColumnName:'directionId'})
-    direction!: Direction;
-
-    @Column()
-    provider!: string;
+    @ManyToOne((type) => Direction)
+    @JoinColumn({ name: 'direction', referencedColumnName: 'directionId' })
+      direction!: Direction;
 
     @Column()
-    trackingNr!: string;
+      provider!: string;
+
+    @Column()
+      trackingNr!: string;
 
     @Column()
     @CreateDateColumn()
-    dateShipment!: Date;
+      dateShipment!: Date;
 
     @Column()
     @UpdateDateColumn()
-    updatedAt!: Date;
+      updatedAt!: Date;
 
     @Column()
-    arrived!: boolean;
+      arrived!: boolean;
 }

@@ -1,0 +1,12 @@
+.eslintrc
+public
+node_modules
+build
+prettierrc
+prettierignore
+.gitignore
+package.json
+yarn.lock
+src/reportWebVitals.js
+src/setupTests.js
+src/App.test.js

@@ -1,12 +1,12 @@
 import { Length } from 'class-validator';
 import {
-    Entity,
-    PrimaryGeneratedColumn,
-    Column,
-    Unique,
-    OneToMany,
-    ManyToOne,
-    JoinColumn
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  Unique,
+  OneToMany,
+  ManyToOne,
+  JoinColumn,
 } from 'typeorm';
 
 import { Product } from './Product';
@@ -15,23 +15,23 @@ import { Product } from './Product';
 @Unique(['companyId'])
 export class Company {
     @PrimaryGeneratedColumn()
-    companyId!: number;
+      companyId!: number;
 
     @Column()
     @Length(4, 20)
-    title!: string;
+      title!: string;
 
     @Column()
     @Length(4, 20)
-    description!: string;
+      description!: string;
 
     @Column()
-    logourl!: string;
-    
-    @Column()
-    note!: string;
+      logourl!: string;
 
-    @ManyToOne(type => Product)
-    @JoinColumn({name: 'product', referencedColumnName:'productId'})
-    product!: Product;
+    @Column()
+      note!: string;
+
+    @ManyToOne((type) => Product)
+    @JoinColumn({ name: 'product', referencedColumnName: 'productId' })
+      product!: Product;
 }

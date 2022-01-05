@@ -1,13 +1,13 @@
 import {
-    Entity,
-    PrimaryGeneratedColumn,
-    Column,
-    Unique,
-    CreateDateColumn,
-    UpdateDateColumn,
-    OneToMany,
-    ManyToOne,
-    JoinColumn
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  Unique,
+  CreateDateColumn,
+  UpdateDateColumn,
+  OneToMany,
+  ManyToOne,
+  JoinColumn,
 } from 'typeorm';
 
 import { Product } from './Product';
@@ -15,15 +15,13 @@ import { Product } from './Product';
 @Entity()
 @Unique(['statusId'])
 export class Status {
-
     @PrimaryGeneratedColumn()
-    statusId!: number;
+      statusId!: number;
 
     @Column()
-    name!: string;
+      name!: string;
 
-    @ManyToOne(type => Product)
-    @JoinColumn({name: 'product', referencedColumnName:'productId'})
-    product!: Product;
-
+    @ManyToOne((type) => Product)
+    @JoinColumn({ name: 'product', referencedColumnName: 'productId' })
+      product!: Product;
 }
