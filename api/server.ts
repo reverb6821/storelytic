@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { createConnection } from 'typeorm';
+import { createConnection, Connection } from 'typeorm';
 import path from 'path';
 import * as dotenv from 'dotenv';
 import helmet from 'helmet';
@@ -11,7 +11,7 @@ import morganMiddleware from './src/middlewares/morganMiddleware'; //! custom mi
 import Logger from './lib/logger'; //! custom logger builded with winston
 
 createConnection()
-  .then(async (connection) => {
+  .then(async (connection: Connection) => {
     dotenv.config(); //* import settings from .env file
 
     if (!process.env.PORT) {
