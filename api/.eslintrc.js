@@ -21,6 +21,7 @@ module.exports = {
   ],
   rules: {
     'import/prefer-default-export': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
     'class-methods-use-this': 0,
     'no-shadow': 0,
     'max-len': 'off',
