@@ -9,10 +9,12 @@
   "private": false,
   "scripts": {
     "webapp:install": "cd ./api && yarn install",
-    "webapp:serve:dev": "cd ./api && lint:eslint:fix && yarn run backend::serve",
+    "webapp:serve:dev": "cd ./api && yarn run lint:eslint:fix && yarn run backend::serve",
     "webapp:client:dev": "cd ./client && yarn run lint:prettify && yarn run start",
     "webapp:run:dev": "yarn run webapp:serve:dev &&  yarn run webapp:client:dev",
-    "webapp:build": "",
+    "webapp:run:build": "",
+    "webapp:run:prod": "",
+    "db:schema:sync": "cd ./api && yarn run typeorm schema:sync",
     "db:migration": "cd ./api && yarn run migration:run"
   }
 }
