@@ -5,13 +5,13 @@ import { validate } from 'class-validator';
 
 import Logger from '../../lib/logger';
 import { User } from '../entity/User';
-import { jwtConfig } from '../../lib/jwt';
+import jwtConfig from '../../lib/jwt';
 
 class AuthController {
   static login = async (req: Request, res: Response) => {
-    // ? Check if username and password are set
-    const { username, password } = req.body;
-    if (!(username && password)) {
+    // ? Check if email and password are set
+    const { email, password } = req.body;
+    if (!(email && password)) {
       Logger.error(res.status(400).send());
     }
 
@@ -19,7 +19,7 @@ class AuthController {
     const userRepository = getRepository(User);
 
     try {
-      const user = await userRepository.findOneOrFail({ where: { username } });
+      const user = await userRepository.findOneOrFail({ where: { email } });
 
       if (!user.checkIfUnencryptedPasswordIsValid(password)) {
         Logger.error(res.status(401).send());
@@ -28,7 +28,7 @@ class AuthController {
 
       //* Sing JWT, valid for 1 hour
       const token = jwt.sign(
-        { userId: user.id, username: user.username },
+        { userId: user.id, username: user.email },
         jwtConfig.jwtSecret,
         { expiresIn: '1h' },
       );
