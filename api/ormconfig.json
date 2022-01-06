@@ -6,12 +6,12 @@
     "password": "LS78!3@Ia7X4OAV)",
     "database": "storelytic",
     "synchronize": true,
-    "logging": false,
+    "logging": ["query", "error"],
     "entities": [
-      "src/entity/*.ts"
+      "src/entity/**/*.ts"
     ],
     "migrations": [
-       "migration/*.ts"
+       "migration/**/*.ts"
     ],
     "subscribers": [
        "subscriber/**/*.ts"
