@@ -30,8 +30,4 @@ export class Company {
 
     @Column()
       note!: string;
-
-    @ManyToOne((type) => Product)
-    @JoinColumn({ name: 'product', referencedColumnName: 'productId' })
-      product!: Product;
 }

@@ -30,8 +30,4 @@ export class Warehouse {
 
     @Column()
       position!: string;
-
-    @ManyToOne((type) => Product)
-    @JoinColumn({ name: 'product', referencedColumnName: 'productId' })
-      product!: Product;
 }

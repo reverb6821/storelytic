@@ -20,8 +20,4 @@ export class Status {
 
     @Column()
       name!: string;
-
-    @ManyToOne((type) => Product)
-    @JoinColumn({ name: 'product', referencedColumnName: 'productId' })
-      product!: Product;
 }
