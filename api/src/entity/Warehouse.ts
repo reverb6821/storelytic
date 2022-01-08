@@ -3,16 +3,9 @@ import {
   PrimaryGeneratedColumn,
   Column,
   Unique,
-  CreateDateColumn,
-  UpdateDateColumn,
-  OneToMany,
-  ManyToOne,
-  JoinColumn,
 } from 'typeorm';
 
 import { Length } from 'class-validator';
-
-import { Product } from './Product';
 
 @Entity()
 @Unique(['warehouseId'])

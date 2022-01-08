@@ -4,12 +4,7 @@ import {
   PrimaryGeneratedColumn,
   Column,
   Unique,
-  OneToMany,
-  ManyToOne,
-  JoinColumn,
 } from 'typeorm';
-
-import { Product } from './Product';
 
 @Entity()
 @Unique(['companyId'])
