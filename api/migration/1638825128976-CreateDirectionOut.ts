@@ -1,7 +1,7 @@
 import { getRepository, MigrationInterface, QueryRunner } from 'typeorm';
 import { Direction } from '../src/entity/Direction';
 
-export class CreateDirection1638825128976 implements MigrationInterface {
+export class CreateDirectionOut1638825128976 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<any> {
     const direction = new Direction();
     direction.name = 'OUTBOUND';

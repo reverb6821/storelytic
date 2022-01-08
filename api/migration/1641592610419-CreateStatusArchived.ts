@@ -1,7 +1,7 @@
 import { MigrationInterface, QueryRunner, getRepository } from 'typeorm';
 import { Status } from '../src/entity/Status';
 
-export class CreateStatusF1641592610419 implements MigrationInterface {
+export class CreateStatusArchived1641592610419 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     const status = new Status();
     status.name = 'ARCHIVED';
