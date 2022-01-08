@@ -10,7 +10,7 @@ class UserController {
   // Get users from database
     const userRepository = getRepository(User);
     const users = await userRepository.find({
-      select: ['id', 'username', 'role'], // We dont want to send the passwords on response
+      select: ['id', 'email', 'role'], // We dont want to send the passwords on response
     });
 
     // Send the users object
@@ -25,7 +25,7 @@ class UserController {
     const userRepository = getRepository(User);
     try {
       const user = await userRepository.findOneOrFail(id, {
-        select: ['id', 'username', 'role'], // We dont want to send the password on response
+        select: ['id', 'email', 'role'], // We dont want to send the password on response
       });
       res.send(user);
     } catch (error) {
@@ -35,9 +35,9 @@ class UserController {
 
   static newUser = async (req: Request, res: Response) => {
   // Get parameters from the body
-    const { username, password, role } = req.body;
+    const { email, password, role } = req.body;
     const user = new User();
-    user.username = username;
+    user.email = email;
     user.password = password;
     user.role = role;
 
@@ -51,12 +51,12 @@ class UserController {
     // Hash the password, to securely store on DB
     user.hashPassword();
 
-    // Try to save. If fails, the username is already in use
+    // Try to save. If fails, the email is already in use
     const userRepository = getRepository(User);
     try {
       await userRepository.save(user);
     } catch (e) {
-      Logger.warn(res.status(409).send('username already in use'));
+      Logger.warn(res.status(409).send('email already in use'));
       return;
     }
 
@@ -69,7 +69,7 @@ class UserController {
     const { id } = req.params;
 
     // Get values from the body
-    const { username, role } = req.body;
+    const { email, role } = req.body;
 
     // Try to find user on database
     const userRepository = getRepository(User);
@@ -83,7 +83,7 @@ class UserController {
     }
 
     // Validate the new values on model
-    user.username = username;
+    user.email = email;
     user.role = role;
     const errors = await validate(user);
     if (errors.length > 0) {
@@ -91,11 +91,11 @@ class UserController {
       return;
     }
 
-    // Try to safe, if fails, that means username already in use
+    // Try to safe, if fails, that means email already in use
     try {
       await userRepository.save(user);
     } catch (e) {
-      Logger.warn(res.status(409).send('username already in use'));
+      Logger.warn(res.status(409).send('email already in use'));
       return;
     }
     // After all send a 204 (no content, but accepted) response
