@@ -4,6 +4,8 @@ import Logger from '../../lib/logger';
 import auth from './auth';
 import user from './user';
 import prod from './product';
+import warehouse from './warehouse';
+import company from './company';
 
 export const router = Router(); // ? declare express as router
 
@@ -27,3 +29,9 @@ router.use('/auth', auth);
 
 //* product
 router.use('/products', prod);
+
+//* warehouse
+router.use('/warehouses', warehouse);
+
+//* company
+router.use('./companies', company);
