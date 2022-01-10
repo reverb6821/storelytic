@@ -13,9 +13,8 @@
 .
 ├── api                             # API root file
 ├── client                          # React root directory
-├── .env                            # Enviroment variables for API
 ├── .gitignore
-└── package.json
+└── package.json                    # Core package of the app
 ```
 
 ## API's Root
@@ -28,7 +27,8 @@
 |   ├── controllers                      # Controllers folder
 |   ├── middlewares                      # middlewares folder
 |   └── routes                           # routes file 
-└── server.ts                            # Entry file
+├── server.ts                            # Entry file
+└── package.json                         # API package
 ```
 
 ## Client's Root
@@ -73,19 +73,39 @@ POST /auth/login            # login endpoint
 ```
 ### Users Endpoints
 ```
-GET  /users/userslist             # get all users
-GET  /users/user:id([0-9]+)       # get user by id
-POST /users/newuser               # create new user
-PUT  /users/edituser:id([0-9]+)   # edit user
-DEL  /users/deleteuser:id([0-9]+) # delete user
+GET  /users/userslist             # get all users (All Roles)
+GET  /users/user:id([0-9]+)       # get user by id (All Roles)
+POST /users/newuser               # create new user (Only Admin)
+PUT  /users/edituser:id([0-9]+)   # edit user (Only Admin & User:id)
+DEL  /users/deleteuser:id([0-9]+) # delete user (Only Admin)
 ```
 ### Product Endpoints
 ```
-GET  /products/productslist             # get all products
-GET  /products/product:id([0-9]+)       # get product by id
-POST /products/newproduct               # create new product
-PUT  /products/editproduct:id([0-9]+)   # edit product
-DEL  /products/deleteproduct:id([0-9]+) # delete product
+GET  /products/productslist             # get all products (All Roles)
+GET  /products/product:id([0-9]+)       # get product by id (All Roles)
+POST /products/newproduct               # create new product (Only Admin)
+PUT  /products/editproduct:id([0-9]+)   # edit product (Only Admin)
+DEL  /products/deleteproduct:id([0-9]+) # delete product (Only Admin)
+```
+### Company Endpoints
+```
+GET  /companies/companieslist            # get all products (All Roles)
+GET  /companies/company:id([0-9]+)       # get product by id (All Roles)
+POST /companies/newcompany               # create new product (Only Admin)
+PUT  /companies/editcompany:id([0-9]+)   # edit product (Only Admin)
+DEL  /companies/deletecompany:id([0-9]+) # delete product (Only Admin)
+```
+### Warehouse Endpoints
+```
+GET  /warehouses/warehouseslist             # get all products (All Roles)
+GET  /warehouses/warehouse:id([0-9]+)       # get product by id (All Roles)
+POST /warehouses/newwarehouse               # create new product (Only Admin)
+PUT  /warehouses/editwarehouse:id([0-9]+)   # edit product (Only Admin)
+DEL  /warehouses/deletewarehouse:id([0-9]+) # delete product (Only Admin)
+```
+### upload Endpoints
+```
+
 ```
 ## How it work
 ### Authentication
