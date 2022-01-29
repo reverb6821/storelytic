@@ -103,9 +103,13 @@ POST /warehouses/newwarehouse               # create new product (Only Admin)
 PUT  /warehouses/editwarehouse:id([0-9]+)   # edit product (Only Admin)
 DEL  /warehouses/deletewarehouse:id([0-9]+) # delete product (Only Admin)
 ```
-### upload Endpoints
+### Upload Endpoints
 ```
 
+```
+### Create Migration file
+```
+typeorm migration:create -n "file"
 ```
 ## How it work
 ### Authentication

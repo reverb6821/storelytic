@@ -1,1 +1,0 @@
-typeorm migration:create -n "file"
