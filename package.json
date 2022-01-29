@@ -16,5 +16,6 @@
     "webapp:run:prod": "",
     "db:schema:sync": "cd ./api && yarn run typeorm schema:sync",
     "db:migration": "cd ./api && yarn run migration:run"
-  }
+  },
+  "dependencies": {}
 }
