@@ -10,7 +10,6 @@ import {
   JoinColumn,
 } from 'typeorm';
 
-import { Image } from './Image';
 import { User } from './User';
 import { Shipment } from './Shipment';
 import { Status } from './Status';
