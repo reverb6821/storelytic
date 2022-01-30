@@ -21,7 +21,7 @@ export class Company {
       description!: string;
 
     @Column()
-      logourl!: object;
+      logourl!: string;
 
     @Column()
       note!: string;

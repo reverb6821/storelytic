@@ -38,9 +38,8 @@ export class Product {
     @Length(1, 20)
       qty!: number;
 
-    @ManyToOne((type) => Image)
-    @JoinColumn({ name: 'image', referencedColumnName: 'imageId' })
-      image!: Image;
+    @Column()
+      imgurl!: string;
 
     @Column()
     @Length(1, 20)
