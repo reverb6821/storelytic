@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import * as jwt from 'jsonwebtoken';
-import { jwtConfig } from '../../lib/jwt';
+import jwtConfig from '../../lib/jwt';
 
 export const checkJwt = (req: Request, res: Response, next: NextFunction) => {
   // Get the jwt token from the head

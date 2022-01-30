@@ -30,7 +30,7 @@ class ProductController {
   };
 
   static getOneById = async (req: Request, res: Response) => {
-    const id: number = req.params.productId;
+    const id: number = req.params.productId as any;
 
     const productRepository = getRepository(Product);
     try {
