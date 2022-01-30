@@ -34,4 +34,4 @@ router.use('/products', prod);
 router.use('/warehouses', warehouse);
 
 //* company
-router.use('./companies', company);
+router.use('/companies', company);

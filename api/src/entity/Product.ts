@@ -37,8 +37,8 @@ export class Product {
     @Length(1, 20)
       qty!: number;
 
-    @Column()
-      imgurl!: string;
+    @Column({ type: 'longblob' })
+      image!: Buffer;
 
     @Column()
     @Length(1, 20)

@@ -9,7 +9,7 @@ class CompanyController {
   static listAll = async (req: Request, res: Response) => {
     const companyRepository = getRepository(Company);
     const company = await companyRepository.find({
-      select: ['companyId', 'title', 'description', 'logourl', 'note'],
+      select: ['companyId', 'title', 'description', 'logo', 'note'],
     });
     res.send(company);
   };
@@ -20,7 +20,7 @@ class CompanyController {
     const companyRepository = getRepository(Company);
     try {
       const company = await companyRepository.findOneOrFail(companyId, {
-        select: ['companyId', 'title', 'description', 'logourl', 'note'], // We dont want to send the password on response
+        select: ['companyId', 'title', 'description', 'logo', 'note'], // We dont want to send the password on response
       });
       res.send(company);
     } catch (error) {
@@ -28,14 +28,18 @@ class CompanyController {
     }
   };
 
-  static newCompany = async (req: Request, res: Response) => {
+  static newCompany = async (req: any, res: Response) => {
+    const companyRepository = getRepository(Company);
+
     const {
-      title, description, logourl, note,
+      title, description, note,
     } = req.body;
+    const { buffer } = req.file;
+
     const company = new Company();
     company.title = title;
     company.description = description;
-    company.logourl = logourl;
+    company.logo = buffer;
     company.note = note;
 
     const errors = await validate(company);
@@ -44,13 +48,15 @@ class CompanyController {
       return;
     }
 
+    companyRepository.save(company);
+
     Logger.info(res.status(201).send('company created'));
   };
 
   static editCompany = async (req: Request, res: Response) => {
     const { companyId } = req.params;
     const {
-      title, description, logourl, note,
+      title, description, logo, note,
     } = req.body;
     const companyRepository = getRepository(Company);
     let company;
@@ -65,7 +71,7 @@ class CompanyController {
 
     company.title = title;
     company.description = description;
-    company.logourl = logourl;
+    company.logo = logo;
     company.note = note;
 
     const errors = await validate(company);
@@ -80,6 +86,8 @@ class CompanyController {
       Logger.warn(res.status(409).send('nmname already in use'));
       return;
     }
+
+    companyRepository.save(company);
     // After all send a 204 (no content, but accepted) response
     Logger.info(res.status(204).send());
   };

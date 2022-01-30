@@ -2,6 +2,7 @@ import { Router } from 'express';
 import ProductController from '../controller/ProductController';
 import { checkJwt } from '../middlewares/checkJwt';
 import { checkRole } from '../middlewares/checkRole';
+import { uploadImage } from '../middlewares/multer';
 
 const productRouter = Router();
 
@@ -13,7 +14,7 @@ productRouter.get(
   ProductController.getOneById,
 );
 
-productRouter.post('/newproduct', [checkJwt, checkRole(['ADMIN', 'USER'])], ProductController.newProduct);
+productRouter.post('/newproduct', [checkJwt, checkRole(['ADMIN', 'USER']), uploadImage.single('avatar')], ProductController.newProduct);
 
 productRouter.patch(
   '/editproduct:id([0-9]+)',

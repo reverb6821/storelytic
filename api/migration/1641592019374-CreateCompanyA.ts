@@ -6,7 +6,7 @@ export class CreateCompanyA1641592019374 implements MigrationInterface {
     const company = new Company();
     company.title = 'Company A';
     company.description = 'Company A';
-    company.logourl = 'MI';
+    company.logo = 'MI';
     company.note = 'note for Company A';
     const companyRepository = getRepository(Company);
     await companyRepository.save(company);

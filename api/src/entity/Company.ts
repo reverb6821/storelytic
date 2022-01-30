@@ -20,8 +20,8 @@ export class Company {
     @Length(4, 20)
       description!: string;
 
-    @Column()
-      logourl!: string;
+    @Column({ type: 'longblob' })
+      logo!: Buffer;
 
     @Column()
       note!: string;

@@ -1,9 +1,8 @@
 import { Router } from 'express';
 import { checkJwt } from '../middlewares/checkJwt';
 import { checkRole } from '../middlewares/checkRole';
-
+import { uploadImage } from '../middlewares/multer';
 import CompanyController from '../controller/CompanyController';
-import { Upload } from '../middlewares/multer';
 
 const companyRouter = Router();
 
@@ -15,7 +14,7 @@ companyRouter.get(
   CompanyController.getOneById,
 );
 
-companyRouter.post('/newcompany', [checkJwt, checkRole(['ADMIN']), Upload], CompanyController.newCompany);
+companyRouter.post('/newcompany', [checkJwt, checkRole(['ADMIN']), uploadImage.single('avatar')], CompanyController.newCompany);
 
 companyRouter.patch(
   '/editcompany:id([0-9]+)',
