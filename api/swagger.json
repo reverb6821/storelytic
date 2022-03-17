@@ -23,6 +23,10 @@
     {
       "name": "Warehouses",
       "description": "CRUD ops on all Warehouses"
+    },
+    {
+      "name": "Products",
+      "description": "CRUD ops on all Products"
     }
   ],
   "paths": {
@@ -55,40 +59,7 @@
             "api_key": []
           }
         ]
-      }
-    },
-    "/v2/api-server/company:id([0-9]+)": {
-      "get": {
-        "tags": [
-          "Companies"
-        ],
-        "description": "Find Company by ID",
-        "produces": ["application/json"],
-        "responses": {
-          "200": {
-            "description": "Company finded",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Company"
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid ID supplied"
-          },
-          "404": {
-            "description": "Company not found"
-          }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
-      }
-    },
-    "/v2/api-server/newcompany": {
+      },
       "post": {
         "tags": [
           "Companies"
@@ -122,7 +93,36 @@
         ]
       }
     },
-    "/v2/api-server/editcompany:id([0-9]+)": {
+    "/v2/api-server/companies:id([0-9]+)": {
+      "get": {
+        "tags": [
+          "Companies"
+        ],
+        "description": "Find Company by ID",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Company finded",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Company"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Company not found"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      },
       "put": {
         "tags": [
           "Companies"
@@ -154,9 +154,7 @@
             "api_key": []
           }
         ]
-      }
-    },
-    "/v2/api-server/deletecompany:id([0-9]+)": {
+      },
       "delete": {
         "tags": [
           "Companies"
@@ -219,40 +217,7 @@
             "api_key": []
           }
         ]
-      }
-    },
-    "/v2/api-server/warehouse:id([0-9]+)": {
-      "get": {
-        "tags": [
-          "Warehouses"
-        ],
-        "description": "Find Warehouse by ID",
-        "produces": ["application/json"],
-        "responses": {
-          "200": {
-            "description": "Warehouse finded",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/Warehouse"
-              }
-            }
-          },
-          "400": {
-            "description": "Invalid ID supplied"
-          },
-          "404": {
-            "description": "Warehouse not found"
-          }
-        },
-        "security": [
-          {
-            "api_key": []
-          }
-        ]
-      }
-    },
-    "/v2/api-server/newwarehouse": {
+      },
       "post": {
         "tags": [
           "Warehouses"
@@ -286,7 +251,36 @@
         ]
       }
     },
-    "/v2/api-server/editwarehouse:id([0-9]+)": {
+    "/v2/api-server/warehouses:id([0-9]+)": {
+      "get": {
+        "tags": [
+          "Warehouses"
+        ],
+        "description": "Find Warehouse by ID",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Warehouse finded",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Warehouse"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Warehouse not found"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      },
       "put": {
         "tags": [
           "Warehouses"
@@ -318,9 +312,7 @@
             "api_key": []
           }
         ]
-      }
-    },
-    "/v2/api-server/deletewarehouse:id([0-9]+)": {
+      },
       "delete": {
         "tags": [
           "Warehouses"
@@ -353,7 +345,165 @@
           }
         ]
       }
-    }
+    },
+    "/v2/api-server/products": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "description": "Returns all products from the system that the user has access to",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "A list of products.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Product"
+              }
+            }
+          },
+          "400": {
+            "description": "No products found"
+          },
+          "404": {
+            "description": "No products found"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Products"
+        ],
+        "description": "Add a new product to db",
+        "produces": ["application/json"],
+        "responses": {
+          "201": {
+            "description": "Product created",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Product"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid operation"
+          },
+          "401": {
+            "description": "You can't add"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    },
+    "/v2/api-server/products:id([0-9]+)": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "description": "Find Product by ID",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "Product finded",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Product"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Company not found"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Products"
+        ],
+        "description": "Update an existing product",
+        "produces": ["application/json"],
+        "responses": {
+          "201": {
+            "description": "Product updated",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Product"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Product not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Products"
+        ],
+        "description": "Delete an existing product",
+        "produces": ["application/json"],
+        "responses": {
+          "201": {
+            "description": "Product deleted!",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Product"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "Product not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        },
+        "security": [
+          {
+            "api_key": []
+          }
+        ]
+      }
+    } 
   },
   "definitions": {
     "Company": {
@@ -394,6 +544,28 @@
         },
         "position": {
           "type": "longblob"
+        }
+      }
+    },
+    "Product":{
+      "type": "object",
+      "required": ["id", "name"],
+      "properties": {
+        "productId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "createdAt": {
+          "type": "date"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "position": {
+          "qty": "integer"
         }
       }
     }
