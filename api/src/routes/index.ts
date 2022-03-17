@@ -16,22 +16,26 @@ router.get('/', async (req: Request, res: Response): Promise<any> => {
   try {
     res.status(200).send({ success: true, message: 'API SERVER STARTED ' });
   } catch (error) {
-    Logger.error(res.status(500).send({ success: false, message: `ERROR: ${error}`, data: null }));
+    Logger.error(
+      res
+        .status(500)
+        .send({ success: false, message: `ERROR: ${error}`, data: null }),
+    );
   }
 });
 
 //* user
-router.use('/users', user);
+router.use('/v2/api-server', user);
 // router.get('/users' user );
 
 //* auth
-router.use('/auth', auth);
+router.use('/v2/api-server', auth);
 
 //* product
-router.use('/products', prod);
+router.use('/v2/api-server', prod);
 
 //* warehouse
-router.use('/warehouses', warehouse);
+router.use('/v2/api-server', warehouse);
 
 //* company
-router.use('/companies', company);
+router.use('/v2/api-server', company);

@@ -6,24 +6,32 @@ import CompanyController from '../controller/CompanyController';
 
 const companyRouter = Router();
 
-companyRouter.get('/companieslist', [checkJwt, checkRole(['ADMIN', 'USER'])], CompanyController.listAll);
+companyRouter.get(
+  '/companies',
+  [checkJwt, checkRole(['ADMIN', 'USER'])],
+  CompanyController.listAll,
+);
 
 companyRouter.get(
-  '/company:id([0-9]+)',
+  '/companies:id([0-9]+)',
   [checkJwt, checkRole(['ADMIN', 'USER'])],
   CompanyController.getOneById,
 );
 
-companyRouter.post('/newcompany', [checkJwt, checkRole(['ADMIN']), uploadImage.single('avatar')], CompanyController.newCompany);
+companyRouter.post(
+  '/companies',
+  [checkJwt, checkRole(['ADMIN']), uploadImage.single('avatar')],
+  CompanyController.newCompany,
+);
 
 companyRouter.patch(
-  '/editcompany:id([0-9]+)',
+  '/companies:id([0-9]+)',
   [checkJwt, checkRole(['ADMIN'])],
   CompanyController.editCompany,
 );
 
 companyRouter.delete(
-  '/deletecompany:id([0-9]+)',
+  '/companies:id([0-9]+)',
   [checkJwt, checkRole(['ADMIN'])],
   CompanyController.deleteCompany,
 );

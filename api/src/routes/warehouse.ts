@@ -6,24 +6,32 @@ import WarehouseController from '../controller/WarehouseController';
 
 const warehouseRouter = Router();
 
-warehouseRouter.get('/warehouseslist', [checkJwt, checkRole(['ADMIN', 'USER'])], WarehouseController.listAll);
+warehouseRouter.get(
+  '/warehouses',
+  [checkJwt, checkRole(['ADMIN', 'USER'])],
+  WarehouseController.listAll,
+);
 
 warehouseRouter.get(
-  '/warehouse:id([0-9]+)',
+  '/warehouses:id([0-9]+)',
   [checkJwt, checkRole(['ADMIN', 'USER'])],
   WarehouseController.getOneById,
 );
 
-warehouseRouter.post('/newwarehouse', [checkJwt, checkRole(['ADMIN'])], WarehouseController.newWarehouse);
+warehouseRouter.post(
+  '/warehouses',
+  [checkJwt, checkRole(['ADMIN'])],
+  WarehouseController.newWarehouse,
+);
 
 warehouseRouter.patch(
-  '/editwarehouse:id([0-9]+)',
+  '/warehouses:id([0-9]+)',
   [checkJwt, checkRole(['ADMIN'])],
   WarehouseController.editWarehouse,
 );
 
 warehouseRouter.delete(
-  '/deletewarehouse:id([0-9]+)',
+  '/warehouses:id([0-9]+)',
   [checkJwt, checkRole(['ADMIN'])],
   WarehouseController.deleteWarehouse,
 );

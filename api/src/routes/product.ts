@@ -6,24 +6,32 @@ import { uploadImage } from '../middlewares/multer';
 
 const productRouter = Router();
 
-productRouter.get('/productslist', [checkJwt, checkRole(['ADMIN', 'USER'])], ProductController.listAll);
+productRouter.get(
+  '/products',
+  [checkJwt, checkRole(['ADMIN', 'USER'])],
+  ProductController.listAll,
+);
 
 productRouter.get(
-  '/product:id([0-9]+)',
+  '/products:id([0-9]+)',
   [checkJwt, checkRole(['ADMIN', 'USER'])],
   ProductController.getOneById,
 );
 
-productRouter.post('/newproduct', [checkJwt, checkRole(['ADMIN', 'USER']), uploadImage.single('avatar')], ProductController.newProduct);
+productRouter.post(
+  '/products',
+  [checkJwt, checkRole(['ADMIN', 'USER']), uploadImage.single('avatar')],
+  ProductController.newProduct,
+);
 
 productRouter.patch(
-  '/editproduct:id([0-9]+)',
+  '/products:id([0-9]+)',
   [checkJwt, checkRole(['ADMIN', 'USER'])],
   ProductController.editProduct,
 );
 
 productRouter.delete(
-  '/deleteproduct:id([0-9]+)',
+  '/products:id([0-9]+)',
   [checkJwt, checkRole(['ADMIN', 'USER'])],
   ProductController.deleteProduct,
 );
