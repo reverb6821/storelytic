@@ -3,11 +3,14 @@ import {
   PrimaryGeneratedColumn,
   Column,
   Unique,
+  JoinColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  ManyToOne,
 } from 'typeorm';
 import { Length, IsNotEmpty } from 'class-validator';
 import * as bcrypt from 'bcryptjs';
+import { Role } from './Role';
 
 @Entity()
 @Unique(['email'])
@@ -24,8 +27,10 @@ export class User {
     password!: string;
 
   @Column()
+  @ManyToOne((type) => Role, (role) => role.roleId)
+  @JoinColumn({ name: 'role', referencedColumnName: 'roleId' })
   @IsNotEmpty()
-    role!: string;
+    role!: Role;
 
   @Column()
   @CreateDateColumn()

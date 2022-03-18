@@ -14,27 +14,27 @@ import { Direction } from './Direction';
 @Entity()
 @Unique(['shipmentId'])
 export class Shipment {
-    @PrimaryGeneratedColumn()
-      shipmentId!: number;
+  @PrimaryGeneratedColumn()
+    shipmentId!: number;
 
-    @ManyToOne((type) => Direction)
-    @JoinColumn({ name: 'direction', referencedColumnName: 'directionId' })
-      direction!: Direction;
+  @ManyToOne((type) => Direction)
+  @JoinColumn({ name: 'direction', referencedColumnName: 'directionId' })
+    direction!: Direction;
 
-    @Column()
-      provider!: string;
+  @Column()
+    provider!: string;
 
-    @Column()
-      trackingNr!: string;
+  @Column()
+    trackingNr!: string;
 
-    @Column()
-    @CreateDateColumn()
-      dateShipment!: Date;
+  @Column()
+  @CreateDateColumn()
+    dateShipment!: Date;
 
-    @Column()
-    @UpdateDateColumn()
-      updatedAt!: Date;
+  @Column()
+  @UpdateDateColumn()
+    updatedAt!: Date;
 
-    @Column()
-      arrived!: boolean;
+  @Column()
+    arrived!: boolean;
 }

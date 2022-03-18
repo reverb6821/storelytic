@@ -18,57 +18,57 @@ import { Warehouse } from './Warehouse';
 @Entity()
 @Unique(['productId'])
 export class Product {
-    @PrimaryGeneratedColumn()
-      productId!: number;
+  @PrimaryGeneratedColumn()
+    productId!: number;
 
-    @Column()
-    @CreateDateColumn()
-      createdAt!: Date;
+  @Column()
+  @CreateDateColumn()
+    createdAt!: Date;
 
-    @Column()
-    @Length(4, 20)
-      title!: string;
+  @Column()
+  @Length(4, 20)
+    title!: string;
 
-    @Column()
-    @Length(4, 20)
-      description!: string;
+  @Column()
+  @Length(4, 20)
+    description!: string;
 
-    @Column()
-    @Length(1, 20)
-      qty!: number;
+  @Column()
+  @Length(1, 20)
+    qty!: number;
 
-    @Column({ type: 'longblob' })
-      image!: Buffer;
+  @Column({ type: 'longblob', nullable: true })
+    image!: Buffer;
 
-    @Column()
-    @Length(1, 20)
-      serialnumber!: number;
+  @Column()
+  @Length(1, 20)
+    serialnumber!: number;
 
-    @Column()
-    @CreateDateColumn()
-      entrydate!: Date;
+  @Column()
+  @CreateDateColumn()
+    entrydate!: Date;
 
-    @Column()
-    @CreateDateColumn()
-      exitdate!: Date;
+  @Column()
+  @CreateDateColumn()
+    exitdate!: Date;
 
-    @Column()
-    @UpdateDateColumn()
-      updatedAt!: Date;
+  @Column()
+  @UpdateDateColumn()
+    updatedAt!: Date;
 
-    @ManyToOne((type) => User)
-    @JoinColumn({ name: 'user', referencedColumnName: 'id' })
-      updatedby!: User;
+  @ManyToOne((type) => User)
+  @JoinColumn({ name: 'user', referencedColumnName: 'id' })
+    updatedby!: User;
 
-    @ManyToOne((type) => Shipment)
-    @JoinColumn({ name: 'shipment', referencedColumnName: 'shipmentId' })
-      shipment!: Shipment;
+  @ManyToOne((type) => Shipment)
+  @JoinColumn({ name: 'shipment', referencedColumnName: 'shipmentId' })
+    shipment!: Shipment;
 
-    @ManyToOne((type) => Status)
-    @JoinColumn({ name: 'status', referencedColumnName: 'statusId' })
-      status!: Status;
+  @ManyToOne((type) => Status)
+  @JoinColumn({ name: 'status', referencedColumnName: 'statusId' })
+    status!: Status;
 
-    @ManyToOne((type) => Warehouse)
-    @JoinColumn({ name: 'warehouse', referencedColumnName: 'warehouseId' })
-      warehouse!: Warehouse;
+  @ManyToOne((type) => Warehouse)
+  @JoinColumn({ name: 'warehouse', referencedColumnName: 'warehouseId' })
+    warehouse!: Warehouse;
 }

@@ -31,9 +31,7 @@ class CompanyController {
   static newCompany = async (req: any, res: Response) => {
     const companyRepository = getRepository(Company);
 
-    const {
-      title, description, note,
-    } = req.body;
+    const { title, description, note } = req.body;
     const { buffer } = req.file;
 
     const company = new Company();
@@ -55,9 +53,7 @@ class CompanyController {
 
   static editCompany = async (req: Request, res: Response) => {
     const { companyId } = req.params;
-    const {
-      title, description, logo, note,
-    } = req.body;
+    const { title, description, logo, note } = req.body;
     const companyRepository = getRepository(Company);
     let company;
 

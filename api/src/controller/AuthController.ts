@@ -21,6 +21,7 @@ class AuthController {
     try {
       const user = await userRepository.findOneOrFail({ where: { email } });
 
+      // ? Check if encrypted password match
       if (!user.checkIfUnencryptedPasswordIsValid(password)) {
         Logger.error(res.status(401).send());
         return;
@@ -38,8 +39,6 @@ class AuthController {
     } catch (error) {
       Logger.error(res.status(401).send());
     }
-
-    // ? Check if encrypted password match
   };
 
   static changePassword = async (req: Request, res: Response) => {

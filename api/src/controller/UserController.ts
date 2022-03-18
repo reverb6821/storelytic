@@ -7,7 +7,7 @@ import { User } from '../entity/User';
 
 class UserController {
   static listAll = async (req: Request, res: Response) => {
-  // Get users from database
+    // Get users from database
     const userRepository = getRepository(User);
     const users = await userRepository.find({
       select: ['id', 'email', 'role'], // We dont want to send the passwords on response
@@ -18,7 +18,7 @@ class UserController {
   };
 
   static getOneById = async (req: Request, res: Response) => {
-  // Get the ID from the url
+    // Get the ID from the url
     const { id } = req.params;
 
     // Get the user from database
@@ -34,7 +34,7 @@ class UserController {
   };
 
   static newUser = async (req: Request, res: Response) => {
-  // Get parameters from the body
+    // Get parameters from the body
     const { email, password, role } = req.body;
     const user = new User();
     user.email = email;
@@ -65,7 +65,7 @@ class UserController {
   };
 
   static editUser = async (req: Request, res: Response) => {
-  // Get the ID from the url
+    // Get the ID from the url
     const { id } = req.params;
 
     // Get values from the body
@@ -77,7 +77,7 @@ class UserController {
     try {
       user = await userRepository.findOneOrFail(id);
     } catch (error) {
-    // If not found, send a 404 response
+      // If not found, send a 404 response
       Logger.error(res.status(404).send('User not found'));
       return;
     }
@@ -103,7 +103,7 @@ class UserController {
   };
 
   static deleteUser = async (req: Request, res: Response) => {
-  // Get the ID from the url
+    // Get the ID from the url
     const { id } = req.params;
 
     const userRepository = getRepository(User);
