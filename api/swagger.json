@@ -139,7 +139,7 @@
         ]
       }
     },
-    "/v2/api-server/users:id([0-9]+)": {
+    "/v2/api-server/users/:id": {
       "get": {
         "tags": ["Users"],
         "description": "Find User by ID",
@@ -287,7 +287,7 @@
         ]
       }
     },
-    "/v2/api-server/companies:id([0-9]+)": {
+    "/v2/api-server/companies/:id": {
       "get": {
         "tags": ["Companies"],
         "description": "Find Company by ID",
@@ -435,7 +435,7 @@
         ]
       }
     },
-    "/v2/api-server/warehouses:id([0-9]+)": {
+    "/v2/api-server/warehouses/:id": {
       "get": {
         "tags": ["Warehouses"],
         "description": "Find Warehouse by ID",
@@ -583,7 +583,7 @@
         ]
       }
     },
-    "/v2/api-server/products:id([0-9]+)": {
+    "/v2/api-server/products/:id": {
       "get": {
         "tags": ["Products"],
         "description": "Find Product by ID",
