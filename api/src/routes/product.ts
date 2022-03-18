@@ -13,7 +13,7 @@ productRouter.get(
 );
 
 productRouter.get(
-  '/products:id([0-9]+)',
+  '/products/:id',
   [checkJwt, checkRole(['ADMIN', 'USER'])],
   ProductController.getOneById,
 );
@@ -25,13 +25,13 @@ productRouter.post(
 );
 
 productRouter.patch(
-  '/products:id([0-9]+)',
+  '/products/:id',
   [checkJwt, checkRole(['ADMIN', 'USER'])],
   ProductController.editProduct,
 );
 
 productRouter.delete(
-  '/products:id([0-9]+)',
+  '/products/:id',
   [checkJwt, checkRole(['ADMIN', 'USER'])],
   ProductController.deleteProduct,
 );

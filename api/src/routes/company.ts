@@ -13,7 +13,7 @@ companyRouter.get(
 );
 
 companyRouter.get(
-  '/companies:id([0-9]+)',
+  '/companies/:id',
   [checkJwt, checkRole(['ADMIN', 'USER'])],
   CompanyController.getOneById,
 );
@@ -25,13 +25,13 @@ companyRouter.post(
 );
 
 companyRouter.patch(
-  '/companies:id([0-9]+)',
+  '/companies/:id',
   [checkJwt, checkRole(['ADMIN'])],
   CompanyController.editCompany,
 );
 
 companyRouter.delete(
-  '/companies:id([0-9]+)',
+  '/companies/:id',
   [checkJwt, checkRole(['ADMIN'])],
   CompanyController.deleteCompany,
 );

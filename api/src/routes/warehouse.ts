@@ -13,7 +13,7 @@ warehouseRouter.get(
 );
 
 warehouseRouter.get(
-  '/warehouses:id([0-9]+)',
+  '/warehouses/:id',
   [checkJwt, checkRole(['ADMIN', 'USER'])],
   WarehouseController.getOneById,
 );
@@ -25,13 +25,13 @@ warehouseRouter.post(
 );
 
 warehouseRouter.patch(
-  '/warehouses:id([0-9]+)',
+  '/warehouses/:id',
   [checkJwt, checkRole(['ADMIN'])],
   WarehouseController.editWarehouse,
 );
 
 warehouseRouter.delete(
-  '/warehouses:id([0-9]+)',
+  '/warehouses/:id',
   [checkJwt, checkRole(['ADMIN'])],
   WarehouseController.deleteWarehouse,
 );
