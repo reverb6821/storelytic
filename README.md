@@ -1,11 +1,10 @@
 # What is Storelytic?
-**Storelytic is a PWA builded on a top of Express.JS as server and React.js as front end to manage warehouse and inventory.**
+**Storelytic is a PWA builded on a top of Express.JS as server and Angular as front end to manage warehouse and inventory.**
 
 ## Functionality:
 - CRUD operation on Product
 - CRUD operation on Warehouse
 - Manage expedition
-- 3 level of users (admin, mod and user)
 
 ### Project Structure
 ## Main
@@ -31,22 +30,6 @@
 └── package.json                         # API package
 ```
 
-## Client's Root
-```
-.
-├── public                                # Root folder that gets served up as our react app.
-├── src                                   # React root folder
-│   ├── assets                            # Custom style & fonts
-│   ├── components                        # Component's creation
-│   ├── pages                             # All pages are mounted here
-│   └── services                          # Services for the app
-├── App.js                                # Basic React Components 
-├── index.js                              # This files renders our component and registers service workers
-├── App.scss                              # Contains styles of our react component 
-├── serviceWorker.js                      # Service worker for pre-caching the scripts files of our react app thereby improving performance. 
-└── reportWebVitals.js                    # Where endpoints are stored
-
-```
 
 ## Built With
 ### Back End:
@@ -59,12 +42,9 @@
 * [jsonwebtoken](https://github.com/auth0/node-jsonwebtoken) - JsonWebToken implementation for node.js.
 * [typeorm](https://typeorm.io/#/) - TypeORM is an ORM Its goal is to always support the latest JavaScript features and provide additional features that help you to develop any kind of application that uses databases.
 * [bcryptjs](https://www.npmjs.com/package/bcryptjs) - Optimized bcrypt in JavaScript with zero dependencies.
-### Front End
-* [React.js](https://reactjs.org/) - A JavaScript library for building user interfaces.
-* [ant design](https://ant.design/docs/react/introduce) - A React UI Library that follow the Ant Design concept.
-* [styled components](https://styled-components.com/) - Use the best bits of ES6 and CSS to style your apps without stress.
-* [styled icons](https://styled-icons.dev/?s=pack) - Icons from styled components.
-* [axios](https://github.com/axios/axios) - Promise based HTTP client for the browser and node.js.
+* [multer](https://github.com/expressjs/multer) - nodejs middleware for file upload.
+* [swagger](https://swagger.io/) - Tool for API development.
+
 
 ## Endpoint:
 ### Authentication Endpoints
