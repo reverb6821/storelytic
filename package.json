@@ -8,12 +8,12 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "webapp:server:install": "cd ./api && yarn install",
-    "webapp:server:dev": "cd ./api && yarn run backend:serve",
-    "webapp:server:build": "cd ./api && yarn run backend:prod && cd .. && node ./build/server.js",
-    "webapp:server:build:prod": "cd ./api && yarn run backend:build:prod",
-    "db:schema:sync": "cd ./api && yarn run typeorm schema:sync",
-    "db:migration": "cd ./api && yarn run migration:run"
+    "webapp:server:install": "cd ./api && npm install",
+    "webapp:server:dev": "cd ./api && npm run backend:serve",
+    "webapp:server:build": "cd ./api && npm run backend:prod && cd .. && node ./build/server.js",
+    "webapp:server:build:prod": "cd ./api && npm run backend:build:prod",
+    "db:schema:sync": "cd ./api && npm run typeorm schema:sync",
+    "db:migration": "cd ./api && npm run migration:run"
   },
   "husky": {
     "hooks": {
@@ -49,11 +49,11 @@
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": [
-      "yarn lint:eslint:fix && yarn prettify",
+      "npm lint:eslint:fix && npm prettify",
       "git add --force"
     ],
     "*.{ts,tsx,js,jsx,json}": [
-      "yarn lint:eslint:fix && yarn prettify",
+      "npm lint:eslint:fix && npm prettify",
       "git add --force"
     ]
   },

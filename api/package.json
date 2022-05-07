@@ -7,13 +7,13 @@
   "license": "MIT",
   "scripts": {
     "backend:serve": "ts-node-dev --respawn --pretty --transpile-only server",
-    "backend:prod": "yarn run lint:eslint:fix && tsc ",
-    "backend:build:prod": "yarn run lint:eslint:fix && tsc",
+    "backend:prod": "npm run lint:eslint:fix && tsc ",
+    "backend:build:prod": "npm run lint:eslint:fix && tsc",
     "migration:run": "ts-node ./node_modules/typeorm/cli.js migration:run",
     "lint:eslint": "eslint . --ext .ts,.js,.tsx,.jsx",
     "lint:eslint:fix": "eslint . --ext .ts,.js,.tsx,.jsx --fix",
     "prettify": "prettier --write **/*.{ts,tsx,js,jsx,json}",
-    "lint:prettify:serve": "yarn run lint:eslint:fix && yarn run prettify",
+    "lint:prettify:serve": "npm run lint:eslint:fix && npm run prettify",
     "lint-staged": "lint-staged"
   },
   "devDependencies": {
