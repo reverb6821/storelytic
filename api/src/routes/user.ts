@@ -8,7 +8,7 @@ const userRouter = Router();
 // Get all users
 userRouter.get(
   '/users',
-  [checkJwt, checkRole(['ADMIN', 'USER'])],
+  [checkJwt, checkRole([1, 2])],
   UserController.listAll,
 );
 
