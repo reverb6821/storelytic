@@ -26,3 +26,4 @@ npm-error.log*
 api/ormconfig.json
 api/ormconfig.json
 api/ormconfig.json
+api/.env
