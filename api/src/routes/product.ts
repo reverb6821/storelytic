@@ -8,31 +8,31 @@ const productRouter = Router();
 
 productRouter.get(
   '/products',
-  [checkJwt, checkRole(['ADMIN', 'USER'])],
+  [checkJwt, checkRole([1, 2])],
   ProductController.listAll,
 );
 
 productRouter.get(
   '/products/:id',
-  [checkJwt, checkRole(['ADMIN', 'USER'])],
+  [checkJwt, checkRole([1, 2])],
   ProductController.getOneById,
 );
 
 productRouter.post(
   '/products',
-  [checkJwt, checkRole(['ADMIN', 'USER']), uploadImage.single('avatar')],
+  [checkJwt, checkRole([1, 2]), uploadImage.single('avatar')],
   ProductController.newProduct,
 );
 
 productRouter.patch(
   '/products/:id',
-  [checkJwt, checkRole(['ADMIN', 'USER'])],
+  [checkJwt, checkRole([1, 2])],
   ProductController.editProduct,
 );
 
 productRouter.delete(
   '/products/:id',
-  [checkJwt, checkRole(['ADMIN', 'USER'])],
+  [checkJwt, checkRole([1, 2])],
   ProductController.deleteProduct,
 );
 

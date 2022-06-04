@@ -8,31 +8,31 @@ const companyRouter = Router();
 
 companyRouter.get(
   '/companies',
-  [checkJwt, checkRole(['ADMIN', 'USER'])],
+  [checkJwt, checkRole([1, 2])],
   CompanyController.listAll,
 );
 
 companyRouter.get(
   '/companies/:id',
-  [checkJwt, checkRole(['ADMIN', 'USER'])],
+  [checkJwt, checkRole([1, 2])],
   CompanyController.getOneById,
 );
 
 companyRouter.post(
   '/companies',
-  [checkJwt, checkRole(['ADMIN']), uploadImage.single('avatar')],
+  [checkJwt, checkRole([1]), uploadImage.single('avatar')],
   CompanyController.newCompany,
 );
 
 companyRouter.patch(
   '/companies/:id',
-  [checkJwt, checkRole(['ADMIN'])],
+  [checkJwt, checkRole([1])],
   CompanyController.editCompany,
 );
 
 companyRouter.delete(
   '/companies/:id',
-  [checkJwt, checkRole(['ADMIN'])],
+  [checkJwt, checkRole([1])],
   CompanyController.deleteCompany,
 );
 

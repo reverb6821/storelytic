@@ -8,31 +8,31 @@ const warehouseRouter = Router();
 
 warehouseRouter.get(
   '/warehouses',
-  [checkJwt, checkRole(['ADMIN', 'USER'])],
+  [checkJwt, checkRole([1, 2])],
   WarehouseController.listAll,
 );
 
 warehouseRouter.get(
   '/warehouses/:id',
-  [checkJwt, checkRole(['ADMIN', 'USER'])],
+  [checkJwt, checkRole([1, 2])],
   WarehouseController.getOneById,
 );
 
 warehouseRouter.post(
   '/warehouses',
-  [checkJwt, checkRole(['ADMIN'])],
+  [checkJwt, checkRole([1])],
   WarehouseController.newWarehouse,
 );
 
 warehouseRouter.patch(
   '/warehouses/:id',
-  [checkJwt, checkRole(['ADMIN'])],
+  [checkJwt, checkRole([1])],
   WarehouseController.editWarehouse,
 );
 
 warehouseRouter.delete(
   '/warehouses/:id',
-  [checkJwt, checkRole(['ADMIN'])],
+  [checkJwt, checkRole([1])],
   WarehouseController.deleteWarehouse,
 );
 

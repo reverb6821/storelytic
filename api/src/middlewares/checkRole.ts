@@ -9,12 +9,10 @@ export const checkRole = (roles: Array<number>) => async (req: Request, res: Res
 
   // Get user role from the database
   const userRepository = getRepository(User);
-  let user: User;
-
   try {
-    user = await userRepository.findOneOrFail(id);
+    const user = await userRepository.findOneOrFail(id);
     // Check if array of authorized roles includes the user's role
-    if (roles.indexOf(user.role.roleId) > -1) next();
+    if (roles.includes(user.role)) next();
     else res.status(401).send();
   } catch (id) {
     res.status(401).send();
