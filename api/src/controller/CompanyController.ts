@@ -53,7 +53,9 @@ class CompanyController {
 
   static editCompany = async (req: Request, res: Response) => {
     const { companyId } = req.params;
-    const { title, description, logo, note } = req.body;
+    const {
+      title, description, logo, note,
+    } = req.body;
     const companyRepository = getRepository(Company);
     let company;
 

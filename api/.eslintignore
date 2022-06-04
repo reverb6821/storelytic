@@ -1,4 +1,4 @@
 node_modules
-.eslintrc.js
+./.eslintrc.js
 ormconfig.js
 tsconfig.json
