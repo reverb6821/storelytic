@@ -1,0 +1,19 @@
+{
+  "name": "storelytic",
+  "version": "1.0.0",
+  "description": "storelytic app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reverb6821/storelytic.git"
+  },
+  "author": "Giuseppe Gigliotti",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/reverb6821/storelytic/issues"
+  },
+  "homepage": "https://github.com/reverb6821/storelytic#readme"
+}
