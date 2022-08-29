@@ -1,6 +1,7 @@
 const db = require("../models");
 const Product = db.product;
 const Op = db.Sequelize.Op;
+
 // Create and Save a new Product
 exports.create = (req, res) => {
    // Validate request
@@ -10,11 +11,12 @@ exports.create = (req, res) => {
     });
     return;
   }
+
   // Create a Product
   const product = {
     name: req.body.name,
     description: req.body.description,
-    published: req.body.published ? req.body.published : false
+    shipped: req.body.shipped ? req.body.shipped : false
   };
   // Save Product in the database
   Product.create(product)
