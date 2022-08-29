@@ -6,6 +6,9 @@ module.exports = (sequelize, Sequelize) => {
       description: {
         type: Sequelize.STRING
       },
+      img: {
+        type: Sequelize.BLOB('long')
+      },
       shipped: {
         type: Sequelize.BOOLEAN
       }
