@@ -3,8 +3,8 @@ require('dotenv').config()
 const express = require('express');
 const app = express();
 const cors = require("cors");
-const morgan = require('morgan');
-const logger = require('./config/winston');
+const morganMiddleware = require('./src/middleware/morgan')
+const Logger = require('./config/winston');
 const port = process.env.PORT
 const db = require("./src/models");
 
@@ -17,46 +17,41 @@ app.use(cors(corsOptions));
 
 //* parse requests of content-type - application/json
 app.use(express.json());
+
+//* use morgan
+app.use(morganMiddleware);
+
 //* parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
+
+//* logger
+app.use('/logger', (_, res) => {
+  Logger.error('ERROR : ');
+  Logger.warn('WARNING : ');
+  Logger.info('INFO : ');
+  Logger.http('HTTP LOG : ');
+  Logger.debug('DEBUG : ');
+});
+
 //* simple route
 app.get("/", (req, res) => {
   res.json({ message: "Welcome toStorelytic." });
 });
 
-//? logger
+//* app routes
+require('./src/routes/authRoutes')(app);
+require('./src/routes/userRoutes')(app);
+require('./src/routes/productRoutes')(app);
+
 app.get('/', function(req, res) {
     throw new Error('error thrown navigating to');
 });
 
-// test
-const Role = db.role;
-
-db.sequelize.sync({force: true}).then(() => {
-  console.log('Drop and Resync Db');
-  initial();
-});
-
-function initial() {
-  Role.create({
-    id: 1,
-    name: "user"
-  });
- 
-  Role.create({
-    id: 2,
-    name: "moderator"
-  });
- 
-  Role.create({
-    id: 3,
-    name: "admin"
-  });
-}
+db.sequelize.sync();
 
 app.use(function(err, req, res, next) {
-  logger.error(`${req.method} - ${err.message}  - ${req.originalUrl} - ${req.ip}`);
+  Logger.error(`${req.method} - ${err.message}  - ${req.originalUrl} - ${req.ip}`);
   next(err)
 })  
 
-app.listen(port, () => console.log(`listening at port ${port}`))
+app.listen(port, () =>  Logger.info(`listening at port ${port}`))
