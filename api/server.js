@@ -10,7 +10,7 @@ const db = require("./src/models");
 
 //? cors
 var corsOptions = {
-    origin: "http://localhost:5001"
+    origin: process.env.PROXY
   }; 
 
 app.use(cors(corsOptions));
