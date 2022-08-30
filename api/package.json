@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "webservice for storelytic",
   "main": "server",
+  "proxy": 8080,
   "scripts": {
-    "dev:start": "nodemon server.js",
+    "start": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Giuseppe Gigliotti",

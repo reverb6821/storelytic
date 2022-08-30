@@ -10,7 +10,7 @@ const db = require("./src/models");
 
 //? cors
 var corsOptions = {
-    origin: process.env.PROXY
+    origin: 8080
   }; 
 
 app.use(cors(corsOptions));
