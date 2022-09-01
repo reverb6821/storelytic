@@ -16,7 +16,7 @@ exports.create = (req, res) => {
   const product = {
     name: req.body.name,
     description: req.body.description,
-    img: req.body.img,
+    // img: req.body.img,
     shipped: req.body.shipped ? req.body.shipped : false
   };
   // Save Product in the database
