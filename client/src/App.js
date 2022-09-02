@@ -1,10 +1,8 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 import Header from './components/Header'
 
-import Home from './views/Home';
 import Login from './views/Login';
 import Register from './views/Register';
 import Profile from './views/Profile';
@@ -15,12 +13,11 @@ import ProductInfoPage from './views/ProductInfoPage';
 
 function App() {
   return (
-    <div className="App">
+    <div className="App bg-gray-50 dark:bg-gray-900">
       <Header/>
-      <div className="container mt-3">
+      <div className="container mx-auto sm:px-4 mt-3 bg-gray-50 dark:bg-gray-900">
           <Routes>
-            <Route exact path="/" element={<Home/>} />
-            <Route exact path="/login" element={<Login/>} />
+            <Route exact path="/" element={<Login/>} />
             <Route exact path="/register" element={<Register/>} />
             <Route exact path="/profile" element={<Profile/>} />
             <Route exact path="/mod" element={<BoardModerator/>} />
