@@ -9,7 +9,7 @@ import Profile from './views/Profile';
 import Product from './views/Product';
 import BoardModerator from './views/BoardModerator';
 import BoardAdmin from './views/BoardAdmin'
-import ProductInfoPage from './views/ProductInfoPage';
+import ProductInfoPage from './views/ProductInfoPage'
 
 function App() {
   return (
@@ -23,7 +23,8 @@ function App() {
             <Route exact path="/mod" element={<BoardModerator/>} />
             <Route exact path="/admin" element={<BoardAdmin/>} />
             <Route exact path="/product" element={<Product/>} />
-            <Route exact path="/product/:id" element={<ProductInfoPage/>} />
+             
+            <Route exact path="/product/:id" element={<ProductInfoPage/>} /> 
           </Routes>
         </div>
     </div>

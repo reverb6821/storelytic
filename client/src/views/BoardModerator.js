@@ -3,8 +3,6 @@ import React, { Component } from "react";
 import UserService from "../services/UserService";
 import EventBus from "../common/eventBus";
 
-import AddProduct from '../components/AddProduct';
-
 export default class BoardModerator extends Component {
   constructor(props) {
     super(props);
@@ -44,7 +42,6 @@ export default class BoardModerator extends Component {
         <header className="jumbotron">
           <h3>{this.state.content}</h3>
         </header>
-        <AddProduct/>
       </div>
     );
   }
