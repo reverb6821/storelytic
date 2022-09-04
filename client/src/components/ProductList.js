@@ -7,7 +7,7 @@ const ProductList = () => {
   const [product, setProduct] = useState([]);
   const [currentProduct, setCurrentProduct] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(-1);
-  const [setMessage] = useState("");
+  // const [setMessage] = useState("");
   // Used to toggle Modal on and off
   const [setShowModal] = useState(false);
 
@@ -32,6 +32,7 @@ const ProductList = () => {
     retrieveProducts();
     setCurrentProduct(null);
     setCurrentIndex(-1);
+    deleteProduct();
   };
 
   const setShippedProduct = (product, index) => {
@@ -54,7 +55,8 @@ const ProductList = () => {
     productService.remove(currentProduct.id)
       .then(response => {
         console.log(response.data);
-        setMessage("The Product was deleted successfully!");
+        refreshList();
+        // setMessage("The Product was deleted successfully!");
       })
       .catch(e => {
         console.log(e);

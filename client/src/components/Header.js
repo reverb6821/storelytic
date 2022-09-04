@@ -46,8 +46,9 @@ export default class Header extends Component {
   }
 
   render() {
-    const { currentUser, showModeratorBoard, showAdminBoard } = this.state;
-
+    // const { currentUser, showModeratorBoard, showAdminBoard } = this.state;
+    const { currentUser}  = this.state
+    
     return (
       <nav className="bg-white  shadow dark:border dark:bg-gray-800 dark:border-gray-700 p-2 mt-0 fixed w-full z-10 top-0">
         <div className="container mx-auto flex flex-wrap items-center">
@@ -61,15 +62,15 @@ export default class Header extends Component {
           </div>
           <div className="flex w-full pt-2 content-center justify-between md:w-1/2 md:justify-end">
             <ul className="list-reset flex justify-between flex-1 md:flex-none items-center">
-              
+
               {currentUser && (
-              <li className="mr-3">
-                <Link to={"/product"} className="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4">
-                  Product
-                </Link>
-              </li>
+                <li className="mr-3">
+                  <Link to={"/product"} className="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4">
+                    Product
+                  </Link>
+                </li>
               )}
-               {showModeratorBoard && (
+              {/* {showModeratorBoard && (
               <li className="mr-3">
                 <Link to={"/mod"} className="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4">
                   Staff Board
@@ -82,31 +83,31 @@ export default class Header extends Component {
                   Admin Board
                 </Link>
               </li>
-              )}
+              )} */}
 
-{currentUser ? ( 
+              {currentUser ? (
                 <>
-                <li className="mr-3">
-                  <Link to={"/profile"} className="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4">
-                    {currentUser.username}
-                  </Link>
-                </li>
-                <li className="mr-3">
-                    <a href="/"  onClick={this.logOut} className="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4">
+                  <li className="mr-3">
+                    <Link to={"/profile"} className="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4">
+                      {currentUser.username}
+                    </Link>
+                  </li>
+                  <li className="mr-3">
+                    <a href="/" onClick={this.logOut} className="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4">
                       Log Out
                     </a>
                   </li></>
-   ) : (
-    <><li className="mr-3">
-                    <Link to={"/"} className="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4">
-                      Login
+              ) : (
+                <><li className="mr-3">
+                  <Link to={"/"} className="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4">
+                    Login
+                  </Link>
+                </li><li className="mr-3">
+                    <Link to={"/register"} className="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4">
+                      Register
                     </Link>
-                  </li><li className="mr-3">
-                      <Link to={"/register"}  className="inline-block text-gray-600 no-underline hover:text-gray-200 hover:text-underline py-2 px-4">
-                        Register
-                      </Link>
-                    </li></>
-    )}
+                  </li></>
+              )}
             </ul>
           </div>
         </div>

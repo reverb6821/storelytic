@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 import productService from '../services/productService';
 
@@ -134,7 +135,11 @@ const EditProduct = (props) => {
                 >
                   Update
                 </button>
-                <p>{message}</p>
+                <Link to={"/product/"} className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                  Cancel
+                </Link>
+
+                <p className='p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800"'>{message}</p>
               </div>
             ) : (
               <div>
