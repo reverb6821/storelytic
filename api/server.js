@@ -1,57 +1,57 @@
 require('dotenv').config()
 
-const express = require('express');
-const app = express();
-const cors = require("cors");
+const express = require('express')
+const app = express()
+const cors = require('cors')
 const morganMiddleware = require('./src/middleware/morgan')
-const Logger = require('./config/winston');
+const winston = require('./config/winston')
 const port = process.env.PORT
-const db = require("./src/models");
+const db = require('./src/models')
 
-//? cors
-var corsOptions = {
-    origin: 5001
-  }; 
+// ? cors
+const corsOptions = {
+  origin: 5001
+}
 
-app.use(cors(corsOptions));
+app.use(cors(corsOptions))
 
 //* parse requests of content-type - application/json
-app.use(express.json());
+app.use(express.json())
 
 //* use morgan
-app.use(morganMiddleware);
+app.use(morganMiddleware)
 
 //* parse requests of content-type - application/x-www-form-urlencoded
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }))
 
 //* logger
 app.use('/logger', (_, res) => {
-  Logger.error('ERROR : ');
-  Logger.warn('WARNING : ');
-  Logger.info('INFO : ');
-  Logger.http('HTTP LOG : ');
-  Logger.debug('DEBUG : ');
-});
+  winston.error('ERROR : ')
+  winston.warn('WARNING : ')
+  winston.info('INFO : ')
+  winston.http('HTTP LOG : ')
+  winston.debug('DEBUG : ')
+})
 
 //* simple route
-app.get("/", (req, res) => {
-  res.json({ message: "Welcome toStorelytic." });
-});
+app.get('/', (req, res) => {
+  res.json({ message: 'Welcome toStorelytic.' })
+})
 
 //* app routes
-require('./src/routes/authRoutes')(app);
-require('./src/routes/userRoutes')(app);
-require('./src/routes/productRoutes')(app);
+require('./src/routes/authRoutes')(app)
+require('./src/routes/userRoutes')(app)
+require('./src/routes/productRoutes')(app)
 
-app.get('/', function(req, res) {
-    throw new Error('error thrown navigating to');
-});
+app.get('/', function (req, res) {
+  throw new Error('error thrown navigating to')
+})
 
-db.sequelize.sync();
+db.sequelize.sync()
 
-app.use(function(err, req, res, next) {
-  Logger.error(`${req.method} - ${err.message}  - ${req.originalUrl} - ${req.ip}`);
+app.use(function (err, req, res, next) {
+  winston.error(`${req.method} - ${err.message}  - ${req.originalUrl} - ${req.ip}`)
   next(err)
-})  
+})
 
-app.listen(port, () =>  Logger.info(`listening at port ${port}`))
+app.listen(port, () => winston.info(`listening at port ${port}`))
