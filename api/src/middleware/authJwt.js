@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-const config = require('../../config/authConfig')
+const jwtSecret = require('../../config/jwtSecret')
 const db = require('../models')
 const User = db.user
 
@@ -10,7 +10,7 @@ verifyToken = (req, res, next) => {
       message: 'No token provided!'
     })
   }
-  jwt.verify(token, config.secret, (err, decoded) => {
+  jwt.verify(token, jwtSecret.secret, (err, decoded) => {
     if (err) {
       return res.status(401).send({
         message: 'Unauthorized!'
@@ -25,7 +25,7 @@ isAdmin = (req, res, next) => {
   User.findByPk(req.userId).then(user => {
     user.getRoles().then(roles => {
       for (let i = 0; i < roles.length; i++) {
-        if (roles[i].name === 'admin') {
+        if (roles[i].name === 'ADMIN') {
           next()
           return
         }
@@ -41,7 +41,7 @@ isModerator = (req, res, next) => {
   User.findByPk(req.userId).then(user => {
     user.getRoles().then(roles => {
       for (let i = 0; i < roles.length; i++) {
-        if (roles[i].name === 'moderator') {
+        if (roles[i].name === 'STAFF') {
           next()
           return
         }
@@ -57,17 +57,17 @@ isModeratorOrAdmin = (req, res, next) => {
   User.findByPk(req.userId).then(user => {
     user.getRoles().then(roles => {
       for (let i = 0; i < roles.length; i++) {
-        if (roles[i].name === 'moderator') {
+        if (roles[i].name === 'STAFF') {
           next()
           return
         }
-        if (roles[i].name === 'admin') {
+        if (roles[i].name === 'ADMIN') {
           next()
           return
         }
       }
       res.status(403).send({
-        message: 'Require Moderator or Admin Role!'
+        message: 'Require Staff or Admin Role!'
       })
     })
   })

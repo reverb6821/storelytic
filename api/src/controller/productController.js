@@ -1,15 +1,13 @@
 const db = require('../models')
 const Product = db.product
 const Op = db.Sequelize.Op
-const winston = require('../../config/winston')
 
 // Create and Save a new Product
 exports.create = (req, res) => {
   // Validate request
   if (!req.body.name) {
     res.status(400).send({
-      message:
-       winston.error('Content can not be empty!')
+      message: 'Content can not be empty!'
     })
     return
   }
@@ -29,7 +27,7 @@ exports.create = (req, res) => {
     .catch(err => {
       res.status(500).send({
         message:
-          winston.error(`Some error occurred while creating the Product. ${err.message}`)
+          err.message || 'Some error occurred while creating the Product.'
       })
     })
 }
@@ -44,8 +42,7 @@ exports.findAll = (req, res) => {
     .catch(err => {
       res.status(500).send({
         message:
-        winston.error(`Some error occurred while retrieving product. ${err.message}`)
-
+            err.message || 'Some error occurred while retrieving product.'
       })
     })
 }
@@ -58,15 +55,13 @@ exports.findOne = (req, res) => {
         res.send(data)
       } else {
         res.status(404).send({
-          message:
-            winston.error(`Cannot find Product with id=${id}.`)
+          message: `Cannot find Product with id=${id}.`
         })
       }
     })
     .catch(err => {
       res.status(500).send({
-        message:
-          winston.error(`Error retrieving Product with id=${id} - ${err}`)
+        message: `Error retrieving Product with id=${id} | ${err}`
       })
     })
 }
@@ -77,22 +72,19 @@ exports.update = (req, res) => {
     where: { id }
   })
     .then(num => {
-      if (num === 1) {
+      if (num == 1) {
         res.send({
-          message:
-            winston.info('Product was updated successfully.')
+          message: 'Product was updated successfully.'
         })
       } else {
         res.send({
-          message:
-          winston.error(`Cannot update Product with id=${id}. Maybe Product was not found or req.body is empty!`)
+          message: `Cannot update Product with id=${id}. Maybe Product was not found or req.body is empty!`
         })
       }
     })
     .catch(err => {
       res.status(500).send({
-        message:
-          winston.error(`Error updating Product with id=${id}. - ${err}`)
+        message: `Error updating Product with id=${id} | ${err}`
       })
     })
 }
@@ -103,22 +95,19 @@ exports.delete = (req, res) => {
     where: { id }
   })
     .then(num => {
-      if (num === 1) {
+      if (num == 1) {
         res.send({
-          message:
-           winston.info('Product was deleted successfully!')
+          message: 'Product was deleted successfully!'
         })
       } else {
         res.send({
-          message:
-           winston.error(`Cannot delete Product with id=${id}. Maybe Product was not found!`)
+          message: `Cannot delete Product with id=${id}. Maybe Product was not found!`
         })
       }
     })
     .catch(err => {
       res.status(500).send({
-        message:
-          winston.error(`Could not delete Product with id=${id}. - ${err}`)
+        message: `Could not delete Product with id=${id} | ${err}`
       })
     })
 }
@@ -129,15 +118,12 @@ exports.deleteAll = (req, res) => {
     truncate: false
   })
     .then(nums => {
-      res.send({
-        message:
-        winston.info(`${nums} Products were deleted successfully!`)
-      })
+      res.send({ message: `${nums} Products were deleted successfully!` })
     })
     .catch(err => {
       res.status(500).send({
         message:
-          winston.error(`Some error occurred while removing all Products. ${err}`)
+              err.message || 'Some error occurred while removing all Products.'
       })
     })
 }
@@ -150,7 +136,7 @@ exports.findAllShipped = (req, res) => {
     .catch(err => {
       res.status(500).send({
         message:
-          winston.error(`Some error occurred while retrieving products. ${err}`)
+          err.message || 'Some error occurred while retrieving products.'
       })
     })
 }

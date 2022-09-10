@@ -35,7 +35,7 @@ app.use('/logger', (_, res) => {
 
 //* simple route
 app.get('/', (req, res) => {
-  res.json({ message: 'Welcome toStorelytic.' })
+  res.json({ message: 'Welcome to Storelytic.' })
 })
 
 //* app routes

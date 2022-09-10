@@ -1,5 +1,5 @@
 const db = require('../models')
-const config = require('../../config/authConfig')
+const jwtSecret = require('../../config/jwtSecret')
 const User = db.user
 const Role = db.role
 const Op = db.Sequelize.Op
@@ -56,7 +56,7 @@ exports.signin = (req, res) => {
           message: 'Invalid Password!'
         })
       }
-      const token = jwt.sign({ id: user.id }, config.secret, {
+      const token = jwt.sign({ id: user.id }, jwtSecret.secret, {
         expiresIn: 86400 // 24 hours
       })
       const authorities = []

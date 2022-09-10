@@ -1,35 +1,36 @@
 {
-  "name": "storelytic-api",
+  "name": "api",
   "version": "1.0.0",
-  "description": "webservice for storelytic",
-  "main": "server",
-  "proxy": 5000,
+  "description": "",
+  "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "db:migrate": "sequelize db:migrate",
+    "db:migrate:undo": "sequelize db:migrate:undo",
+    "db:seed:all": "sequelize db:seed:all",
     "lint:eslint": "eslint . --ext .ts,.js,.tsx,.jsx",
     "lint:eslint:fix": "eslint . --ext .ts,.js,.tsx,.jsx --fix"
   },
-  "author": "Giuseppe Gigliotti",
-  "license": "MIT",
-  "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "cors": "^2.8.5",
-    "dotenv": "^16.0.1",
-    "express": "^4.18.1",
-    "jsonwebtoken": "^8.5.1",
-    "morgan": "^1.10.0",
-    "mysql2": "^2.3.3",
-    "sequelize": "^6.21.4",
-    "winston": "^3.8.1"
-  },
+  "author": "",
+  "license": "ISC",
   "devDependencies": {
     "eslint": "^8.23.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-n": "^15.2.5",
     "eslint-plugin-promise": "^6.0.1",
-    "nodemon": "^2.0.19",
     "sequelize-cli": "^6.4.1"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.19",
+    "sequelize": "^6.21.6",
+    "sqlite3": "^5.0.11",
+    "winston": "^3.8.2"
   }
 }

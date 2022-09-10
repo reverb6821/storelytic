@@ -1,44 +1,30 @@
 const config = require('../../config/dbConfig')
 const Sequelize = require('sequelize')
 
-const sequelize = new Sequelize(
-  config.DB,
-  config.USER,
-  config.PASSWORD,
-  {
-    host: config.HOST,
-    dialect: config.dialect,
-    operatorsAliases: false,
-    pool: {
-      max: config.pool.max,
-      min: config.pool.min,
-      acquire: config.pool.acquire,
-      idle: config.pool.idle
-    }
-  }
-)
+const sequelize = new Sequelize({
+  dialect: config.dialect,
+  storage: config.storage
+})
 
 const db = {}
 
 db.Sequelize = Sequelize
 db.sequelize = sequelize
 
-db.user = require('./User')(sequelize, Sequelize)
-db.role = require('./Role')(sequelize, Sequelize)
-db.product = require('./Product')(sequelize, Sequelize)
+db.user = require('./user')(sequelize, Sequelize)
+db.roles = require('./roles')(sequelize, Sequelize)
+db.product = require('./products')(sequelize, Sequelize)
 
-db.role.belongsToMany(db.user, {
+db.roles.belongsToMany(db.user, {
   through: 'user_roles',
-  foreignKey: 'role_id',
+  foreignKey: 'roles_id',
   otherKey: 'user_id'
 })
 
-db.user.belongsToMany(db.role, {
+db.user.belongsToMany(db.roles, {
   through: 'user_roles',
   foreignKey: 'user_id',
-  otherKey: 'role_id'
+  otherKey: 'roles_id'
 })
-
-db.ROLES = ['user', 'admin', 'moderator']
 
 module.exports = db

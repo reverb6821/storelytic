@@ -3,33 +3,7 @@
 
 ## Functionality:
 - CRUD operation on Product
-- CRUD operation on Warehouse
-- Manage expedition
-
-### Project Structure
-## Main
-```
-.
-├── api                             # API root file
-├── client                          # React root directory
-├── .gitignore
-└── package.json                    # Core package of the app
-```
-
-## API's Root
-```
-.
-├── lib                                  # library file
-├── migration                            # migration file
-├── src                                  # core file
-│   ├── entity                           # all typeorm entities class
-|   ├── controllers                      # Controllers folder
-|   ├── middlewares                      # middlewares folder
-|   └── routes                           # routes file 
-├── server.ts                            # Entry file
-└── package.json                         # API package
-```
-
+- USER Authority
 
 ## Built With
 ### Back End:
@@ -44,3 +18,14 @@
 * [bcryptjs](https://www.npmjs.com/package/bcryptjs) - Optimized bcrypt in JavaScript with zero dependencies.
 * [multer](https://github.com/expressjs/multer) - nodejs middleware for file upload.
 * [swagger](https://swagger.io/) - Tool for API development.
+
+How to use
+1- run db:migrate
+2- run db:seed:all
+3- on db assign Authority to ADMIN, USER & STAFF on user_roles table
+(ADMIN should have all authorities, staff user & staff authorities, user only user aut)
+
+
+# NEXT
+rework on product (add qty and image)
+add redux toolkit on react
