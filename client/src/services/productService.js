@@ -1,4 +1,4 @@
-import httpCommon from '../common/httpCommon';
+import httpCommon from '../common/http';
 import authHeader from './authHeader';
 
 const getAll = () => {
