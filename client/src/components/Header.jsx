@@ -65,7 +65,7 @@ const Header =()=>{
 
           {showModeratorBoard && (
           <Navbar.Link to={"/mod"}>
-            Staff
+            moderator
           </Navbar.Link>
           )}
 

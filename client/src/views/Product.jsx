@@ -82,7 +82,12 @@ const Product = (props) => {
                     />
                     Storelytic | Product List
                   </div>
-                  <button className='p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none' />
+
+                  <div className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                    <Link to={'/addproduct'}>
+                      ADD
+                    </Link>
+                  </div>
                 </div>
                 <table className='w-full text-sm text-left text-gray-500 dark:text-gray-400'>
                   <thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
@@ -99,8 +104,7 @@ const Product = (props) => {
                     </tr>
                   </thead>
                   <tbody>
-                    {products &&
-                      products.map((product, index) => (
+                    {products && products.map((product, index) => (
                         <tr
                           className={
                             'bg-white border-b dark:bg-gray-800 dark:border-gray-700' +
@@ -142,7 +146,7 @@ const Product = (props) => {
                     Product:
                   </h2>
                   <h1 className='text-gray-900 text-3xl title-font font-medium mb-1'>
-                    {currentProduct.title}
+                    {currentProduct.name}
                   </h1>
 
                   <p className='leading-relaxed'>
@@ -155,7 +159,8 @@ const Product = (props) => {
                     </label>{' '}
                     {currentProduct.shipped ? 'Shipped' : 'Pending'}
                   </div>
-                  {showModeratorItem && (
+
+                 
                     <div className='flex'>
                       <Link
                         to={'/product/' + currentProduct.id}
@@ -192,7 +197,7 @@ const Product = (props) => {
                         </svg>
                       </button>
                     </div>
-                  )}
+                  
                 </>
               ) : (
                 <div>

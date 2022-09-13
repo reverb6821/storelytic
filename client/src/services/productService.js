@@ -1,32 +1,32 @@
-import httpCommon from '../common/http';
+import http from '../common/http';
 import authHeader from './authHeader';
 
 const getAll = () => {
-    return httpCommon.get("/product", { headers: authHeader() });
+    return http.get("/product", { headers: authHeader() });
   };
   
   const get = id => {
-    return httpCommon.get(`/product/${id}`, { headers: authHeader() });
+    return http.get(`/product/${id}`, { headers: authHeader() });
   };
   
   const create = data => {
-    return httpCommon.post("/product", data, { headers: authHeader() });
+    return http.post("/product", data, { headers: authHeader() });
   };
   
   const update = (id, data) => {
-    return httpCommon.put(`/product/${id}`, data, { headers: authHeader() });
+    return http.put(`/product/${id}`, data, { headers: authHeader() });
   };
   
   const remove = id => {
-    return httpCommon.delete(`/product/${id}`, { headers: authHeader() });
+    return http.delete(`/product/${id}`, { headers: authHeader() });
   };
   
   const removeAll = () => {
-    return httpCommon.delete(`/product`, { headers: authHeader() });
+    return http.delete(`/product`, { headers: authHeader() });
   };
   
-  const findByTitle = title => {
-    return httpCommon.get(`/product?title=${title}`, { headers: authHeader() });
+  const findByName = name => {
+    return http.get(`/product?Name=${name}`, { headers: authHeader() });
   };
   
   const productService = {
@@ -36,7 +36,7 @@ const getAll = () => {
     update,
     remove,
     removeAll,
-    findByTitle
+    findByName
   };
   
   export default productService;

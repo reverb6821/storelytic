@@ -3,9 +3,9 @@
 module.exports = {
   async up (queryInterface, Sequelize) {
     return queryInterface.bulkInsert('Users', [{
-      username: 'staff',
-      email: 'staff@storelytic.org',
-      password: '$2a$12$nBL6NHA83CCLp9ViUdsTAuEpUxdRHuZuu4i/K0DsDw/zYiVY6xfBu', // staff
+      username: 'moderator',
+      email: 'moderator@storelytic.org',
+      password: '$2a$12$nBL6NHA83CCLp9ViUdsTAuEpUxdRHuZuu4i/K0DsDw/zYiVY6xfBu', // moderator
       createdAt: new Date(),
       updatedAt: new Date()
     }])

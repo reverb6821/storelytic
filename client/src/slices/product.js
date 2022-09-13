@@ -37,6 +37,15 @@ export const createProduct = createAsyncThunk(
       const res = await ProductService.removeAll();
       return res.data;
     }
+    
+  );
+
+  export const findProductByName = createAsyncThunk(
+    "product/findByName",
+    async ({ name }) => {
+      const res = await ProductService.findByName(name);
+      return res.data;
+    }
   );
 
   const productSlice = createSlice({

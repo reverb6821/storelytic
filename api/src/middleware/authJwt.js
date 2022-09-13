@@ -41,7 +41,7 @@ isModerator = (req, res, next) => {
   User.findByPk(req.userId).then(user => {
     user.getRoles().then(roles => {
       for (let i = 0; i < roles.length; i++) {
-        if (roles[i].name === 'STAFF') {
+        if (roles[i].name === 'MODERATOR') {
           next()
           return
         }
@@ -57,7 +57,7 @@ isModeratorOrAdmin = (req, res, next) => {
   User.findByPk(req.userId).then(user => {
     user.getRoles().then(roles => {
       for (let i = 0; i < roles.length; i++) {
-        if (roles[i].name === 'STAFF') {
+        if (roles[i].name === 'moderator') {
           next()
           return
         }
@@ -67,7 +67,7 @@ isModeratorOrAdmin = (req, res, next) => {
         }
       }
       res.status(403).send({
-        message: 'Require Staff or Admin Role!'
+        message: 'Require moderator or Admin Role!'
       })
     })
   })
