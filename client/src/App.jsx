@@ -10,22 +10,31 @@ import Profile from './views/Profile'
 import Product from './views/Product';
 import AddProduct from './views/AddProduct';
 import UpdateProduct from './views/UpdateProduct';
+import NotFound from './views/NotFound';
 
-function App() {
+function App({ session }) {
+  const isLoggedIn = session && session.getCurrentUser
   return (
     <div className="App">
       <Router>
         <Header/>
         <div className='mx-auto sm:px-4 mt-3'>
+        {!isLoggedIn ? (
+        <Routes>        
+          <Route exact path="/" element={<Login/>} />
+          <Route exact path="/register" element={<Register/>} />
+          <Route path='*' element={<NotFound />} />
+        </Routes>
+        ) : (
           <Routes>
-            <Route exact path="/" element={<Login/>} />
-            <Route exact path="/register" element={<Register/>} />
             <Route exact path="/profile" element={<Profile/>} />
             <Route exact path="/product" element={<Product/>} />
             <Route exact path="/addproduct" element={<AddProduct/>} />
             <Route exact path="/product/:id" element={<UpdateProduct/>} />
+            <Route path='*' element={<NotFound />} />
           </Routes>
-        </div>
+          )}
+        </div> 
         <FooterApp/>
       </Router>
     </div>
