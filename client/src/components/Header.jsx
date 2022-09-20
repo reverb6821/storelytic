@@ -55,13 +55,14 @@ const Header =()=>{
         </Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse>
-
+        {showModeratorBoard && (
           <Navbar.Link
           >
             <Link to={"/product"}>
               Product
             </Link>
           </Navbar.Link>
+  )}
 
           {showModeratorBoard && (
           <Navbar.Link to={"/mod"}>
