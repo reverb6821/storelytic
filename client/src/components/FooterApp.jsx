@@ -10,8 +10,8 @@ const FooterApp =()=>{
       <Footer.Brand
         href="https://flowbite.com"
         src="https://flowbite.com/docs/images/logo.svg"
-        alt="Flowbite Logo"
-        name="Flowbite"
+        alt="Storelytic Logo"
+        name="Storelytic"
       />
       <Footer.LinkGroup>
         <Footer.Link href="#">
@@ -31,7 +31,7 @@ const FooterApp =()=>{
     <Footer.Divider />
     <Footer.Copyright
       href="#"
-      by="Flowbite™"
+      by="Storelytic™"
       year={2022}
     />
   </div>

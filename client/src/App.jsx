@@ -60,49 +60,34 @@ function App() {
           fluid={true}
           rounded={true}
         >
-          <Navbar.Brand href="https://flowbite.com/">
+          <Navbar.Brand>
             <img
               src="https://flowbite.com/docs/images/logo.svg"
               className="mr-3 h-6 sm:h-9"
-              alt="Flowbite Logo"
+              alt="StoreLytic Logo"
             />
             <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-              Flowbite
+              StoreLytic
             </span>
           </Navbar.Brand>
           <Navbar.Toggle />
           <Navbar.Collapse>
+
             {showModeratorBoard && (
               <Navbar.Link
               >
-                <Link >
+                <Link to={'/product'}>
                   Product
                 </Link>
               </Navbar.Link>
             )}
 
-            {showModeratorBoard && (
-              <Navbar.Link to={"/mod"}>
-                moderator
-              </Navbar.Link>
-            )}
-
-            {showAdminBoard && (
-              <Navbar.Link to={"/admin"}>
-                Admin
-              </Navbar.Link>
-            )}
-
-            {currentUser && (
-              <Navbar.Link to={"/user"}>
-                User
-              </Navbar.Link>
-            )}
-
             {currentUser ? (
               <div>
-                <Navbar.Link to={"/profile"}>
-                  {currentUser.username}
+                <Navbar.Link >
+                  <Link to={"/profile"}>
+                    {currentUser.username}
+                  </Link>
                 </Navbar.Link>
                 <Navbar.Link onClick={logOut}>
                   <p className="font-medium text-blue-600  hover:underline dark:text-blue-500">
@@ -117,13 +102,12 @@ function App() {
                   <Link to={"/"}>
                     Sign In
                   </Link>
-
                 </Navbar.Link>
+
                 <Navbar.Link>
                   <Link to={"/register"}>
                     Sign Up
                   </Link>
-
                 </Navbar.Link>
               </div>
             )}
@@ -131,16 +115,16 @@ function App() {
         </Navbar>
 
         <div className='mx-auto sm:px-4 mt-3'>
-
-          <Routes>
+       
+            <Routes>
             {currentUser ? (
               <><Route exact path="/profile" element={<Profile />} /><Route exact path="/product" element={<Product />} /><Route exact path="/addproduct" element={<AddProduct />} /><Route exact path="/product/:id" element={<UpdateProduct />} /><Route path='*' element={<NotFound />} /></>
             ) : (
-              <><Route exact path="*" element={<Login />} /><Route exact path="/register" element={<Register />} /></>
-            )}
+                <><Route exact path="*" element={<Login />} /><Route exact path="/register" element={<Register />} /></>
+              )}
+         
+              </Routes>
 
-
-          </Routes>
         </div>
         <FooterApp />
       </Router>
