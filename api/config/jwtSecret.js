@@ -1,3 +1,3 @@
 module.exports = {
-  secret: 'storelyticsecre'
+  secret: process.env.JWT_SECRET
 }
