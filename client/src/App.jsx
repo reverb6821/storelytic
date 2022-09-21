@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import {TbBuildingWarehouse} from 'react-icons/tb'
+import { TbBuildingWarehouse, TbDoorExit } from 'react-icons/tb'
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom';
 import { logout } from "./slices/auth";
@@ -55,7 +55,7 @@ function App() {
           rounded={true}
         >
           <Navbar.Brand>
-            <TbBuildingWarehouse className="mr-3 h-6 sm:h-9 text-[30px] text-blue-600"/>
+            <TbBuildingWarehouse className="mr-3 h-6 sm:h-9 text-[30px] text-blue-600" />
 
             <span className="self-center whitespace-nowrap text-xl font-semibold  ">
               StoreLytic
@@ -65,44 +65,44 @@ function App() {
           <Navbar.Collapse>
 
             {showModeratorBoard && (
-             
-                <Link to={'/'}>
-                  Product
-                </Link>
+              <Navbar.Link
+                href="/"
+                active={true}
+              >
+                Home
+              </Navbar.Link>
+
             )}
 
             {currentUser ? (
-              <div>
-
-                  <Link to={"/profile"}>
-                    {currentUser.username}
-                  </Link>
-
-                <Navbar.Link onClick={logOut}>
-                  <p className="font-medium text-blue-600  hover:underline dark:text-blue-500">
-                    Sign Out
-                  </p>
+              <>
+                <Navbar.Link href="/profile">
+                  {currentUser.username}
                 </Navbar.Link>
+                <Navbar.Link onClick={logOut}>
+                  <TbDoorExit className="align-center text-blue-600 text-[15px]" />
+                </Navbar.Link>
+              </>
 
-              </div>
 
             ) : (
-              <div>
-                  <Link to={"/"}>
-                    Sign In
-                  </Link>
 
-                  <Link to={"/register"}>
-                    Sign Up
-                  </Link>
-              </div>
+              <>
+                <Navbar.Link href="/profile">
+                  Sign In
+                </Navbar.Link>
+                <Navbar.Link href={"/register"}>
+                  Sign Up
+                </Navbar.Link>
+              </>
+
             )}
           </Navbar.Collapse>
         </Navbar>
 
         <div className='mx-auto sm:px-4 mt-3'>
-       
-            <Routes>
+
+          <Routes>
             {currentUser ? (
               <>
                 <Route exact path="/profile" element={<Profile />} />
@@ -112,12 +112,12 @@ function App() {
                 <Route path='*' element={<NotFound />} />
               </>
             ) : (
-                <>
-                  <Route exact path="*" element={<Login />} />
-                  <Route exact path="/register" element={<Register />} />
-                </>
-              )}
-              </Routes>
+              <>
+                <Route exact path="*" element={<Login />} />
+                <Route exact path="/register" element={<Register />} />
+              </>
+            )}
+          </Routes>
         </div>
         <FooterApp />
       </Router>
