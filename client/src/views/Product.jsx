@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import {TbBuildingWarehouse} from 'react-icons/tb'
+import {AiOutlineDelete, AiOutlineEdit} from 'react-icons/ai'
 
 import {
   retrieveProducts,
@@ -75,21 +76,21 @@ const Product = (props) => {
             <div className='lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded'>
               <div className='overflow-x-auto relative'>
                 <div className='flex items-start justify-between p-5 rounded-t'>
-                  <div className='flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white'>
+                  <div className='flex items-center mb-6 text-2xl font-semibold text-gray-900  '>
 
                     <TbBuildingWarehouse className="w-8 h-8 mr-2 text-[30px] text-blue-600"/>
                     
                     Storelytic | Product List
                   </div>
 
-                  <div className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+                  <div className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none">
                     <Link to={'/addproduct'}>
                       ADD
                     </Link>
                   </div>
                 </div>
-                <table className='w-full text-sm text-left text-gray-500 dark:text-gray-400'>
-                  <thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
+                <table className='w-full text-sm text-left text-gray-500  '>
+                  <thead className='text-xs text-gray-700 uppercase bg-gray-50    '>
                     <tr>
                       <th scope='col' className='py-3 px-6'>
                         #
@@ -106,7 +107,7 @@ const Product = (props) => {
                     {products && products.map((product, index) => (
                         <tr
                           className={
-                            'bg-white border-b dark:bg-gray-800 dark:border-gray-700' +
+                            'bg-white border-b  ' +
                             (index === currentIndex ? 'bg-red-500' : '')
                           }
                           onClick={() => setActiveProduct(product, index)}
@@ -114,12 +115,12 @@ const Product = (props) => {
                         >
                           <th
                             scope='row'
-                            className='py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white'
+                            className='py-4 px-6 font-medium text-gray-900 whitespace-nowrap  '
                           >
                             {product.id}
                           </th>
                           <td className='py-4 px-6'>{product.name}</td>
-                          <td className='py-4 px-6 text-gray-900 dark:text-white'>
+                          <td className='py-4 px-6 text-gray-900  '>
                             {product.shipped ? 'Shipped' : 'Pending'}
                           </td>
                         </tr>
@@ -131,7 +132,7 @@ const Product = (props) => {
                   <button
                     type='button'
                     onClick={removeAllProducts}
-                    className='focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900'
+                    className='focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2'
                   >
                     Remove All
                   </button>
@@ -163,37 +164,17 @@ const Product = (props) => {
                     <div className='flex'>
                       <Link
                         to={'/product/' + currentProduct.id}
-                        className='focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900'
+                        className='rounded-full w-10 h-10 bg-yellow-500 p-0 border-0 inline-flex items-center justify-center text-yellow-800 ml-4'
                       >
-                        Edit
+                        <AiOutlineEdit className='w-5 h-5 text-lg text-white' />
                       </Link>
-
-                      {/* <EditProductModal 
-                      isOpen={true}
-                      value={currentProduct.id}
-                      className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
-                    /> */}
 
                       <button
                         onClick={removeProduct}
                         className='rounded-full w-10 h-10 bg-red-500 p-0 border-0 inline-flex items-center justify-center text-red-800 ml-4'
                       >
-                        <svg
-                          xmlns='http://www.w3.org/2000/svg'
-                          className='icon icon-tabler icon-tabler-eraser w-5 h-5'
-                          width='44'
-                          height='44'
-                          viewBox='0 0 24 24'
-                          strokeWidth='2'
-                          stroke='currentColor'
-                          fill='currentColor'
-                          strokeLinecap='round'
-                          strokeLinejoin='round'
-                        >
-                          <path stroke='none' d='M0 0h24v24H0z' fill='none' />
-                          <path d='M19 19h-11l-4 -4a1 1 0 0 1 0 -1.41l10 -10a1 1 0 0 1 1.41 0l5 5a1 1 0 0 1 0 1.41l-9 9' />
-                          <line x1='18' y1='12.3' x2='11.7' y2='6' />
-                        </svg>
+                        <AiOutlineDelete className='w-5 h-5 text-lg text-white' />
+                      
                       </button>
                     </div>
                   

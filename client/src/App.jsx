@@ -57,7 +57,7 @@ function App() {
           <Navbar.Brand>
             <TbBuildingWarehouse className="mr-3 h-6 sm:h-9 text-[30px] text-blue-600"/>
 
-            <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
+            <span className="self-center whitespace-nowrap text-xl font-semibold  ">
               StoreLytic
             </span>
           </Navbar.Brand>
