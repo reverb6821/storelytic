@@ -73,7 +73,7 @@ const Product = (props) => {
       <section className='text-gray-600 body-font overflow-hidden'>
         <div className='container px-5 py-24 mx-auto'>
           <div className='lg:w-4/5 mx-auto flex flex-wrap'>
-            <div className='lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded'>
+            <div className='lg:w-1/2 w-full'>
               <div className='overflow-x-auto relative'>
                 <div className='flex items-start justify-between p-5 rounded-t'>
                   <div className='flex items-center mb-6 text-2xl font-semibold text-gray-900  '>
@@ -108,7 +108,7 @@ const Product = (props) => {
                         <tr
                           className={
                             'bg-white border-b  ' +
-                            (index === currentIndex ? 'bg-red-500' : '')
+                            (index === currentIndex ? 'bg-blue-300' : '')
                           }
                           onClick={() => setActiveProduct(product, index)}
                           key={index}
@@ -137,6 +137,7 @@ const Product = (props) => {
                     Remove All
                   </button>
                 </div>
+
               </div>
             </div>
             <div className='lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0'>
