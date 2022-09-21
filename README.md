@@ -22,8 +22,8 @@
 How to use
 1- run db:migrate
 2- run db:seed:all
-3- on db assign Authority to ADMIN, USER & STAFF on user_roles table
-(ADMIN should have all authorities, staff user & staff authorities, user only user aut)
+3- on db assign Authority to ADMIN, USER & moderator on user_roles table
+(ADMIN should have all authorities, moderator user & moderator authorities, user only user aut)
 
 
 # NEXT
