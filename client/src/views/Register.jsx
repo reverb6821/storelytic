@@ -85,7 +85,7 @@ const Register = () => {
                                                 <ErrorMessage
                                                     name="username"
                                                     component="div"
-                                                    className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" />
+                                                    className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg     " />
                                             </div>
                                         </div>
                                         <div>
@@ -97,7 +97,7 @@ const Register = () => {
                                                 <ErrorMessage
                                                     name="email"
                                                     component="div"
-                                                    className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" />
+                                                    className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg     " />
                                             </div>
                                         </div>
                                         <div>
@@ -109,7 +109,7 @@ const Register = () => {
                                                 <ErrorMessage
                                                     name="password"
                                                     component="div"
-                                                    className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" />
+                                                    className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg     " />
                                             </div>
                                         </div>
                                         <div>
@@ -124,7 +124,7 @@ const Register = () => {
                     </div>
                     {message && (
                         <div>
-                            <div className={successful ? "p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800" : "p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"} role="alert">
+                            <div className={successful ? "p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800" : "p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg     "} role="alert">
                                 {message}
                             </div>
                         </div>

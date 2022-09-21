@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import {  useParams, Link } from 'react-router-dom';
-import {TbBuildingWarehouse} from 'react-icons/tb'
+import { useParams, Link } from 'react-router-dom';
+import { TbBuildingWarehouse } from 'react-icons/tb'
 
 import { updateProduct } from '../slices/product';
 import productService from '../services/productService';
@@ -20,8 +20,8 @@ const UpdateProduct = (props) => {
   const { id } = useParams();
   const dispatch = useDispatch();
 
-  const getProduct = async() => {
-   await productService.get(id)
+  const getProduct = async () => {
+    await productService.get(id)
       .then(response => {
         setCurrentProduct(response.data);
       })
@@ -35,9 +35,9 @@ const UpdateProduct = (props) => {
   // }, [props.match.params.id]);
 
   useEffect(() => {
-    
-      getProduct(id);
-}, [id]);
+
+    getProduct(id);
+  }, [id]);
 
   const handleInputChange = event => {
     const { name, value } = event.target;
@@ -80,85 +80,95 @@ const UpdateProduct = (props) => {
     <section >
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <div className="flex items-center mb-6 text-2xl font-semibold text-gray-900  ">
-        <TbBuildingWarehouse className="w-8 h-8 mr-2 text-[30px] text-blue-600"/>
+          <TbBuildingWarehouse className="w-8 h-8 mr-2 text-[30px] text-blue-600" />
           Storelytic
         </div>
         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0  ">
-          {currentProduct ? (
+          <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+            <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl  ">
+              Add Product
+            </h1>
+            {currentProduct ? (
 
-            <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-              <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl  ">
-                Update Product
-              </h1>
-              <form className="space-y-4 md:space-y-6">
+              <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+                <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl  ">
+                  Update Product
+                </h1>
+                <form className="space-y-4 md:space-y-6">
+
+                  <div>
+                    <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900  ">Product Name</label>
+                    <input type="text" name="name" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5   dark:border-gray-600 dark:placeholder-gray-400   dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="{currentProduct.name}"
+                      required=""
+                      value={currentProduct.name}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="description" className="block mb-2 text-sm font-medium text-gray-900  ">Password</label>
+                    <input type="description"
+                      name="description"
+                      id="description"
+                      placeholder="{currentProduct.description} "
+                      className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5   dark:border-gray-600 dark:placeholder-gray-400   dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      required=""
+
+                      value={currentProduct.description}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+
+                  <div>
+                    <label>
+                      <strong className='text-gray-900  '>Status:</strong>
+                    </label>
+                    <p className='text-gray-900  '>{currentProduct.shipped ? "Shipped" : "Pending"}</p>
+
+                  </div>
+                </form>
+
+                {currentProduct.shipped ? (
+                  <button
+                    className="ml-4 text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-1 bg-green-200 text-green-700 rounded-full"
+                    onClick={() => updateStatus(false)}
+                  >
+                    Shipped
+                  </button>
+                ) : (
+                  <button
+                    className="ml-4 text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-1 bg-red-200 text-red-700 rounded-full"
+                    onClick={() => updateStatus(true)}
+                  >
+                    No Shipped
+                  </button>
+                )}
 
                 <div>
-                  <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900  ">Product Name</label>
-                  <input type="text" name="name" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5   dark:border-gray-600 dark:placeholder-gray-400   dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="{currentProduct.name}"
-                    required=""
-                    value={currentProduct.name}
-                    onChange={handleInputChange}
-                  />
+                  <button
+                    type="submit"
+                    className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center      "
+                    onClick={updateContent}
+                  >
+                    Update
+                  </button>
+                  <Link to={"/product/"} className='m-2 p-2'>
+                    <p className="text-sm font-light text-gray-500  ">
+                      Go Back
+                    </p>
+                  </Link>
+
+                  <p className='p-4 mb-4 text-sm text-green-700'>{message}</p>
                 </div>
-
-                <div>
-                  <label htmlFor="description" className="block mb-2 text-sm font-medium text-gray-900  ">Password</label>
-                  <input type="description" 
-                    name="description" 
-                    id="description" 
-                    placeholder="{currentProduct.description} "
-                    className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5   dark:border-gray-600 dark:placeholder-gray-400   dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    required=""
-                    
-                    value={currentProduct.description}
-                    onChange={handleInputChange}
-                  />
-                </div>
-
-                <div>
-                  <label>
-                    <strong className='text-gray-900  '>Status:</strong>
-                  </label>
-                  <p className='text-gray-900  '>{currentProduct.shipped ? "Shipped" : "Pending"}</p>
-
-                </div>
-              </form>
-
-              {currentProduct.shipped ? (
-                <button
-                  className="ml-4 text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-1 bg-green-200 text-green-700 rounded-full"
-                  onClick={() => updateStatus(false)}
-                >
-                  Shipped
-                </button>
-              ) : (
-                <button
-                  className="ml-4 text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-1 bg-red-200 text-red-700 rounded-full"
-                  onClick={() => updateStatus(true)}
-                >
-                  No Shipped
-                </button>
-              )}
-              <button
-                type="submit"
-                className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center      "
-                onClick={updateContent}
-              >
-                Update
-              </button>
-              <Link to={"/product/"} className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center      ">
-                Cancel
-              </Link>
-
-              <p className='p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800"'>{message}</p>
-            </div>
-          ) : (
-            <div>
-              <br />
-              <p>Please click on a Product...</p>
-            </div>
-          )}
+              </div>
+            ) : (
+              <div>
+                <br />
+                <p>Please click on a Product...</p>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </section>

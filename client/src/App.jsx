@@ -118,7 +118,6 @@ function App() {
                 </>
               )}
               </Routes>
-              
         </div>
         <FooterApp />
       </Router>

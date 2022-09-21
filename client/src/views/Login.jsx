@@ -1,6 +1,6 @@
 import React, { useState, useEffect  } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { login } from "../slices/auth";
@@ -66,7 +66,7 @@ const Login = (props) => {
                         <ErrorMessage
                           name="username"
                           component="div"
-                          className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
+                          className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg     "
                         />
                        </div>
                     </div>
@@ -79,12 +79,12 @@ const Login = (props) => {
                         <ErrorMessage
                           name="password"
                           component="div"
-                          className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
+                          className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg"
                         />
                       </div>
                     </div>
                     <div>
-                      <button type="submit" disabled={loading} className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center      ">
+                      <button type="submit" disabled={loading} className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                         {loading && (
                           <div>
                             <svg aria-hidden="true" role="status" className="inline mr-2 w-4 h-4 text-gray-200 animate-spin dark:text-gray-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -97,9 +97,9 @@ const Login = (props) => {
                       </button>
                       <p className="text-sm font-light text-gray-500  ">
                         Don’t have an account yet? 
-                        <a href="#" className="font-medium text-blue-600  hover:underline dark:text-blue-500">
+                        <Link to={'/register'} className="font-medium text-blue-600  hover:underline">
                           Sign up
-                        </a>
+                        </Link>
                       </p>
                     </div>
                   </Form>
@@ -107,7 +107,7 @@ const Login = (props) => {
               </div>
               {message && (
                 <div>
-                  <div className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800" role="alert">
+                  <div className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg " role="alert">
                     {message}
                   </div>
                 </div>
