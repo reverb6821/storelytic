@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import {TbBuildingWarehouse} from 'react-icons/tb'
 
 import {
   retrieveProducts,
@@ -75,11 +76,9 @@ const Product = (props) => {
               <div className='overflow-x-auto relative'>
                 <div className='flex items-start justify-between p-5 rounded-t'>
                   <div className='flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white'>
-                    <img
-                      className='w-8 h-8 mr-2'
-                      src='https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg'
-                      alt='logo'
-                    />
+
+                    <TbBuildingWarehouse className="w-8 h-8 mr-2 text-[30px] text-blue-600"/>
+                    
                     Storelytic | Product List
                   </div>
 

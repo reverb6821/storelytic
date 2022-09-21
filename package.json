@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/reverb6821/storelytic/issues"
   },
-  "homepage": "https://github.com/reverb6821/storelytic#readme"
+  "homepage": "https://github.com/reverb6821/storelytic#readme",
+  "dependencies": {
+    "react-icons": "^4.4.0"
+  }
 }

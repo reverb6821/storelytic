@@ -1,8 +1,13 @@
-
+import React, { useState, useEffect, useCallback } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {TbBuildingWarehouse} from 'react-icons/tb'
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from 'react-router-dom';
+import { logout } from "./slices/auth";
+import EventBus from "./common/EventBus";
 
+import { Navbar } from 'flowbite-react';
 import FooterApp from './components/FooterApp';
-
 import Login from './views/Login';
 import Register from './views/Register';
 import Profile from './views/Profile'
@@ -10,17 +15,6 @@ import Product from './views/Product';
 import AddProduct from './views/AddProduct';
 import UpdateProduct from './views/UpdateProduct';
 import NotFound from './views/NotFound';
-
-
-import React, { useState, useEffect, useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
-
-import { Link } from 'react-router-dom';
-
-import { logout } from "./slices/auth";
-import EventBus from "./common/EventBus";
-
-import { Navbar } from 'flowbite-react';
 
 function App() {
 
@@ -61,11 +55,8 @@ function App() {
           rounded={true}
         >
           <Navbar.Brand>
-            <img
-              src="https://flowbite.com/docs/images/logo.svg"
-              className="mr-3 h-6 sm:h-9"
-              alt="StoreLytic Logo"
-            />
+            <TbBuildingWarehouse className="mr-3 h-6 sm:h-9 text-[30px] text-blue-600"/>
+
             <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
               StoreLytic
             </span>
