@@ -8,8 +8,6 @@ const FooterApp =()=>{
   <div className="w-full text-center">
     <div className="w-full justify-between sm:flex sm:items-center sm:justify-between">
       <Footer.Brand
-        href="https://flowbite.com"
-        src="https://flowbite.com/docs/images/logo.svg"
         alt="Storelytic Logo"
         name="Storelytic"
       />
