@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { TbBuildingWarehouse, TbDoorExit } from 'react-icons/tb'
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from 'react-router-dom';
 import { logout } from "./slices/auth";
 import EventBus from "./common/EventBus";
 
@@ -75,7 +74,7 @@ function App() {
 
             {currentUser ? (
               <>
-                <Navbar.Link href="/profile">
+                <Navbar.Link href="/userprofile">
                   {currentUser.username}
                 </Navbar.Link>
                 <Navbar.Link onClick={logOut}>
@@ -87,10 +86,10 @@ function App() {
             ) : (
 
               <>
-                <Navbar.Link href="/profile">
+                <Navbar.Link href="/userprofile">
                   Sign In
                 </Navbar.Link>
-                <Navbar.Link href={"/register"}>
+                <Navbar.Link href={"/signup"}>
                   Sign Up
                 </Navbar.Link>
               </>
@@ -104,7 +103,7 @@ function App() {
           <Routes>
             {currentUser ? (
               <>
-                <Route exact path="/profile" element={<Profile />} />
+                <Route exact path="/userprofile" element={<Profile />} />
                 <Route exact path="/" element={<Product />} />
                 <Route exact path="/addproduct" element={<AddProduct />} />
                 <Route exact path="/product/:id" element={<UpdateProduct />} />
@@ -113,7 +112,7 @@ function App() {
             ) : (
               <>
                 <Route exact path="*" element={<Login />} />
-                <Route exact path="/register" element={<Register />} />
+                <Route exact path="/signup" element={<Register />} />
               </>
             )}
           </Routes>

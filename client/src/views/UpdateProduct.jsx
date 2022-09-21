@@ -153,6 +153,7 @@ const UpdateProduct = (props) => {
                   >
                     Update
                   </button>
+                  
                   <Link to={"/"} className='m-2 p-2'>
                     <p className="text-sm font-light text-gray-500  ">
                       Go Back
