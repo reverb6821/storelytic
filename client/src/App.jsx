@@ -65,41 +65,36 @@ function App() {
           <Navbar.Collapse>
 
             {showModeratorBoard && (
-              <Navbar.Link
-              >
+             
                 <Link to={'/product'}>
                   Product
                 </Link>
-              </Navbar.Link>
             )}
 
             {currentUser ? (
               <div>
-                <Navbar.Link >
+
                   <Link to={"/profile"}>
                     {currentUser.username}
                   </Link>
-                </Navbar.Link>
+
                 <Navbar.Link onClick={logOut}>
                   <p className="font-medium text-blue-600  hover:underline dark:text-blue-500">
                     Sign Out
                   </p>
                 </Navbar.Link>
+
               </div>
 
             ) : (
               <div>
-                <Navbar.Link>
                   <Link to={"/"}>
                     Sign In
                   </Link>
-                </Navbar.Link>
 
-                <Navbar.Link>
                   <Link to={"/register"}>
                     Sign Up
                   </Link>
-                </Navbar.Link>
               </div>
             )}
           </Navbar.Collapse>
@@ -109,13 +104,21 @@ function App() {
        
             <Routes>
             {currentUser ? (
-              <><Route exact path="/profile" element={<Profile />} /><Route exact path="/product" element={<Product />} /><Route exact path="/addproduct" element={<AddProduct />} /><Route exact path="/product/:id" element={<UpdateProduct />} /><Route path='*' element={<NotFound />} /></>
+              <>
+                <Route exact path="/profile" element={<Profile />} />
+                <Route exact path="/product" element={<Product />} />
+                <Route exact path="/addproduct" element={<AddProduct />} />
+                <Route exact path="/product/:id" element={<UpdateProduct />} />
+                <Route path='*' element={<NotFound />} />
+              </>
             ) : (
-                <><Route exact path="*" element={<Login />} /><Route exact path="/register" element={<Register />} /></>
+                <>
+                  <Route exact path="*" element={<Login />} />
+                  <Route exact path="/register" element={<Register />} />
+                </>
               )}
-         
               </Routes>
-
+              
         </div>
         <FooterApp />
       </Router>
