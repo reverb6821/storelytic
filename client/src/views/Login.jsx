@@ -29,7 +29,7 @@ const Login = (props) => {
       dispatch(login({ username, password }))
         .unwrap()
         .then(() => {
-          props.history.push("/profile");
+          props.history.push("/product");
           window.location.reload();
         })
         .catch(() => {
@@ -37,7 +37,7 @@ const Login = (props) => {
         });
     };
     if (isLoggedIn) {
-      return <Navigate to="/profile" />;
+      return <Navigate to="/product" />;
     }
     return (
         <section className="bg-gray-50 dark:bg-gray-900">
