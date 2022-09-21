@@ -10,7 +10,7 @@ const db = require('./src/models')
 
 // ? cors
 const corsOptions = {
-  origin: 5001
+  origin: 8081
 }
 
 app.use(cors(corsOptions))

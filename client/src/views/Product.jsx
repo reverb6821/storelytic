@@ -42,7 +42,7 @@ const Product = (props) => {
     dispatch(deleteProduct({ id: currentProduct.id }))
       .unwrap()
       .then(() => {
-        props.history.push('/product');
+        props.history.push('/');
       })
       .catch((e) => {
         console.log(e);

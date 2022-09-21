@@ -66,7 +66,7 @@ function App() {
 
             {showModeratorBoard && (
              
-                <Link to={'/product'}>
+                <Link to={'/'}>
                   Product
                 </Link>
             )}
@@ -106,7 +106,7 @@ function App() {
             {currentUser ? (
               <>
                 <Route exact path="/profile" element={<Profile />} />
-                <Route exact path="/product" element={<Product />} />
+                <Route exact path="/" element={<Product />} />
                 <Route exact path="/addproduct" element={<AddProduct />} />
                 <Route exact path="/product/:id" element={<UpdateProduct />} />
                 <Route path='*' element={<NotFound />} />
