@@ -67,7 +67,6 @@ function App() {
             {showModeratorBoard && (
               <Navbar.Link
                 href="/"
-                active={true}
               >
                 Home
               </Navbar.Link>
