@@ -9,7 +9,7 @@ module.exports = (sequelize, Sequelize) => {
     quantity: {
       type: Sequelize.INTEGER
     },
-    shipped: {
+    stock: {
       type: Sequelize.BOOLEAN
     }
   })

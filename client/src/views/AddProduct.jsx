@@ -11,7 +11,7 @@ const AddProduct = () => {
         name: "",
         description: "",
         quantity: "",
-        shipped: false
+        stock: false
     }
 
     const [product, setProduct] = useState(initialProductState)
@@ -34,7 +34,7 @@ const AddProduct = () => {
                     name: data.name,
                     description: data.description,
                     quantity: data.quantity,
-                    shipped: data.shipped
+                    stock: data.stock
                 })
                 setSubmitted(true);
             })

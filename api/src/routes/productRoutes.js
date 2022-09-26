@@ -14,7 +14,7 @@ module.exports = function (app) {
   // Retrieve all products
   app.get('/api/product/', [authJwt.verifyToken], productController.findAll)
   // Retrieve all published products
-  app.get('/api/product/shipped', [authJwt.verifyToken, authJwt.isModerator], productController.findAllShipped)
+  app.get('/api/product/stocked', [authJwt.verifyToken, authJwt.isModerator], productController.findAllStocked)
   // Retrieve a single product with id
   app.get('/api/product/:id', [authJwt.verifyToken], productController.findOne)
   // Update a product with id

@@ -103,7 +103,7 @@ const Product = (props) => {
                         Qta
                       </th>
                       <th scope='col' className='py-3 px-6'>
-                        Shipped
+                        Stock
                       </th>
                     </tr>
                   </thead>
@@ -127,7 +127,7 @@ const Product = (props) => {
                           <td className='py-4 px-6'>{product.quantity}</td>
 
                           <td className='py-4 px-6 text-gray-900  '>
-                            {product.shipped ? 'Shipped' : 'Pending'}
+                            {product.stock ? 'STOCK' : 'OUT OF STOCK'}
                           </td>
                         </tr>
                       ))}
@@ -173,7 +173,7 @@ const Product = (props) => {
                     <label>
                       <strong>Status:</strong>
                     </label>{' '}
-                    {currentProduct.shipped ? 'Shipped' : 'Pending'}
+                    {currentProduct.stock ? 'STOCK' : 'OUT OF STOCK'}
                   </div>
 
                   {showModeratorItem && (

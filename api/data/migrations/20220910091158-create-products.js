@@ -17,7 +17,7 @@ module.exports = {
       quantity: {
         type: Sequelize.INTEGER
       },
-      shipped: {
+      stock: {
         type: Sequelize.BOOLEAN
       },
       createdAt: {

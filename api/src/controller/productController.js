@@ -18,7 +18,7 @@ exports.create = (req, res) => {
     description: req.body.description,
     quantity: req.body.quantity,
     // img: req.body.img,
-    shipped: req.body.shipped ? req.body.shipped : false
+    stock: req.body.stock ? req.body.stock : false
   }
   // Save Product in the database
   Product.create(product)
@@ -129,8 +129,8 @@ exports.deleteAll = (req, res) => {
     })
 }
 // Find all published Products
-exports.findAllShipped = (req, res) => {
-  Product.findAll({ where: { shipped: true } })
+exports.findAllStocked = (req, res) => {
+  Product.findAll({ where: { stock: true } })
     .then(data => {
       res.send(data)
     })

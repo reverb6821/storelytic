@@ -51,14 +51,14 @@ const UpdateProduct = (props) => {
       name: currentProduct.name,
       description: currentProduct.description,
       quantity: currentProduct.quantity,
-      shipped: status
+      stock: status
     };
 
     dispatch(updateProduct({ id: currentProduct.id, data }))
       .unwrap()
       .then(response => {
         console.log(response);
-        setCurrentProduct({ ...currentProduct, shipped: status });
+        setCurrentProduct({ ...currentProduct, stock: status });
         setMessage("The status was updated successfully!");
       })
       .catch(e => {
@@ -141,24 +141,24 @@ const UpdateProduct = (props) => {
                     <label>
                       <strong className='text-gray-900  '>Status:</strong>
                     </label>
-                    <p className='text-gray-900  '>{currentProduct.shipped ? "Shipped" : "Pending"}</p>
+                    <p className='text-gray-900  '>{currentProduct.stock ? "STOCK" : "OUT OF STOCK"}</p>
 
                   </div>
                 </form>
 
-                {currentProduct.shipped ? (
+                {currentProduct.stock ? (
                   <button
                     className="ml-4 text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-1 bg-green-200 text-green-700 rounded-full"
                     onClick={() => updateStatus(false)}
                   >
-                    Shipped
+                    IN STOCK
                   </button>
                 ) : (
                   <button
                     className="ml-4 text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-1 bg-red-200 text-red-700 rounded-full"
                     onClick={() => updateStatus(true)}
                   >
-                    No Shipped
+                    OUT OF STOCK
                   </button>
                 )}
 
