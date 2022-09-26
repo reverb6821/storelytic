@@ -30,7 +30,7 @@ module.exports = {
       {
         name: 'MSI Optix MAG342CQR',
         description: 'Monitor Gaming Curve 34", Display 21:9 (UWQHD) 3440x1440, 144Hz, 1ms, VA, FreeSync Premium, HDR Ready, RGB Mystic Light, Night Vision.',
-        quantity: 6,
+        quantity: 1,
         stock: true,
         createdAt: new Date(),
         updatedAt: new Date()
@@ -38,15 +38,15 @@ module.exports = {
       {
         name: 'Sabrent Rocket Q',
         description: '2TB NVMe PCIe M.2 2280 Internal SSD High Performance Solid State Drive R/W 3200/2900MB/s (SB-RKTQ-2TB).',
-        quantity: 6,
+        quantity: 4,
         stock: false,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        name: 'Sabrent Rocket Q',
-        description: '2TB NVMe PCIe M.2 2280 Internal SSD High Performance Solid State Drive R/W 3200/2900MB/s (SB-RKTQ-2TB).',
-        quantity: 6,
+        name: 'Logitech G213 Prodigy',
+        description: 'Logitech G213 Prodigy Wired Gaming Keyboard, LIGHTSYNC RGB, Backlit Keys, Splash Resistant, Customizable Keys, Dedicated Multimedia Controls, QWERTY US Layout, Black.',
+        quantity: 8,
         stock: true,
         createdAt: new Date(),
         updatedAt: new Date()
