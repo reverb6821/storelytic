@@ -4,7 +4,9 @@
   "description": "storelytic app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "app:serve:dev": "cd api/ && npm run start",
+    "client:serve:dev": "cd client/ && npm run start"
+
   },
   "repository": {
     "type": "git",
