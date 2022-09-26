@@ -12,6 +12,7 @@ const UpdateProduct = (props) => {
     id: null,
     name: "",
     description: "",
+    quantity: "",
     shipped: false
   }
 
@@ -49,6 +50,7 @@ const UpdateProduct = (props) => {
       id: currentProduct.id,
       name: currentProduct.name,
       description: currentProduct.description,
+      quantity: currentProduct.quantity,
       shipped: status
     };
 
@@ -86,7 +88,7 @@ const UpdateProduct = (props) => {
         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0  ">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl  ">
-              Add Product
+              Update Product
             </h1>
             {currentProduct ? (
 
@@ -107,8 +109,9 @@ const UpdateProduct = (props) => {
                   </div>
 
                   <div>
-                    <label htmlFor="description" className="block mb-2 text-sm font-medium text-gray-900  ">Password</label>
-                    <input type="description"
+                    <label htmlFor="description" className="block mb-2 text-sm font-medium text-gray-900  ">Description</label>
+                    <input 
+                      type="text"
                       name="description"
                       id="description"
                       placeholder="{currentProduct.description} "
@@ -116,6 +119,20 @@ const UpdateProduct = (props) => {
                       required=""
 
                       value={currentProduct.description}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="quantity" className="block mb-2 text-sm font-medium text-gray-900 ">Quantity</label>
+                    <input 
+                      type="number"
+                      name="quantity"
+                      id="quantity"
+                      placeholder="{currentProduct.quantity}"
+                      className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5   dark:border-gray-600 dark:placeholder-gray-400   dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      required=""
+                      value={currentProduct.quantity}
                       onChange={handleInputChange}
                     />
                   </div>

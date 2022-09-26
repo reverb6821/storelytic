@@ -100,6 +100,9 @@ const Product = (props) => {
                         Name
                       </th>
                       <th scope='col' className='py-3 px-6'>
+                        Qta
+                      </th>
+                      <th scope='col' className='py-3 px-6'>
                         Shipped
                       </th>
                     </tr>
@@ -121,6 +124,8 @@ const Product = (props) => {
                             {product.id}
                           </th>
                           <td className='py-4 px-6'>{product.name}</td>
+                          <td className='py-4 px-6'>{product.quantity}</td>
+
                           <td className='py-4 px-6 text-gray-900  '>
                             {product.shipped ? 'Shipped' : 'Pending'}
                           </td>
@@ -155,6 +160,14 @@ const Product = (props) => {
                   <p className='leading-relaxed'>
                     {currentProduct.description}
                   </p>
+
+                  <div className='mb-2 mt-2 pt-2'>
+                    <label>
+                      <strong>Qta:</strong>
+                    </label>{' '}
+                    {currentProduct.quantity}
+                  </div>
+                  
 
                   <div className='mb-2 pb-2'>
                     <label>

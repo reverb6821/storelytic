@@ -10,6 +10,7 @@ const AddProduct = () => {
         id: null,
         name: "",
         description: "",
+        quantity: "",
         shipped: false
     }
 
@@ -23,8 +24,8 @@ const AddProduct = () => {
     };
 
     const saveProduct = () => {
-        const { name, description } = product
-        dispatch(createProduct({ name, description }))
+        const { name, description, quantity } = product
+        dispatch(createProduct({ name, description, quantity }))
             .unwrap()
             .then(data => {
                 console.log(data);
@@ -32,6 +33,7 @@ const AddProduct = () => {
                     id: data.id,
                     name: data.name,
                     description: data.description,
+                    quantity: data.quantity,
                     shipped: data.shipped
                 })
                 setSubmitted(true);
@@ -93,7 +95,7 @@ const AddProduct = () => {
                             <div>
                                 <div className="space-y-4 md:space-y-6" action="#">
                                     <div>
-                                        <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900  ">Your email</label>
+                                        <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900  ">Product name</label>
                                         <input
                                             type="text"
                                             name="name"
@@ -105,7 +107,7 @@ const AddProduct = () => {
                                             required="" />
                                     </div>
                                     <div>
-                                        <label htmlFor="description" className="block mb-2 text-sm font-medium text-gray-900  ">Your description</label>
+                                        <label htmlFor="description" className="block mb-2 text-sm font-medium text-gray-900  ">Product Description</label>
                                         <input
                                             type="text"
                                             name="description"
@@ -116,6 +118,20 @@ const AddProduct = () => {
                                             placeholder="Product description"
                                             required="" />
                                     </div>
+
+                                    <div>
+                                        <label htmlFor="quantity" className="block mb-2 text-sm font-medium text-gray-900  ">Product quantity</label>
+                                        <input
+                                            type="number"
+                                            name="quantity"
+                                            id="quantity"
+                                            className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5   dark:border-gray-600 dark:placeholder-gray-400   dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            value={product.quantity || ''}
+                                            onChange={handleInputChange}
+                                            placeholder="Product description"
+                                            required="" />
+                                    </div>
+
                                     <button
                                         type="submit"
                                         className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center      "

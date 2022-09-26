@@ -4,7 +4,7 @@ module.exports = {
   async up (queryInterface, Sequelize) {
     return queryInterface.bulkInsert('Products', [{
       name: 'Razer BlackWidow V3 TKL',
-      description: 'Green Switch Tastiera da Gaming con Illuminazione Chroma RGB, Rotella Digitale Multi-Funzione e Tasti Multimediali, Poggia Polsi Ergonomico, Layout Italiano, Nero',
+      description: 'Green Switch Gaming Keyboard with RGB Chroma Lighting, Multi-Function Digital Wheel and Multimedia Keys, Ergonomic Wrist Rest, US Layout, Black',
       quantity: 2,
       shipped: true,
       createdAt: new Date(),
