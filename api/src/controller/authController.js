@@ -1,10 +1,11 @@
 const db = require('../models')
-const jwtSecret = require('../../config/jwtSecret')
+const jwtSecret = require('../config/jwtSecret')
 const User = db.user
 const Role = db.role
 const Op = db.Sequelize.Op
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
+
 exports.signup = (req, res) => {
   // Save User to Database
   User.create({

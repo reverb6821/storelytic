@@ -32,10 +32,7 @@
 How to use
 *  `run db:migrate`
 * `run db:seed:all`
-* on db assign user roles manually on user_roles table, in this order:
-  *  ADMIN = USER/MODERATOR/ADMIN
-  *  MODERATOR = USER/MODERATOR
-  *  USER = USER
+* Launch the app
 
 role permission:
 * user can only show

@@ -4,7 +4,7 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const morganMiddleware = require('./src/middleware/morgan')
-const winston = require('./config/winston')
+const winston = require('./src/config/winston')
 const port = process.env.PORT
 const db = require('./src/models')
 

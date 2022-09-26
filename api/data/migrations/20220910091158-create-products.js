@@ -14,6 +14,9 @@ module.exports = {
       description: {
         type: Sequelize.STRING
       },
+      img: {
+        type: Sequelize.BLOB
+      },
       quantity: {
         type: Sequelize.INTEGER
       },
