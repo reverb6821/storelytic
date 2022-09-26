@@ -14,6 +14,9 @@ module.exports = {
       description: {
         type: Sequelize.STRING
       },
+      quantity: {
+        type: Sequelize.INTEGER
+      },
       shipped: {
         type: Sequelize.BOOLEAN
       },

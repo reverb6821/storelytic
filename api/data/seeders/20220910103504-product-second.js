@@ -5,6 +5,7 @@ module.exports = {
     return queryInterface.bulkInsert('Products', [{
       name: 'Razer BlackWidow V3 TKL',
       description: 'Green Switch Tastiera da Gaming con Illuminazione Chroma RGB, Rotella Digitale Multi-Funzione e Tasti Multimediali, Poggia Polsi Ergonomico, Layout Italiano, Nero',
+      quantity: 2,
       shipped: true,
       createdAt: new Date(),
       updatedAt: new Date()
