@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import {TbBuildingWarehouse} from 'react-icons/tb'
+import { Link } from "react-router-dom";
 
 import * as Yup from "yup";
 import { register } from "../slices/auth";
@@ -54,6 +55,7 @@ const Register = () => {
             })
             .catch(() => {
                 setSuccessful(false);
+
             });
     };
     return (
@@ -124,9 +126,16 @@ const Register = () => {
                     </div>
                     {message && (
                         <div>
-                            <div className={successful ? "p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800" : "p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg     "} role="alert">
+                            <div className={successful ? "m-2 p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800" : "p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg"} role="alert">
                                 {message}
                             </div>
+
+                            <div className="m-2 p-2 w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">
+                                <Link to={'*'}>
+                                    Sign In
+                                </Link>
+                            </div>
+
                         </div>
                     )}
                 </div>

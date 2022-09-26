@@ -82,12 +82,13 @@ const Product = (props) => {
                     
                     Storelytic | Product List
                   </div>
-
+                  {showModeratorItem && (
                   <div className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none">
                     <Link to={'/addproduct'}>
                       ADD
                     </Link>
                   </div>
+                  )}
                 </div>
                 <table className='w-full text-sm text-left text-gray-500  '>
                   <thead className='text-xs text-gray-700 uppercase bg-gray-50    '>
@@ -128,6 +129,7 @@ const Product = (props) => {
                   </tbody>
                 </table>
 
+                {showModeratorItem && (
                 <div className='m-2 p-2'>
                   <button
                     type='button'
@@ -137,7 +139,7 @@ const Product = (props) => {
                     Remove All
                   </button>
                 </div>
-
+                )}
               </div>
             </div>
             <div className='lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0'>
@@ -161,7 +163,7 @@ const Product = (props) => {
                     {currentProduct.shipped ? 'Shipped' : 'Pending'}
                   </div>
 
-                 
+                  {showModeratorItem && (
                     <div className='flex'>
                       <Link
                         to={'/product/' + currentProduct.id}
@@ -178,7 +180,7 @@ const Product = (props) => {
                       
                       </button>
                     </div>
-                  
+                  )}
                 </>
               ) : (
                 <div>

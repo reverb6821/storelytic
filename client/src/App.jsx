@@ -63,7 +63,7 @@ function App() {
           <Navbar.Toggle />
           <Navbar.Collapse>
 
-            {showModeratorBoard && (
+            {currentUser && (
               <Navbar.Link
                 href="/"
               >
