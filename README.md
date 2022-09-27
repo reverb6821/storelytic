@@ -30,14 +30,15 @@
   
 
 How to use
+* run `npm install` on root folder
 * run `app:install`
 * run `db:migration:seeds`
 * run `app:dev` to application
 * navigate to `localhost:8081`
 
 role permission:
-* user can only show
-* Admin and moderator can do operation on product (add/update/delete/delete all)
+* user can only show products
+* Admin and Moderator can do operation on product (add/update/delete/delete all)
 # NEXT
-rework on product (add image)
-migrate to knex
+* Add for admin the possibility to show the user list and DELETE/UPDATE user
+* add img to product
