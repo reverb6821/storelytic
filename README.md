@@ -39,6 +39,12 @@ How to use
 role permission:
 * user can only show products
 * Admin and Moderator can do operation on product (add/update/delete/delete all)
+  
+user & psw
+* admin - username: admin | psw: admin
+* moderator - username: moderator | psw: moderator
+* user - username: user | psw: user
+  
 # NEXT
 * Add for admin the possibility to show the user list and DELETE/UPDATE user
 * add img to product
