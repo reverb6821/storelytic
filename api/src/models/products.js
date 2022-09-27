@@ -9,6 +9,9 @@ module.exports = (sequelize, Sequelize) => {
     quantity: {
       type: Sequelize.INTEGER
     },
+    note: {
+      type: Sequelize.STRING
+    },
     stock: {
       type: Sequelize.BOOLEAN
     }

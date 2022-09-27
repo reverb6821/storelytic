@@ -7,6 +7,7 @@ module.exports = {
         name: 'Razer DeathAdder V2 Pro',
         description: 'Best-in-Class Wired Gaming Mouse Ergonomics, Optical Mouse Switch, Focus + 20K Optical Sensor with Speedflex Cable',
         quantity: 5,
+        note: 'some note for the selected product',
         stock: false,
         createdAt: new Date(),
         updatedAt: new Date()
@@ -15,6 +16,7 @@ module.exports = {
         name: 'Razer BlackWidow V3 TKL',
         description: 'Green Switch Gaming Keyboard with RGB Chroma Lighting, Multi-Function Digital Wheel and Multimedia Keys, Ergonomic Wrist Rest, US Layout, Black',
         quantity: 2,
+        note: 'some note for the selected product',
         stock: true,
         createdAt: new Date(),
         updatedAt: new Date()
@@ -23,6 +25,7 @@ module.exports = {
         name: 'Razer Nari Essential',
         description: 'Wireless Headset with THX support.',
         quantity: 6,
+        note: 'some note for the selected product',
         stock: true,
         createdAt: new Date(),
         updatedAt: new Date()
@@ -31,6 +34,7 @@ module.exports = {
         name: 'MSI Optix MAG342CQR',
         description: 'Monitor Gaming Curve 34", Display 21:9 (UWQHD) 3440x1440, 144Hz, 1ms, VA, FreeSync Premium, HDR Ready, RGB Mystic Light, Night Vision.',
         quantity: 1,
+        note: 'some note for the selected product',
         stock: true,
         createdAt: new Date(),
         updatedAt: new Date()
@@ -39,6 +43,7 @@ module.exports = {
         name: 'Sabrent Rocket Q',
         description: '2TB NVMe PCIe M.2 2280 Internal SSD High Performance Solid State Drive R/W 3200/2900MB/s (SB-RKTQ-2TB).',
         quantity: 4,
+        note: 'some note for the selected product',
         stock: false,
         createdAt: new Date(),
         updatedAt: new Date()
@@ -47,6 +52,7 @@ module.exports = {
         name: 'Logitech G213 Prodigy',
         description: 'Logitech G213 Prodigy Wired Gaming Keyboard, LIGHTSYNC RGB, Backlit Keys, Splash Resistant, Customizable Keys, Dedicated Multimedia Controls, QWERTY US Layout, Black.',
         quantity: 8,
+        note: 'some note for the selected product',
         stock: true,
         createdAt: new Date(),
         updatedAt: new Date()
@@ -55,6 +61,7 @@ module.exports = {
         name: 'Corsair Vengeance SODIMM',
         description: 'Corsair Vengeance SODIMM 32GB (2x16GB) DDR4 3200MHz C22 Laptop/Notebook Memory, Nero',
         quantity: 6,
+        note: 'some note for the selected product',
         stock: true,
         createdAt: new Date(),
         updatedAt: new Date()

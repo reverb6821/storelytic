@@ -169,6 +169,12 @@ const Product = (props) => {
                     {currentProduct.quantity}
                   </div>
                   
+                  <div className='mb-2 mt-2 pt-2'>
+                    <label>
+                      <strong>NOTE:</strong>
+                    </label>{' '}
+                    {currentProduct.note}
+                  </div>
 
                   <div className='mb-2 pb-2'>
                     <label>

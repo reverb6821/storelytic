@@ -14,6 +14,7 @@ const UpdateProduct = (props) => {
     name: "",
     description: "",
     quantity: "",
+    note: "",
     shipped: false
   }
 
@@ -52,6 +53,7 @@ const UpdateProduct = (props) => {
       name: currentProduct.name,
       description: currentProduct.description,
       quantity: currentProduct.quantity,
+      note: currentProduct.note,
       stock: status
     };
 
@@ -134,6 +136,21 @@ const UpdateProduct = (props) => {
                       className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5   dark:border-gray-600 dark:placeholder-gray-400   dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       required=""
                       value={currentProduct.quantity}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="note" className="block mb-2 text-sm font-medium text-gray-900  ">Note</label>
+                    <input 
+                      type="text"
+                      name="note"
+                      id="note"
+                      placeholder="{currentProduct.note} "
+                      className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5   dark:border-gray-600 dark:placeholder-gray-400   dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      required=""
+
+                      value={currentProduct.note}
                       onChange={handleInputChange}
                     />
                   </div>
