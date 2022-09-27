@@ -30,10 +30,9 @@
   
 
 How to use
-* run `db:migrate`
-* run `db:seed:all`
-* run `app:serve:dev` to launch backend
-* run `client:serve:dev` to launch client
+* run `app:install`
+* run `db:migration:seeds`
+* run `app:dev` to application
 * navigate to `localhost:8081`
 
 role permission:
