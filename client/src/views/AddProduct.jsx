@@ -83,6 +83,7 @@ const AddProduct = () => {
                                         <div className="w-full text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center     dark:focus:ring-red-800">
                                             <Link to={'/'}>
                                                 Go Back to Product
+                                                
                                             </Link>
                                         </div>
                                     </div>
