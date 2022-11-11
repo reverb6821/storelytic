@@ -1,32 +1,34 @@
-import http from '../common/http';
+import axios from "axios";
 import authHeader from './authHeader';
 
+const API_URL = "http://localhost:8080/api/v1";
+
 const getAll = () => {
-    return http.get("/product", { headers: authHeader() });
+    return axios.get(`${API_URL}/product/`, { headers: authHeader() });
   };
   
   const get = id => {
-    return http.get(`/product/${id}`, { headers: authHeader() });
+    return axios.get(`${API_URL}/product/${id}`, { headers: authHeader() });
   };
   
   const create = data => {
-    return http.post("/product", data, { headers: authHeader() });
+    return axios.post(`${API_URL}/product/`, data, { headers: authHeader() });
   };
   
   const update = (id, data) => {
-    return http.put(`/product/${id}`, data, { headers: authHeader() });
+    return axios.put(`${API_URL}/product/${id}`, data, { headers: authHeader() });
   };
   
   const remove = id => {
-    return http.delete(`/product/${id}`, { headers: authHeader() });
+    return axios.delete(`${API_URL}/product/${id}`, { headers: authHeader() });
   };
   
   const removeAll = () => {
-    return http.delete(`/product`, { headers: authHeader() });
+    return axios.delete(`${API_URL}/product/`, { headers: authHeader() });
   };
   
   const findByName = name => {
-    return http.get(`/product?Name=${name}`, { headers: authHeader() });
+    return axios.get(`${API_URL}/product?Name=${name}`, { headers: authHeader() });
   };
   
   const productService = {

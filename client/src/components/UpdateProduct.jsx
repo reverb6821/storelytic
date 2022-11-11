@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useParams, Link } from 'react-router-dom';
@@ -84,26 +83,23 @@ const UpdateProduct = (props) => {
   return (
     <section >
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-        <div className="flex items-center mb-6 text-2xl font-semibold text-gray-900  ">
+        <div className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
           <TbBuildingWarehouse className="w-8 h-8 mr-2 text-[30px] text-blue-600" />
           Storelytic
         </div>
-        <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0  ">
+        <div className="w-full bg-white rounded-lg shadow-lg dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-            <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl  ">
+            <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
               Update Product
             </h1>
             {currentProduct ? (
 
               <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-                <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl  ">
-                  Update Product
-                </h1>
                 <form className="space-y-4 md:space-y-6">
 
                   <div>
-                    <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900  ">Product Name</label>
-                    <input type="text" name="name" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5   dark:border-gray-600 dark:placeholder-gray-400   dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Product Name</label>
+                    <input type="text" name="name" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="{currentProduct.name}"
                       required=""
                       value={currentProduct.name}
@@ -112,13 +108,13 @@ const UpdateProduct = (props) => {
                   </div>
 
                   <div>
-                    <label htmlFor="description" className="block mb-2 text-sm font-medium text-gray-900  ">Description</label>
+                    <label htmlFor="description" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
                     <input 
                       type="text"
                       name="description"
                       id="description"
                       placeholder="{currentProduct.description} "
-                      className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5   dark:border-gray-600 dark:placeholder-gray-400   dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       required=""
 
                       value={currentProduct.description}
@@ -133,7 +129,7 @@ const UpdateProduct = (props) => {
                       name="quantity"
                       id="quantity"
                       placeholder="{currentProduct.quantity}"
-                      className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5   dark:border-gray-600 dark:placeholder-gray-400   dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       required=""
                       value={currentProduct.quantity}
                       onChange={handleInputChange}
@@ -141,13 +137,13 @@ const UpdateProduct = (props) => {
                   </div>
 
                   <div>
-                    <label htmlFor="note" className="block mb-2 text-sm font-medium text-gray-900  ">Note</label>
+                    <label htmlFor="note" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Note</label>
                     <input 
                       type="text"
                       name="note"
                       id="note"
                       placeholder="{currentProduct.note} "
-                      className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5   dark:border-gray-600 dark:placeholder-gray-400   dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       required=""
 
                       value={currentProduct.note}
@@ -159,7 +155,6 @@ const UpdateProduct = (props) => {
                     <label>
                       <strong className='text-gray-900  '>Status:</strong>
                     </label>
-                    <p className='text-gray-900  '>{currentProduct.stock ? "STOCK" : "OUT OF STOCK"}</p>
 
                   </div>
                 </form>
@@ -209,7 +204,6 @@ const UpdateProduct = (props) => {
       </div>
     </section>
   )
-
 
 }
 

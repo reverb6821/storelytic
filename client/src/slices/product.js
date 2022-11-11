@@ -5,8 +5,8 @@ const initialState = [];
 
 export const createProduct = createAsyncThunk(
     "product/create",
-    async ({ name, description, note, quantity }) => {
-      const res = await ProductService.create({ name, description, note, quantity });
+    async ({ name, description, note, quantity, stock }) => {
+      const res = await ProductService.create({ name, description, note, quantity, stock });
       return res.data;
     }
   );
@@ -74,5 +74,7 @@ export const createProduct = createAsyncThunk(
       },
     },
   });
+
   const { reducer } = productSlice;
+  
   export default reducer;

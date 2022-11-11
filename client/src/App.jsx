@@ -1,127 +1,52 @@
-/* eslint-disable no-unused-vars */
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { TbBuildingWarehouse, TbDoorExit } from 'react-icons/tb'
-import { useDispatch, useSelector } from "react-redux";
-import { logout } from "./slices/auth";
-import EventBus from "./common/EventBus";
+import { useSelector } from "react-redux";
 
-import { Navbar } from 'flowbite-react';
-import FooterApp from './components/FooterApp';
-import Login from './views/Login';
-import Register from './views/Register';
-import Profile from './views/Profile'
-import Product from './views/Product';
-import AddProduct from './views/AddProduct';
-import UpdateProduct from './views/UpdateProduct';
+import Navbar from './components/Navbar'
+import Footer from './components/Footer'
+
+import SignInPage from './views/SignInPage'
+import SignUpPage from './views/SignUpPage'
+import ProfilePage from './views/ProfilePage'
+import AddProduct from './components/AddProduct'
+import UpdateProduct from './components/UpdateProduct'
+import Home from './views/Home';
 import NotFound from './views/NotFound';
 
 function App() {
 
-  const [showModeratorBoard, setShowModeratorBoard] = useState(false);
-  const [showAdminBoard, setShowAdminBoard] = useState(false);
-
   const { user: currentUser } = useSelector((state) => state.auth);
-  const dispatch = useDispatch();
-
-  const logOut = useCallback(() => {
-    dispatch(logout());
-  }, [dispatch]);
 
   useEffect(() => {
-    if (currentUser) {
-      setShowModeratorBoard(currentUser.roles.includes("ROLE_MODERATOR"));
-      setShowAdminBoard(currentUser.roles.includes("ROLE_ADMIN"));
-    } else {
-      setShowModeratorBoard(false);
-      setShowAdminBoard(false);
-    }
 
-    EventBus.on("logout", () => {
-      logOut();
-    });
-
-    return () => {
-      EventBus.remove("logout");
-    };
-  }, [currentUser, logOut]);
+  }, [currentUser]);
 
   return (
-    <div className="App">
+    <div className="App w-full bg-gray-50 dark:bg-gray-900" >
       <Router>
-
-        <Navbar
-          fluid={true}
-          rounded={true}
-        >
-          <Navbar.Brand>
-            <TbBuildingWarehouse className="mr-3 h-6 sm:h-9 text-[30px] text-blue-600" />
-
-            <span className="self-center whitespace-nowrap text-xl font-semibold  ">
-              StoreLytic
-            </span>
-          </Navbar.Brand>
-          <Navbar.Toggle />
-          <Navbar.Collapse>
-
-            {currentUser && (
-              <Navbar.Link
-                href="/"
-              >
-                Home
-              </Navbar.Link>
-
-            )}
-
-            {currentUser ? (
-              <>
-                <Navbar.Link href="/userprofile">
-                  {currentUser.username}
-                </Navbar.Link>
-                <Navbar.Link onClick={logOut}>
-                  <TbDoorExit className="align-center text-blue-600 text-[15px]" />
-                </Navbar.Link>
-              </>
-
-
-            ) : (
-
-              <>
-                <Navbar.Link href="/userprofile">
-                  Sign In
-                </Navbar.Link>
-                <Navbar.Link href={"/signup"}>
-                  Sign Up
-                </Navbar.Link>
-              </>
-
-            )}
-          </Navbar.Collapse>
-        </Navbar>
-
+        <Navbar />
         <div className='mx-auto sm:px-4 mt-3'>
-
           <Routes>
             {currentUser ? (
               <>
-                <Route exact path="/userprofile" element={<Profile />} />
-                <Route exact path="/" element={<Product />} />
-                <Route exact path="/addproduct" element={<AddProduct />} />
+                <Route exact path="/" element={<Home />} />
+                <Route exact path="/profile" element={<ProfilePage />} />
+                <Route exact path="/add-product" element={<AddProduct />} />
                 <Route exact path="/product/:id" element={<UpdateProduct />} />
                 <Route path='*' element={<NotFound />} />
               </>
             ) : (
               <>
-                <Route exact path="*" element={<Login />} />
-                <Route exact path="/signup" element={<Register />} />
+                <Route exact path="*" element={<SignInPage />} />
+                <Route exact path="/sign-up" element={<SignUpPage />} />
               </>
             )}
           </Routes>
         </div>
-        <FooterApp />
+        <Footer />
       </Router>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

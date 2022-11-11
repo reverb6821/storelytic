@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "app:serve:dev": "cd api/ && npm run start",
-    "client:serve:dev": "cd client/ && npm run start",
+    "client:serve:dev": "cd client/ && npm run dev",
     "api:install": "cd api/ && npm install",
     "client:install": "cd client/ && npm install",
     "api:migration":"cd api && npm run db:migrate",

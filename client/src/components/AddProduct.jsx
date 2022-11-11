@@ -12,11 +12,12 @@ const AddProduct = () => {
         description: "",
         quantity: "",
         note: "",
-        stock: false
+        stock: true,
     }
 
     const [product, setProduct] = useState(initialProductState)
     const [submitted, setSubmitted] = useState(false);
+
     const dispatch = useDispatch();
 
     const handleInputChange = event => {
@@ -25,8 +26,8 @@ const AddProduct = () => {
     };
 
     const saveProduct = () => {
-        const { name, description, note, quantity } = product
-        dispatch(createProduct({ name, description, note, quantity }))
+        const { name, description, note, quantity, stock } = product
+        dispatch(createProduct({ name, description, note, quantity, stock }))
             .unwrap()
             .then(data => {
                 console.log(data);
@@ -53,13 +54,13 @@ const AddProduct = () => {
     return (
         <section >
             <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-                <a href="/" className="flex items-center mb-6 text-2xl font-semibold text-gray-900  ">
+                <a href="/" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white ">
                     <TbBuildingWarehouse className="w-8 h-8 mr-2 text-[30px] text-blue-600"/>
                     StoreLytic
                 </a>
-                <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0  ">
+                <div className="w-full bg-white rounded-lg dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700 shadow-lg">
                     <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-                        <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl  ">
+                        <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                             Add Product
                         </h1>
                         {submitted ? (
@@ -83,8 +84,6 @@ const AddProduct = () => {
                                         <div className="w-full text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center     dark:focus:ring-red-800">
                                             <Link to={'/'}>
                                                 Go Back to Product
-                                            
-                                                
                                             </Link>
                                         </div>
                                     </div>
@@ -99,24 +98,24 @@ const AddProduct = () => {
                             <div>
                                 <div className="space-y-4 md:space-y-6" action="#">
                                     <div>
-                                        <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900  ">Product name</label>
+                                        <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Product name</label>
                                         <input
                                             type="text"
                                             name="name"
                                             id="name"
-                                            className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5   dark:border-gray-600 dark:placeholder-gray-400   dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                             value={product.name || ''}
                                             onChange={handleInputChange}
                                             placeholder="Insert Product Name"
                                             required="" />
                                     </div>
                                     <div>
-                                        <label htmlFor="description" className="block mb-2 text-sm font-medium text-gray-900  ">Product Description</label>
+                                        <label htmlFor="description" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Product Description</label>
                                         <input
                                             type="text"
                                             name="description"
                                             id="description"
-                                            className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5   dark:border-gray-600 dark:placeholder-gray-400   dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                             value={product.description || ''}
                                             onChange={handleInputChange}
                                             placeholder="Product description"
@@ -124,12 +123,12 @@ const AddProduct = () => {
                                     </div>
 
                                     <div>
-                                        <label htmlFor="quantity" className="block mb-2 text-sm font-medium text-gray-900  ">Product quantity</label>
+                                        <label htmlFor="quantity" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Product quantity</label>
                                         <input
                                             type="number"
                                             name="quantity"
                                             id="quantity"
-                                            className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5   dark:border-gray-600 dark:placeholder-gray-400   dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                             value={product.quantity || ''}
                                             onChange={handleInputChange}
                                             placeholder="Product description"
@@ -137,16 +136,31 @@ const AddProduct = () => {
                                     </div>
 
                                     <div>
-                                        <label htmlFor="note" className="block mb-2 text-sm font-medium text-gray-900  ">Product Note</label>
+                                        <label htmlFor="note" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Product Note</label>
                                         <input
                                             type="text"
                                             name="note"
                                             id="note"
-                                            className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5   dark:border-gray-600 dark:placeholder-gray-400   dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                            className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                             value={product.note || ''}
                                             onChange={handleInputChange}
                                             placeholder="Product Note"
                                             required="" />
+                                    </div>
+                                    
+                                    <div className="flex items-start mb-6">
+                                        <div className="flex items-center h-5">
+                                        <input 
+                                            id="stock" 
+                                            type="checkbox" 
+                                            name="stock"
+                                            value={product.stock || ''}
+                                            onChange={handleInputChange}
+                                            className="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800" 
+                                            required=""
+                                        />
+                                        </div>
+                                        <label htmlFor="stock" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Stock</label>
                                     </div>
 
                                     <button
@@ -156,6 +170,7 @@ const AddProduct = () => {
                                     >
                                         Save Product
                                     </button>
+                                    
                                     <Link to={"/"} className='m-2 p-2'>
                                         <p className="text-sm font-light text-gray-500  ">
                                         Go Back
