@@ -49,6 +49,12 @@ app.get('/', function (req, res) {
 })
 
 db.sequelize.sync()
+  .then(() => {
+    winston.info('Synced Db')
+  })
+  .catch((err) => {
+    winston.error('Failed to sync db: ' + err.message)
+  })
 
 app.use(function (err, req, res, next) {
   winston.error(`${req.method} - ${err.message}  - ${req.originalUrl} - ${req.ip}`)

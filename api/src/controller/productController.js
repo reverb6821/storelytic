@@ -2,9 +2,23 @@ const db = require('../models')
 const Product = db.product
 const Op = db.Sequelize.Op
 
-// Create and Save a new Product
+// pagination
+const getPagination = (page, size) => {
+  const limit = size ? +size : 3
+  const offset = page ? page * limit : 0
+
+  return { limit, offset }
+}
+
+const getPagingData = (data, page, limit) => {
+  const { count: totalItems, rows: tutorials } = data
+  const currentPage = page ? +page : 0
+  const totalPages = Math.ceil(totalItems / limit)
+
+  return { totalItems, tutorials, totalPages, currentPage }
+}
+
 exports.create = (req, res) => {
-  // Validate request
   if (!req.body.name) {
     res.status(400).send({
       message: 'Content can not be empty!'
@@ -12,7 +26,6 @@ exports.create = (req, res) => {
     return
   }
 
-  // Create a Product
   const product = {
     name: req.body.name,
     description: req.body.description,
@@ -21,7 +34,7 @@ exports.create = (req, res) => {
     img: req.body.img,
     stock: req.body.stock ? req.body.stock : false
   }
-  // Save Product in the database
+
   Product.create(product)
     .then(data => {
       res.send(data)
@@ -33,13 +46,16 @@ exports.create = (req, res) => {
       })
     })
 }
-// Retrieve all Products from the database.
+
 exports.findAll = (req, res) => {
-  const name = req.query.name
+  const { page, size, name } = req.query
   const condition = name ? { name: { [Op.like]: `%${name}%` } } : null
-  Product.findAll({ where: condition })
+  const { limit, offset } = getPagination(page, size)
+
+  Product.findAll({ where: condition, limit, offset })
     .then(data => {
-      res.send(data)
+      const response = getPagingData(data, page, limit)
+      res.send(response)
     })
     .catch(err => {
       res.status(500).send({
@@ -48,9 +64,10 @@ exports.findAll = (req, res) => {
       })
     })
 }
-// Find a single Product with an id
+
 exports.findOne = (req, res) => {
   const id = req.params.id
+
   Product.findByPk(id)
     .then(data => {
       if (data) {
