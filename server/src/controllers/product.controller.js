@@ -3,6 +3,21 @@ const Product = db.product
 const Op = db.Sequelize.Op;
 const Logger = require('../config/winston')
 
+const getPagination = (page, size) => {
+  const limit = size ? +size : 3;
+  const offset = page ? page * limit : 0;
+
+  return { limit, offset };
+};
+
+const getPagingData = (data, page, limit) => {
+  const { count: totalItems, rows: tutorials } = data;
+  const currentPage = page ? +page : 0;
+  const totalPages = Math.ceil(totalItems / limit);
+
+  return { totalItems, tutorials, totalPages, currentPage };
+};
+
 exports.create = (req, res) => {
   if (!req.body.name) {
     res.status(400).send({
@@ -33,10 +48,14 @@ exports.create = (req, res) => {
 
 exports.findAll = (req, res) => {
   const name = req.query.name
+  const { page, size, title } = req.query;
+  const { limit, offset } = getPagination(page, size);
   const condition = name ? { name: { [Op.like]: `%${name}%` } } : null
-  Product.findAll({ where: condition })
+  
+  Product.findAll({ where: condition, limit, offset })
     .then(data => {
-      res.send(data)
+      const response = getPagingData(data, page, limit);
+      res.send(response);
     })
     .catch(err => {
       res.status(500).send({
@@ -127,9 +146,14 @@ exports.deleteAll = (req, res) => {
     })
 }
 exports.findAllStocked = (req, res) => {
-  Product.findAll({ where: { stock: true } })
+
+  const { page, size } = req.query;
+  const { limit, offset } = getPagination(page, size);
+
+  Product.findAll({ where: { stock: true }, limit, offset })
     .then(data => {
-      res.send(data)
+      const response = getPagingData(data, page, limit);
+      res.send(response);
     })
     .catch(err => {
       res.status(500).send({
