@@ -13,7 +13,7 @@ const Logger = require('./config/winston')
 
 // ? cors
 const corsOptions = {
-  origin: 'http://localhost:8081',
+  origin: 'http://localhost:5173',
   optionsSuccessStatus: 200
 }
 
