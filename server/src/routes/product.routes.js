@@ -6,7 +6,7 @@ module.exports = app => {
   
     router.post('/', [authJwt.verifyToken, authJwt.isModerator, authJwt.isAdmin], products.create);
     router.get('/', [authJwt.verifyToken], products.findAll);
-    router.get('/stock', [authJwt.verifyToken], products.findAllCompleted);
+    router.get('/stock', [authJwt.verifyToken], products.findAllStocked);
     router.get('/:id', [authJwt.verifyToken, authJwt.isModerator, authJwt.isAdmin], products.findOne);
     router.put('/:id', [authJwt.verifyToken, authJwt.isModerator, authJwt.isAdmin], products.update);
     router.delete('/:id', [authJwt.verifyToken, authJwt.isAdmin], products.delete);
