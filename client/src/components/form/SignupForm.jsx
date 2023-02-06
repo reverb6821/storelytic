@@ -7,7 +7,7 @@ import * as Yup from "yup";
 import { register } from '../../store/slices/auth.slices'
 import { clearMessage } from '../../store/slices/message.slices'
 
-const Register = () => {
+const SignupForm = () => {
 
     const [successful, setSuccessful] = useState(false);
 
@@ -152,4 +152,4 @@ const Register = () => {
     )
 }
 
-export default Register
+export default SignupForm

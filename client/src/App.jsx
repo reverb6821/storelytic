@@ -1,35 +1,35 @@
+import React, {useEffect} from 'react';
 import { Routes, Route } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import Auth from './views/Auth';
-import LoginForm from './components/form/LoginForm';
-import Register from './components/form/Register';
+import SigninForm from './components/form/SigninForm';
+import SignupForm from './components/form/SignupForm';
+
+import Main from './views/Main'
 
 function App() {
 
-  // const { user: currentUser } = useSelector((state) => state.auth);
+  const { user: currentUser } = useSelector((state) => state.auth);
 
-  // useEffect(() => {
+  useEffect(() => {
 
-  // }, [currentUser]);
+  }, [currentUser]);
 
   return (
     <div className="App">
       <Routes>
+      {currentUser ? (
         <Route element={<Auth/>}>
-          <Route path='/' element={<LoginForm/>}/>
-          <Route path='/signup' element={<Register/>}/>
+          <Route path='/' element={<SigninForm/>}/>
+          <Route path='/signup' element={<SignupForm/>}/>
         </Route>
-      </Routes>
-      {/* {currentUser ? (
-        <Routes>
-
-        </Routes>
       ) : (
-        <Routes>
-
-        </Routes>
-      )} */}
+        <Route element={<Main/>}>
+          <Route path='/profile' element={<SigninForm/>}/>
+        </Route>
+        )} 
+      </Routes>
     </div>
   )
 }
