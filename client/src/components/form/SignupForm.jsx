@@ -135,7 +135,7 @@ const SignupForm = () => {
 
             {message && (
                 <div>
-                    <div className={successful ? "m-2 p-4 mb-4 text-sm text-green-100 bg-green-700 rounded-lg dark:bg-green-200 dark:text-green-800" : "p-4 mb-4 text-sm text-red-100 bg-red-700 rounded-lg"} role="alert">
+                    <div className={successful ? "m-2 p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg " : "p-4 mb-4 text-sm text-red-100 bg-red-700 rounded-lg"} role="alert">
                         {message}
                     </div>
 
