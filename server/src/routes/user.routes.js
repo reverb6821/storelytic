@@ -4,10 +4,10 @@ module.exports = app => {
 
   var router = require('express').Router();
 
-  router.get('/', users.findAll);
-  router.get('/:id', [authJwt.verifyToken], users.findOne);
-  router.put('/:id', [authJwt.verifyToken, authJwt.isAdminOrSuperAdmin],  users.update);
-  router.delete('/:id', [authJwt.verifyToken, authJwt.isAdminOrSuperAdmin], users.delete);
+  router.get('/', [authJwt.verifyToken, authJwt.isSuperAdmin], users.findAll);
+  router.get('/:id', [authJwt.verifyToken, authJwt.isSuperAdmin], users.findOne);
+  router.put('/:id', [authJwt.verifyToken, authJwt.isSuperAdmin],  users.update);
+  router.delete('/:id', [authJwt.verifyToken, authJwt.isSuperAdmin], users.delete);
 
   app.use('/api/v1/users', router);
 };
