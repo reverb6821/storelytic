@@ -12,5 +12,5 @@ module.exports = app => {
     router.delete('/:id', [authJwt.verifyToken, authJwt.isAdminOrSuperAdmin], products.delete);
     router.delete('/', [authJwt.verifyToken, authJwt.isSuperAdmin], products.deleteAll);
   
-    app.use('/api/v1/tasks', router);
+    app.use('/api/v1/products', router);
   };
