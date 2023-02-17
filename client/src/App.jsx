@@ -9,6 +9,8 @@ import SignupForm from './components/form/SignupForm';
 import Main from './views/Main'
 import ProfilePage from './pages/ProfilePage';
 import ProfileCard from './components/profile/ProfileCard';
+import ProductsPage from './pages/ProductsPage';
+import UsersPage from './pages/UsersPage';
 
 function App() {
 
@@ -23,6 +25,8 @@ function App() {
       <Routes>
         {currentUser ? (
           <Route element={<Main />}>
+            <Route path='/' element={<ProductsPage />} />
+            <Route path='/users' element={<UsersPage />} />
             <Route path='/profile' element={<ProfilePage />} />
           </Route>
         ) : (

@@ -46,7 +46,6 @@ db.userRoles = require('./user-roles.model')(sequelize, Sequelize)
 db.refreshToken = require("./refreshToken.model.js")(sequelize, Sequelize);
 
 db.product = require('./product.model')(sequelize, Sequelize)
-db.label = require('./label.model')(sequelize, Sequelize)
 
 db.role.belongsToMany(db.user, {
   through: db.userRoles,

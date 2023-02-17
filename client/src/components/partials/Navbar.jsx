@@ -14,7 +14,7 @@ const Navbar =()=>{
     //responsive
     const [navbar, setNavbar] = useState(false);
     //role display
-    const [showModeratorBoard, setShowModeratorBoard] = useState(false);
+    const [showSuperAdminBoard, setShowSuperAdminBoard] = useState(false);
     const [showAdminBoard, setShowAdminBoard] = useState(false);
 
     const { user: currentUser } = useSelector((state) => state.auth);
@@ -31,10 +31,10 @@ const Navbar =()=>{
 
     useEffect(() => {
         if (currentUser) {
-          setShowModeratorBoard(currentUser.roles.includes("ROLE_MODERATOR"));
+          setShowSuperAdminBoard(currentUser.roles.includes("ROLE_SUPERADMIN"));
           setShowAdminBoard(currentUser.roles.includes("ROLE_ADMIN"));
         } else {
-          setShowModeratorBoard(false);
+          setShowSuperAdminBoard(false);
           setShowAdminBoard(false);
         }
     
@@ -89,17 +89,29 @@ const Navbar =()=>{
                                         className={({ isActive }) => (isActive ? 'block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white' : 'block py-2 pr-4 pl-3 text-grey-500 bg-blue-700 rounded md:bg-transparent hover:md:text-blue-700 md:p-0 dark:text-white')} 
                                         aria-current="page"
                                     >
-                                        Home
+                                        Products
                                         
                                     </NavLink>
-                                </li>  
+                                </li>
+                                {showSuperAdminBoard && (
+                                <li>
+                                    <NavLink 
+                                        to={'/users'} 
+                                        className={({ isActive }) => (isActive ? 'block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white' : 'block py-2 pr-4 pl-3 text-grey-500 bg-blue-700 rounded md:bg-transparent hover:md:text-blue-700 md:p-0 dark:text-white')} 
+                                        aria-current="page"
+                                    >
+                                        Users Manager
+                                                                            
+                                    </NavLink>
+                                </li>
+                                )}
                                 <li>
                                     <NavLink 
                                         to={'/profile'} 
                                         className={({ isActive }) => (isActive ? 'block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white' : 'block py-2 pr-4 pl-3 text-grey-500 bg-blue-700 rounded md:bg-transparent hover:md:text-blue-700 md:p-0 dark:text-white')} 
                                         aria-current="page"
                                     >
-                                        {currentUser.username}     
+                                       My Profile     
                                     </NavLink>
                                 </li>                      
                                 <li>

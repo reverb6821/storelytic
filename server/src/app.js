@@ -96,6 +96,8 @@ db.sequelize.sync()
 .then(() => {
   Logger.info('Sequelize init...')
   Logger.info('Database Synced Correctly')
+  // initial()
+  Logger.info('Data updated')
  })
   .catch((err) => {
     Logger.error(`Failed to sync db: ${err.message}`)
