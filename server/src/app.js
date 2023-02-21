@@ -76,7 +76,7 @@ app.get('/', (req, res) => {
 app.get('/api/v1/healthchecker', (req, res) => {
   res.status(200).json({
     status: 'success',
-    message: 'Build CRUD API with Node.js and Sequelize',
+    message: 'StoreLytic is working',
   });
 });
 

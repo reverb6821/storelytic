@@ -23,7 +23,5 @@ module.exports = app => {
 
   router.post("/signin", auth.signin);
 
-  router.post("/refreshtoken", auth.refreshToken);
-
-  app.use('/api/v1/auth', router)
+  app.use('/api/v2/auth', router)
 }
