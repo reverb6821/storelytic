@@ -173,16 +173,7 @@ export default function (props: ModalType) {
                                         />
                                         </div>
                                         <label htmlFor="stock" className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Stock</label>
-                                    </div>
-
-                                    {/* <button
-                                        type="submit"
-                                        className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center      "
-                                        onClick={saveProduct}
-                                    >
-                                        Save Product
-                                    </button> */}
-                                    
+                                    </div>                                  
                                 </div>
                             </div>
                         )}
@@ -197,7 +188,7 @@ export default function (props: ModalType) {
                                     Close
                                 </button>
                                 {submitted ? (
-<></>
+                                    <></>
                                 ) : (
                                     <button
                                     onClick={saveProduct}

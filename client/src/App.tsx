@@ -12,6 +12,7 @@ import Auth from './views/Auth';
 import User from './views/pages/User'
 import Profile from './views/pages/Profile';
 import Products from './views/pages/Products';
+import EditProduct from './views/pages/EditProduct';
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
             <Route path='/' element={<Products />} />
             <Route path='/users-manager' element={<User />} />
             <Route path='/profile' element={<Profile />} />
+            <Route path="/product/:id" element={<EditProduct />} />
           </Route>
         ) : (
           <Route element={<Auth />}>

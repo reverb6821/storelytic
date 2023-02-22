@@ -1,14 +1,18 @@
 import React, { useState, useEffect, ChangeEvent } from "react";
-import { useParams, useNavigate } from 'react-router-dom';
-import { FcDeployment } from 'react-icons/fc'
-import {AiOutlineDelete, AiOutlineEdit} from 'react-icons/ai'
-import ProductService from "../../services/product.service";
-import IProduct from "../../interfaces/IProduct";
+import { FcDeployment, FcEditImage, FcEmptyTrash } from 'react-icons/fc'
 import { Link } from 'react-router-dom';
-import AddProduct from '../../components/modals/AddProduct';
-import useModal from '../../components/modals/useModal';
-import * as authService from '../../services/auth.service';
+
 import IUser from '../../interfaces/IUser';
+import IProduct from "../../interfaces/IProduct";
+
+import * as authService from '../../services/auth.service';
+import ProductService from "../../services/product.service";
+
+import useProductModal from '../../components/modals/useProductModal';
+import AddProduct from '../../components/modals/AddProduct';
+import RemoveAll from '../../components/modals/RemoveAll';
+import Delete from '../../components/modals/Delete';
+
 
 const Products: React.FC =()=>{
 
@@ -22,7 +26,10 @@ const Products: React.FC =()=>{
     const [currentIndex, setCurrentIndex] = useState<number>(-1);
     const [searchName, setSearchName] = useState<string>("");
 
-    const { isOpen, toggle } = useModal();
+    const { isOpen, toggle } = useProductModal();
+    const { deleteIsOpen, toggleDelete } = useProductModal();
+    const { removeIsOpen, toggleRemove } = useProductModal();
+    const { editIsOpen, toggleEdit } = useProductModal();
 
     useEffect(() => {
         retrieveProducts();
@@ -96,8 +103,7 @@ const Products: React.FC =()=>{
           setCurrentUser(user);
           setShowSuperAdminBoard(user.roles.includes("ROLE_SUPERADMIN"));
           setShowAdminBoard(user.roles.includes("ROLE_ADMIN"));
-          setShowAdminAndSuperAdminBoard(user.roles.includes("ROLE_ADMIN" || "ROLE_SUPERADMIN"));
-
+          setShowAdminAndSuperAdminBoard(user.roles.includes("ROLE_ADMIN") || user.roles.includes("ROLE_SUPERADMIN") );
         }
     
       }, []);
@@ -115,6 +121,7 @@ const Products: React.FC =()=>{
               {showSuperAdminBoard && (
                 <button
                 onClick={toggle}
+                title='Add Product'
                 className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none">
                     ADD
                 </button>
@@ -169,11 +176,11 @@ const Products: React.FC =()=>{
               </tbody>
             </table>
             {showSuperAdminBoard && (
-
             <div className='m-2 p-2'>
               <button
                 type='button'
-                onClick={removeAllProducts}
+                onClick={toggleDelete}
+                title='Remove All Products'
                 className='focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2'
               >
                 Remove All
@@ -216,29 +223,27 @@ const Products: React.FC =()=>{
                 </label>{' '}
                 {currentProduct.stock ? 
                         (
-                          <span className="bg-green-100 text-green-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-green-200 dark:text-green-900">STOCK</span>
+                          <span className="bg-green-700 text-green-200 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">STOCK</span>
                         ) :(
-                          <span className="bg-red-100 text-red-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-red-200 dark:text-red-900">OUT OF STOCK</span>
+                          <span className="bg-red-700 text-red-200 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">OUT OF STOCK</span>
                         ) }
-                        
               </div>
-
+              {showAdminAndSuperAdminBoard && (
                 <div className='flex'>
                   <Link
+                    title='Edit Product'
                     to={'/product/' + currentProduct.id}
-                    className='rounded-full w-10 h-10 bg-yellow-500 p-0 border-0 inline-flex items-center justify-center text-yellow-800 ml-4'
                   >
-                    <AiOutlineEdit className='w-5 h-5 text-lg text-white' />
+                    <FcEditImage size={40} />
                   </Link>
-                  {showAdminAndSuperAdminBoard && (
                   <button
-                    onClick={removeProduct}
-                    className='rounded-full w-10 h-10 bg-red-500 p-0 border-0 inline-flex items-center justify-center text-red-800 ml-4'
-                  >
-                    <AiOutlineDelete className='w-5 h-5 text-lg text-white' />
+                    onClick={toggleRemove}
+                    title='Remove Product'
+                    >
+                    <FcEmptyTrash size={40} />
                   </button>
-                  )}
                 </div>
+                  )}
             </>
           ) : (
             <div>
@@ -249,7 +254,16 @@ const Products: React.FC =()=>{
         </div>
       </div>
       <AddProduct isOpen={isOpen} toggle={toggle} />
-
+      <RemoveAll 
+        deleteIsOpen={deleteIsOpen} 
+        toggleDelete={toggleDelete} 
+        removeAllProducts={removeAllProducts} 
+      />
+      <Delete
+        removeIsOpen={removeIsOpen}
+        toggleRemove={toggleRemove}
+        removeProduct={removeProduct}
+      />
         </>
     )
 }
