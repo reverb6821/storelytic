@@ -1,9 +1,9 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "TODOapp webserver",
+  "description": "storelytic app webserver",
   "main": "./src/app.js",
-  "repository": "https://github.com/reverb6821/todo-app",
+  "repository": "https://github.com/reverb6821/storelytic",
   "author": "Giuseppe Gigliotti",
   "license": "MIT",
   "scripts": {
