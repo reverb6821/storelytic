@@ -16,7 +16,6 @@ const EditProduct: React.FC =()=>{
         ProductService.get(id)
           .then((response: any) => {
             setCurrentProduct(response.data);
-            console.log(response.data);
           })
           .catch((e: Error) => {
             console.log(e);
@@ -45,7 +44,6 @@ const EditProduct: React.FC =()=>{
     
         ProductService.update(currentProduct.id, data)
           .then((response: any) => {
-            console.log(response.data);
             setCurrentProduct({ ...currentProduct, stock: status });
             setMessage("The status was updated successfully!");
           })
@@ -57,7 +55,6 @@ const EditProduct: React.FC =()=>{
       const updateProduct = () => {
         ProductService.update(currentProduct.id, currentProduct)
           .then((response: any) => {
-            console.log(response.data);
             setMessage("The Product was updated successfully!");
           })
           .catch((e: Error) => {
@@ -101,14 +98,13 @@ const EditProduct: React.FC =()=>{
                         placeholder="{currentProduct.description} "
                         className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         required=""
-  
                         value={currentProduct.description}
                         onChange={handleInputChange}
                       />
                     </div>
   
                     <div>
-                      <label htmlFor="quantity" className="block mb-2 text-sm font-medium text-gray-900 ">Quantity</label>
+                      <label htmlFor="quantity" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Quantity</label>
                       <input 
                         type="number"
                         name="quantity"
@@ -130,7 +126,6 @@ const EditProduct: React.FC =()=>{
                         placeholder="{currentProduct.note} "
                         className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         required=""
-  
                         value={currentProduct.note}
                         onChange={handleInputChange}
                       />
@@ -138,7 +133,7 @@ const EditProduct: React.FC =()=>{
   
                     <div>
                       <label>
-                        <strong className='text-gray-900  '>Status:</strong>
+                        <strong className='text-gray-900 dark:text-white '>Status:</strong>
                       </label>
   
                     </div>
@@ -146,14 +141,14 @@ const EditProduct: React.FC =()=>{
   
                   {currentProduct.stock ? (
                     <button
-                      className="ml-4 text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-1 bg-green-200 text-green-700 rounded-full"
+                      className="ml-4 text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-1 bg-green-700 text-green-200 rounded-full"
                       onClick={() => updateStock(false)}
                     >
                       IN STOCK
                     </button>
                   ) : (
                     <button
-                      className="ml-4 text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-1 bg-red-200 text-red-700 rounded-full"
+                      className="ml-4 text-xs inline-flex items-center font-bold leading-sm uppercase px-3 py-1 bg-red-700 text-red-200 rounded-full"
                       onClick={() => updateStock(true)}
                     >
                       OUT OF STOCK

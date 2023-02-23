@@ -1,5 +1,5 @@
-import React, { useState, useEffect, ChangeEvent } from "react";
-import { FcDeployment, FcEditImage, FcEmptyTrash } from 'react-icons/fc'
+import React, { useState, useEffect, ChangeEvent, useMemo } from "react";
+import { FcDeployment, FcEditImage, FcSearch, FcEmptyTrash, FcRefresh } from 'react-icons/fc'
 import { Link } from 'react-router-dom';
 
 import IUser from '../../interfaces/IUser';
@@ -29,12 +29,7 @@ const Products: React.FC =()=>{
     const { isOpen, toggle } = useProductModal();
     const { deleteIsOpen, toggleDelete } = useProductModal();
     const { removeIsOpen, toggleRemove } = useProductModal();
-    const { editIsOpen, toggleEdit } = useProductModal();
 
-    useEffect(() => {
-        retrieveProducts();
-      }, []);
-    
       const onChangeSearchName = (e: ChangeEvent<HTMLInputElement>) => {
         const searchName = e.target.value;
         setSearchName(searchName);
@@ -44,7 +39,6 @@ const Products: React.FC =()=>{
         ProductService.getAll()
           .then((response: any) => {
             setProducts(response.data);
-            console.log(response.data);
           })
           .catch((e: Error) => {
             console.log(e);
@@ -65,7 +59,7 @@ const Products: React.FC =()=>{
       const removeProduct = () => {
         ProductService.remove(currentProduct.id)
           .then((response: any) => {
-            console.log(response.data);
+            window.location.reload();
           })
           .catch((e: Error) => {
             console.log(e);
@@ -75,7 +69,6 @@ const Products: React.FC =()=>{
       const removeAllProducts = () => {
         ProductService.removeAll()
           .then((response: any) => {
-            console.log(response.data);
             refreshList();
           })
           .catch((e: Error) => {
@@ -89,7 +82,6 @@ const Products: React.FC =()=>{
             setProducts(response.data);
             setCurrentProduct(null);
             setCurrentIndex(-1);
-            console.log(response.data);
           })
           .catch((e: Error) => {
             console.log(e);
@@ -105,19 +97,31 @@ const Products: React.FC =()=>{
           setShowAdminBoard(user.roles.includes("ROLE_ADMIN"));
           setShowAdminAndSuperAdminBoard(user.roles.includes("ROLE_ADMIN") || user.roles.includes("ROLE_SUPERADMIN") );
         }
-    
       }, []);
 
+      useMemo
+
+      // useEffect(() => {
+      //   retrieveProducts();
+      //   findByName();
+      // }, []);
     return(
         <>
-            <div className='lg:w-4/5 mx-auto flex flex-wrap'>
+        <div className='lg:w-4/5 mx-auto flex flex-wrap'>
         <div className='lg:w-1/2 w-full'>
           <div className='overflow-x-auto relative'>
+            
             <div className='flex items-start justify-between p-5 rounded-t'>
-              <div className='flex items-center mb-6 text-2xl font-semibold text-gray-900  dark:text-white'>
+              <div className='flex items-center text-2xl font-semibold text-gray-900  dark:text-white'>
                 <FcDeployment className="w-8 h-8 mr-2 text-[30px] text-blue-600"/>
                 Storelytic | Product List
               </div>
+              <button
+                onClick={refreshList}
+                title='Refresh'
+                className="text-white bg-gray-300 hover:bg-gray-300 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none">
+                    <FcRefresh size={20}/>
+                </button>
               {showSuperAdminBoard && (
                 <button
                 onClick={toggle}
@@ -127,6 +131,27 @@ const Products: React.FC =()=>{
                 </button>
               )}
             </div>
+
+            <div className='m-2 p-2'>
+              <form>   
+                <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+                <div className="relative">
+                    <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                      <FcSearch size={30}/>
+                    </div>
+                    <input 
+                      type="text" 
+                      id="default-search" 
+                      value={searchName}
+                      onChange={onChangeSearchName}
+                      className="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search Products..." required />
+                    <button type="submit" onClick={findByName} className="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                      Search
+                    </button>
+                </div>
+              </form>
+            </div>
+
             <table className='w-full text-sm text-left text-gray-500 shadow-lg '>
               <thead className='text-xs text-gray-700 uppercase bg-gray-200  dark:bg-gray-700 dark:border-gray-600 dark:text-white'>
                 <tr>
@@ -192,34 +217,34 @@ const Products: React.FC =()=>{
         <div className='lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0 '>
           {currentProduct ? (
             <>
-              <h2 className='text-sm title-font text-gray-500 tracking-widest'>
+              <h2 className='text-sm title-font text-gray-500 tracking-widest dark:text-white'>
                 Product:
               </h2>
-              <h1 className='text-gray-900 dark:text-gray-500 text-3xl title-font font-medium mb-1'>
+              <h1 className='text-gray-900 dark:text-white text-3xl title-font font-medium mb-1'>
                 {currentProduct.name}
               </h1>
 
-              <p className='leading-relaxed'>
+              <p className='leading-relaxed dark:text-white'>
                 {currentProduct.description}
               </p>
 
-              <div className='mb-2 mt-2 pt-2'>
+              <div className='mb-2 mt-2 pt-2 dark:text-white'>
                 <label>
                   <strong>Qta:</strong>
                 </label>{' '}
                 {currentProduct.quantity}
               </div>
               
-              <div className='mb-2 mt-2 pt-2'>
+              <div className='mb-2 mt-2 pt-2 dark:text-white'>
                 <label>
-                  <strong>NOTE:</strong>
+                  <strong className='dark:text-white'>NOTE:</strong>
                 </label>{' '}
                 {currentProduct.note}
               </div>
 
               <div className='mb-2 pb-2'>
                 <label>
-                  <strong>Status:</strong>
+                  <strong className='dark:text-white'>Status:</strong>
                 </label>{' '}
                 {currentProduct.stock ? 
                         (
