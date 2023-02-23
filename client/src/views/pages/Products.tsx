@@ -101,10 +101,10 @@ const Products: React.FC =()=>{
 
       useMemo
 
-      // useEffect(() => {
-      //   retrieveProducts();
-      //   findByName();
-      // }, []);
+       useEffect(() => {
+         retrieveProducts();
+         findByName();
+       }, []);
     return(
         <>
         <div className='lg:w-4/5 mx-auto flex flex-wrap'>
