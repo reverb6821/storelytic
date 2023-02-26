@@ -4,13 +4,13 @@ module.exports = app => {
 
     var router = require('express').Router();
   
-    router.post('/', [authJwt.verifyToken, authJwt.isAdminOrSuperAdmin], products.create);
+    router.post('/', products.create);
     router.get('/', products.findAll);
-    router.get('/stock', [authJwt.verifyToken], products.findAllStocked);
+    router.get('/stock', products.findAllStocked);
     router.get('/:id', products.findOne);
-    router.put('/:id', [authJwt.verifyToken, authJwt.isAdminOrSuperAdmin], products.update);
-    router.delete('/:id', [authJwt.verifyToken, authJwt.isAdminOrSuperAdmin], products.delete);
-    router.delete('/', [authJwt.verifyToken, authJwt.isSuperAdmin], products.deleteAll);
+    router.put('/:id', products.update);
+    router.delete('/:id', products.delete);
+    router.delete('/', products.deleteAll);
   
     app.use('/api/v2/products', router);
   };
