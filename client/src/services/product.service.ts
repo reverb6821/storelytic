@@ -1,28 +1,28 @@
 import http from "../common/http-common";
 import IProduct from "../interfaces/IProduct";
-import authHeader from './auth-header';
+
 const getAll = () => {
-  return http.get<Array<IProduct>>("/products/", { headers: authHeader() });
+  return http.get<Array<IProduct>>("/products/");
 };
 
 const get = (id: any) => {
-  return http.get<IProduct>(`/products/${id}`, { headers: authHeader() });
+  return http.get<IProduct>(`/products/${id}`);
 };
 
 const create = (data: IProduct) => {
-  return http.post<IProduct>("/products", data, { headers: authHeader() });
+  return http.post<IProduct>("/products", data);
 };
 
 const update = (id: any, data: IProduct) => {
-  return http.put<any>(`/products/${id}`, data, { headers: authHeader() });
+  return http.put<any>(`/products/${id}`, data);
 };
 
 const remove = (id: any) => {
-  return http.delete<any>(`/products/${id}`, { headers: authHeader() });
+  return http.delete<any>(`/products/${id}`);
 };
 
 const removeAll = () => {
-  return http.delete<any>(`/products`, { headers: authHeader() });
+  return http.delete<any>(`/products`);
 };
 
 const findByName = (name: string) => {

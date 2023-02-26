@@ -59,7 +59,7 @@ const Products: React.FC =()=>{
       const removeProduct = () => {
         ProductService.remove(currentProduct.id)
           .then((response: any) => {
-            window.location.reload();
+            refreshList()
           })
           .catch((e: Error) => {
             console.log(e);
@@ -90,7 +90,8 @@ const Products: React.FC =()=>{
 
       useEffect(() => {
         const user = authService.getCurrentUser();
-    
+        retrieveProducts();
+        
         if (user) {
           setCurrentUser(user);
           setShowSuperAdminBoard(user.roles.includes("ROLE_SUPERADMIN"));
@@ -99,12 +100,6 @@ const Products: React.FC =()=>{
         }
       }, []);
 
-      useMemo
-
-       useEffect(() => {
-         retrieveProducts();
-         findByName();
-       }, []);
     return(
         <>
         <div className='lg:w-4/5 mx-auto flex flex-wrap'>
