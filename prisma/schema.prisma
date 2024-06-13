@@ -1,0 +1,56 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model user {
+  id         String   @id @default(uuid())
+  username   String   @unique
+  password   String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  profile_id String?  @unique
+  profile    profile? @relation(fields: [profile_id], references: [id])
+  roles      role[]   @relation("user_role")
+}
+
+model role {
+  id         String   @id @default(uuid())
+  name       String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  users      user[]   @relation("user_role")
+}
+
+model profile {
+  id         String    @id @default(uuid())
+  first_name String
+  last_name  String
+  email      String
+  phone      String
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+  user       user?
+  addresses  address[]
+}
+
+model address {
+  id         String   @id @default(uuid())
+  street     String
+  city       String
+  zip        String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  profile_id String?
+  profile    profile? @relation(fields: [profile_id], references: [id])
+}
