@@ -24,6 +24,7 @@ const LoginForm: React.FC = () => {
   const [error, setError] = React.useState<string | undefined>('')
   const [success, setSuccess] = React.useState<string | undefined>('')
   const [isPending, startTransition] = React.useTransition()
+  const [show2Fa, setShow2Fa] = React.useState(false)
 
   const searchParams = useSearchParams()
 
@@ -44,9 +45,23 @@ const LoginForm: React.FC = () => {
     setSuccess('')
     startTransition(() => {
       login(values).then((data) => {
-        setError(data?.error)
-        setSuccess(data?.success)
-      })
+        // setError(data?.error)
+        // setSuccess(data?.success)
+        if (data?.error) {
+          form.reset()
+          setError(data.error)
+        }
+
+        if (data?.success) {
+          form.reset()
+          setSuccess(data.success)
+        }
+
+
+        if (data?.twoFactor) {
+          setShow2Fa(true)
+        }
+      }).catch(() => setError('Something went wrong'))
 
     })
   }
@@ -65,58 +80,82 @@ const LoginForm: React.FC = () => {
             className='space-y-6'
           >
             <div className='space-y-4'>
-              <FormField
-                control={form.control}
-                name='email'
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Email</FormLabel>
-                    <FormControl>
-                      <Input
-                        {...field}
-                        placeholder='john.doe@example.com'
-                        type='email'
-                        disabled={isPending}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name='password'
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Password</FormLabel>
-                    <FormControl>
-                      <div className='flex items-center '>
-                        <Input
-                          {...field}
-                          placeholder='*****'
-                          type={showPsw ? 'text' : 'password'}
-                          disabled={isPending}
-                        />
-                        <Button
-                          type='button'
-                          variant='link'
-                          onClick={() => setShowPsw(!showPsw)}
-                          disabled={isPending}
-                        >
-                          {showPsw ? (<PiEyeClosedDuotone className='h-5 w-5' />) : (<PiEyeDuotone className='h-5 w-5' />)}
+              {!show2Fa ? (
+                 <FormField
+                 control={form.control}
+                 name='code'
+                 render={({ field }) => (
+                   <FormItem>
+                     <FormLabel>Two Factor Code</FormLabel>
+                     <FormControl>
+                       <Input
+                         {...field}
+                         type='text'
+                         disabled={isPending}
+                       />
+                     </FormControl>
+                     <FormMessage />
+                   </FormItem>
+                 )}
+               />
+              ) : (
+                <React.Fragment>
+                  <FormField
+                    control={form.control}
+                    name='email'
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Email</FormLabel>
+                        <FormControl>
+                          <Input
+                            {...field}
+                            placeholder='john.doe@example.com'
+                            type='email'
+                            disabled={isPending}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <FormField
+                    control={form.control}
+                    name='password'
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Password</FormLabel>
+                        <FormControl>
+                          <div className='flex items-center '>
+                            <Input
+                              {...field}
+                              placeholder='*****'
+                              type={showPsw ? 'text' : 'password'}
+                              disabled={isPending}
+                            />
+                            <Button
+                              type='button'
+                              variant='link'
+                              onClick={() => setShowPsw(!showPsw)}
+                              disabled={isPending}
+                            >
+                              {showPsw ? (<PiEyeClosedDuotone className='h-5 w-5' />) : (<PiEyeDuotone className='h-5 w-5' />)}
+                            </Button>
+                          </div>
+                        </FormControl>
+                        <Button className='px-0 font-normal' size='sm' variant='link' asChild>
+                          <Link href={'/auth/reset'}>
+                            Forgot Password
+                          </Link>
                         </Button>
-                      </div>
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </React.Fragment>
+              )
+              }
             </div>
-            <Button className='px-0 font-normal' size='sm' variant='link' asChild>
-              <Link href={'/auth/reset'}>
-                Forgot Password
-              </Link>
-            </Button>
+
             <FormError message={error || urlError} />
             <FormSuccess message={success} />
             <Button
