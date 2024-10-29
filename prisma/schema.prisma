@@ -9,48 +9,70 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
+  // provider = "sqlite"
+  // url      = env("DATABASE_URL")
 }
 
-model user {
-  id         String   @id @default(uuid())
-  username   String   @unique
-  password   String
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
-  profile_id String?  @unique
-  profile    profile? @relation(fields: [profile_id], references: [id])
-  roles      role[]   @relation("user_role")
+enum UserRole {
+  ADMIN
+  USER
+}
+ 
+model User {
+  id            String          @id @default(cuid())
+  name          String?
+  email         String          @unique
+  emailVerified DateTime?
+  image         String?
+  password      String?
+  role          UserRole @default(USER)
+  accounts      Account[]
+  // sessions      Session[]
+  // Optional for WebAuthn support
+  // Authenticator Authenticator[]
+ 
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
 }
 
-model role {
-  id         String   @id @default(uuid())
-  name       String
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
-  users      user[]   @relation("user_role")
+ model Account {
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+ 
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+ 
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+ 
+  @@unique([provider, providerAccountId])
 }
 
-model profile {
-  id         String    @id @default(uuid())
-  first_name String
-  last_name  String
+model VerificationToken {
+  id         String @id @default(cuid())
   email      String
-  phone      String
-  created_at DateTime  @default(now())
-  updated_at DateTime  @updatedAt
-  user       user?
-  addresses  address[]
+  // identifier String
+  token      String @unique
+  expires    DateTime
+ 
+  @@unique([email, token])
 }
 
-model address {
-  id         String   @id @default(uuid())
-  street     String
-  city       String
-  zip        String
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
-  profile_id String?
-  profile    profile? @relation(fields: [profile_id], references: [id])
+model PasswordResetToken {
+  id          String @id @default(cuid())
+  email       String
+  token       String @unique
+  expires      DateTime
+
+  @@unique([email, token])
 }
